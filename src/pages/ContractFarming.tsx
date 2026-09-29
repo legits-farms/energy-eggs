@@ -3,7 +3,7 @@ import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import LockGate from '../components/LockGate'
 import pastureFarmImg from '../assets/pasture-farm.jpeg'
-import deepLitterImg from '../assets/deep-litter-farm.jpeg'
+import deepLitterImg from '../assets/deep-litter-farm.png'
 import contractHeroImg from '../assets/contract-hero.jpg'
 
 const MODEL_IMAGES: Record<string, [src: string, alt: string]> = {

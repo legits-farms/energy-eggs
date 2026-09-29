@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import EnquiryButton from '../components/EnquiryButton'
 import pastureFarmImg from '../assets/pasture-farm.jpeg'
-import deepLitterImg from '../assets/deep-litter-farm.jpeg'
+import deepLitterImg from '../assets/deep-litter-farm.png'
 
 const FARM_STEPS = [
   ['01', 'Site Planning', 'Understand the land, capacity and intended farming model.'],
