@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { submitEnquiry } from '../lib/enquiryApi'
+import { emailError, nameError, onlyDigits, phoneError } from '../lib/validation'
 import { CALL_DISPLAY, CALL_NUMBER } from './CallButton'
 
 type OpenOpts = {
@@ -43,11 +44,14 @@ function EnquiryDialog({ opts, onClose }: { opts: OpenOpts | null; onClose: () =
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
+  const errors = { name: nameError(name), phone: phoneError(phone), email: emailError(email) }
+  const isValid = !errors.name && !errors.phone && !errors.email
 
   useEffect(() => {
     if (!isOpen) return
     // reset each time it opens
-    setName(''); setPhone(''); setEmail(''); setMessage(''); setStatus('idle')
+    setName(''); setPhone(''); setEmail(''); setMessage(''); setStatus('idle'); setTouched({})
     document.body.style.overflow = 'hidden'
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', onKey)
@@ -58,6 +62,8 @@ function EnquiryDialog({ opts, onClose }: { opts: OpenOpts | null; onClose: () =
   }, [isOpen, onClose])
 
   const handleSubmit = async () => {
+    setTouched({ name: true, phone: true, email: true })
+    if (!isValid) return
     setStatus('sending')
     const details: Record<string, string> = {}
     if (opts?.interest) details['Interested in'] = opts.interest
@@ -118,15 +124,43 @@ function EnquiryDialog({ opts, onClose }: { opts: OpenOpts | null; onClose: () =
                 <form className="field-grid modal-form" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
                   <label>
                     Your Name
-                    <input type="text" value={name} placeholder="Full name" required onChange={(e) => setName(e.target.value)} />
+                    <input
+                      type="text"
+                      value={name}
+                      placeholder="Full name"
+                      required
+                      className={touched.name && errors.name ? 'field-invalid' : ''}
+                      onChange={(e) => setName(e.target.value)}
+                      onBlur={() => setTouched((t) => ({ ...t, name: true }))}
+                    />
+                    {touched.name && errors.name && <span className="field-error">{errors.name}</span>}
                   </label>
                   <label>
                     Phone
-                    <input type="tel" value={phone} placeholder="+91 …" required onChange={(e) => setPhone(e.target.value)} />
+                    <input
+                      type="tel"
+                      inputMode="numeric"
+                      value={phone}
+                      placeholder="+91 …"
+                      required
+                      maxLength={13}
+                      className={touched.phone && errors.phone ? 'field-invalid' : ''}
+                      onChange={(e) => setPhone(onlyDigits(e.target.value))}
+                      onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
+                    />
+                    {touched.phone && errors.phone && <span className="field-error">{errors.phone}</span>}
                   </label>
                   <label className="full">
                     Business Email
-                    <input type="email" value={email} placeholder="you@business.com" onChange={(e) => setEmail(e.target.value)} />
+                    <input
+                      type="email"
+                      value={email}
+                      placeholder="you@business.com"
+                      className={touched.email && errors.email ? 'field-invalid' : ''}
+                      onChange={(e) => setEmail(e.target.value)}
+                      onBlur={() => setTouched((t) => ({ ...t, email: true }))}
+                    />
+                    {touched.email && errors.email && <span className="field-error">{errors.email}</span>}
                   </label>
                   {opts?.interest && (
                     <label className="full">
@@ -144,7 +178,7 @@ function EnquiryDialog({ opts, onClose }: { opts: OpenOpts | null; onClose: () =
                     />
                   </label>
                   <div className="full modal-actions">
-                    <button type="submit" className="btn" disabled={status === 'sending'}>
+                    <button type="submit" className="btn" disabled={status === 'sending' || (Object.values(touched).some(Boolean) && !isValid)}>
                       {status === 'sending' ? 'Sending…' : (opts?.submitLabel || 'Send Enquiry')}
                     </button>
                     <button type="button" className="btn ghost" onClick={onClose}>Cancel</button>

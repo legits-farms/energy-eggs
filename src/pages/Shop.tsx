@@ -4,10 +4,9 @@ import { MotionConfig } from 'framer-motion'
 import { MItem, MReveal, MStagger } from '../components/Motion'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
-import EggMark from '../components/EggMark'
 import GetQuoteModal, { type QuoteKind } from '../components/GetQuoteModal'
 import { useLiveProducts, shortUnit } from '../lib/productsApi'
-import sonaliImg from '../assets/sonali.png'
+import sonaliImg from '../assets/sonali.jpg'
 import aseelImg from '../assets/aseel.png'
 import kadaknathImg from '../assets/kadaknath.png'
 import fiyoumiImg from '../assets/fiyoumi.png'
@@ -36,8 +35,8 @@ const BIRD_PRODUCTS: [name: string, option: string, rate: string, note: string, 
 
 const EGG_PRODUCTS: [name: string, option: string, shell: string, text: string, rate: string][] = [
   ['Sonali Eggs', 'Sonali Eggs', '#F0D5AC', 'Consistent B2B supply of Sonali desi eggs.', 'from ₹10.75'],
-  ['Kadaknath Eggs', 'Kadaknath Eggs', '#4a4547', 'Specialty eggs for premium and desi programmes.', 'from ₹10.75'],
-  ['Aseel Eggs', 'Aseel Eggs', '#E2B489', 'Specialty Aseel egg supply to your requirement.', 'from ₹10.75'],
+  ['Kadaknath Eggs', 'Kadaknath Eggs', '#4a4547', 'Specialty eggs for premium and desi programmes.', 'from ₹40'],
+  ['Aseel Eggs', 'Aseel Eggs', '#E2B489', 'Specialty Aseel egg supply to your requirement.', 'from ₹75'],
 ]
 
 const EQUIPMENT_META: Record<string, { text: string; icon: ReactNode }> = {
@@ -152,7 +151,6 @@ export default function Shop() {
           <span className="pill">Published rates</span>
           <span className="pill">Minimum order: 10 birds</span>
           <span className="pill">Egg tiers by commitment</span>
-          <span className="pill">{equipmentCount} equipment products</span>
         </div>
       </PageHero>
 
@@ -198,11 +196,8 @@ export default function Shop() {
             <p>Ex-farm rates tiered by your monthly commitment.</p>
           </MReveal>
           <MStagger className="shop-grid shop-grid-3">
-            {eggProducts.map(([name, option, shell, text, rate]) => (
+            {eggProducts.map(([name, option, , text, rate]) => (
               <MItem key={name} className="shop-card">
-                <div className="shop-img">
-                  <EggMark shell={shell} />
-                </div>
                 <h3>{name}</h3>
                 <div className="shop-price">{rate} <small>/egg</small></div>
                 <p>{text}</p>
@@ -214,8 +209,10 @@ export default function Shop() {
           </MStagger>
           <MReveal className="chip-row">
             <div className="chips">
-              <span className="pill">Washed + graded: +₹0.50/egg</span>
-              <span className="pill">Retail-ready packed: +₹1.00/egg</span>
+              <span className="pill">Washed: +₹0.50/egg</span>
+              <span className="pill">Graded: +₹0.50/egg</span>
+              <span className="pill">Packing: +₹0.05/egg</span>
+              <span className="pill">Packing material: at cost</span>
               <Link to="/rate-card#egg-rates" className="pill">Full egg tiers →</Link>
             </div>
           </MReveal>

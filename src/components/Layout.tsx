@@ -208,7 +208,7 @@ export default function Layout() {
               <Link to="/equipment">Farm Equipments</Link>
               <Link to="/feed">Feed</Link>
               <Link to="/farm-development">Farm Development</Link>
-              <Link to="/rate-card">Rate Card</Link>
+              
             </div>
             <div>
               <h4>Partnerships</h4>
@@ -216,6 +216,7 @@ export default function Layout() {
               <Link to="/b2b-supply">Partnership</Link>
               <Link to="/about">About Us</Link>
               <Link to="/contact">Contact Us</Link>
+              <Link to="/rate-card">Rate Card</Link>
             </div>
             <div>
               <h4>Get in Touch</h4>

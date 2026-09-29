@@ -103,6 +103,8 @@ export const EGG_RATES: [commitment: string, aGrade: string, abGrade: string, bG
 
 export const PROCESSING_CHARGES: [service: string, charge: string, note: string][] = [
   ['Unwashed', '₹0.00', 'Straight from the farm, as collected.'],
-  ['Washed + Graded', '₹0.50', 'Cleaned and sorted for consistency.'],
-  ['Washed + Graded + Packed', '₹1.00', 'Retail-ready, packed for your shelf.'],
+  ['Washed', '₹0.50', 'Cleaned to remove dirt and debris.'],
+  ['Graded', '₹0.50', 'Sorted by size and quality.'],
+  ['Packing', '₹0.05', 'Packed and sealed, ready to ship.'],
+  ['Packing Material', 'At cost', 'Cartons, trays or custom packaging billed at cost.'],
 ]

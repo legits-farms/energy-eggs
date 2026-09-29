@@ -4,7 +4,7 @@ import { CountUp, EASE, fadeUp, MItem, MReveal, MStagger, pop } from '../compone
 import SprintingHen from '../components/SprintingHen'
 import EnquiryButton from '../components/EnquiryButton'
 import CallButton from '../components/CallButton'
-import sonaliImg from '../assets/sonali.png'
+import sonaliImg from '../assets/sonali.jpg'
 import aseelImg from '../assets/aseel.png'
 import kadaknathImg from '../assets/kadaknath.png'
 import fiyoumiImg from '../assets/fiyoumi.png'
@@ -29,20 +29,6 @@ const STATS_BAND: [n: string, label: string][] = [
   ['2', 'Production Models'],
   ['6', 'Ecosystem Pillars'],
   ['100%', 'B2B Focused'],
-]
-
-const BIRD_RATE_ROWS: [label: string, value: string][] = [
-  ['Sonali', '₹500 /kg'],
-  ['Aseel', '₹700 /kg'],
-  ['Kadaknath', '₹750 /kg'],
-  ['Fiyoumi', '₹1,500 /kg'],
-]
-
-const EGG_RATE_ROWS: [label: string, value: string][] = [
-  ['A-Grade', '₹11.25 – ₹12.00'],
-  ['A + B Grade', '₹11.00 – ₹11.75'],
-  ['B Grade', '₹10.75 – ₹11.25'],
-  ['Processing add-ons', '₹0 – ₹1 /egg'],
 ]
 
 const WHAT_WE_DO = [
@@ -324,45 +310,6 @@ export default function Home() {
               </MItem>
             ))}
           </MStagger>
-        </div>
-      </section>
-
-      {/* PRICING SNAPSHOT */}
-      <section>
-        <div className="wrap">
-          <MReveal className="sec-head">
-            <span className="eyebrow">Transparent Pricing</span>
-            <h2>Published rate cards. No guesswork.</h2>
-            <p>
-              Every price is published — bird rates by breed and age, egg prices tiered by monthly
-              commitment. Commit a volume and unlock preferential slabs with priority supply.
-            </p>
-          </MReveal>
-          <MStagger className="cards-2" gap={0.15}>
-            <MItem className="panel rate-mini">
-              <h3>Live Bird Rates</h3>
-              <ul className="rate-rows">
-                {BIRD_RATE_ROWS.map(([label, value]) => (
-                  <li key={label}><span>{label}</span><b>{value}</b></li>
-                ))}
-              </ul>
-              <p className="rate-note-sm">Per-bird rates published by age — day-old chicks to 20+ weeks. Minimum order 10 birds.</p>
-              <Link to="/birds" className="panel-link">View bird rate card →</Link>
-            </MItem>
-            <MItem className="panel rate-mini">
-              <h3>Ex-Farm Egg Prices</h3>
-              <ul className="rate-rows">
-                {EGG_RATE_ROWS.map(([label, value]) => (
-                  <li key={label}><span>{label}</span><b>{value}</b></li>
-                ))}
-              </ul>
-              <p className="rate-note-sm">Tiered by monthly commitment — from 5,000 to 100,000+ eggs per month.</p>
-              <Link to="/eggs" className="panel-link">View egg rate card →</Link>
-            </MItem>
-          </MStagger>
-          <div className="hero-cta" style={{ justifyContent: 'center', marginTop: 36 }}>
-            <Link to="/b2b-supply#volume-commitment" className="btn">Volume Commitment Program</Link>
-          </div>
         </div>
       </section>
 

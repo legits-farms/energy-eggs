@@ -7,7 +7,7 @@ import GetQuoteModal, { type QuoteKind } from '../components/GetQuoteModal'
 import { useEnquiry } from '../components/EnquiryModal'
 import { useLiveRates } from '../lib/ratesApi'
 import logo from '../assets/logo.png'
-import sonaliImg from '../assets/sonali.png'
+import sonaliImg from '../assets/sonali.jpg'
 import aseelImg from '../assets/aseel.png'
 import kadaknathImg from '../assets/kadaknath.png'
 
@@ -292,7 +292,7 @@ export default function RateCard() {
               <MItem key={service} className="addon">
                 <span className="addon-step">{String(i + 1).padStart(2, '0')}</span>
                 <h3>{service}</h3>
-                <div className="addon-price">{charge}<small>/egg</small></div>
+                <div className="addon-price">{charge}{charge.startsWith('₹') && <small>/egg</small>}</div>
                 <p>{note}</p>
               </MItem>
             ))}

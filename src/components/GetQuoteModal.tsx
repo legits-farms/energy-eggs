@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { submitEnquiry } from '../lib/enquiryApi'
+import { emailError, nameError, onlyDigits, phoneError } from '../lib/validation'
 
 export type QuoteKind = 'birds' | 'eggs' | 'equipment'
 
@@ -31,6 +32,9 @@ function QuoteForm({ kind, initialInterest, options, onClose }: { kind: QuoteKin
     initialInterest && optionList.includes(initialInterest) ? [initialInterest] : [optionList[0]],
   )
   const [quantity, setQuantity] = useState('')
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
+  const errors = { name: nameError(name), phone: phoneError(phone), email: emailError(email) }
+  const isValid = !errors.name && !errors.phone && !errors.email
 
   const toggleInterest = (o: string) =>
     setInterests((prev) => (prev.includes(o) ? prev.filter((x) => x !== o) : [...prev, o]))
@@ -50,6 +54,8 @@ function QuoteForm({ kind, initialInterest, options, onClose }: { kind: QuoteKin
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
   const handleSubmit = async () => {
+    setTouched({ name: true, phone: true, email: true })
+    if (!isValid) return
     setStatus('sending')
     const ok = await submitEnquiry({
       source: COPY[kind][0],
@@ -77,15 +83,43 @@ function QuoteForm({ kind, initialInterest, options, onClose }: { kind: QuoteKin
     <form className="field-grid modal-form" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
       <label>
         Your Name
-        <input type="text" value={name} placeholder="Full name" required onChange={(e) => setName(e.target.value)} />
+        <input
+          type="text"
+          value={name}
+          placeholder="Full name"
+          required
+          className={touched.name && errors.name ? 'field-invalid' : ''}
+          onChange={(e) => setName(e.target.value)}
+          onBlur={() => setTouched((t) => ({ ...t, name: true }))}
+        />
+        {touched.name && errors.name && <span className="field-error">{errors.name}</span>}
       </label>
       <label>
         Phone
-        <input type="tel" value={phone} placeholder="+91 …" required onChange={(e) => setPhone(e.target.value)} />
+        <input
+          type="tel"
+          inputMode="numeric"
+          value={phone}
+          placeholder="+91 …"
+          required
+          maxLength={13}
+          className={touched.phone && errors.phone ? 'field-invalid' : ''}
+          onChange={(e) => setPhone(onlyDigits(e.target.value))}
+          onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
+        />
+        {touched.phone && errors.phone && <span className="field-error">{errors.phone}</span>}
       </label>
       <label>
         Business Email
-        <input type="email" value={email} placeholder="you@business.com" onChange={(e) => setEmail(e.target.value)} />
+        <input
+          type="email"
+          value={email}
+          placeholder="you@business.com"
+          className={touched.email && errors.email ? 'field-invalid' : ''}
+          onChange={(e) => setEmail(e.target.value)}
+          onBlur={() => setTouched((t) => ({ ...t, email: true }))}
+        />
+        {touched.email && errors.email && <span className="field-error">{errors.email}</span>}
       </label>
       <div className="full multi" ref={pickerRef}>
         <span className="multi-label">Interested In</span>
@@ -137,7 +171,7 @@ function QuoteForm({ kind, initialInterest, options, onClose }: { kind: QuoteKin
         />
       </label>
       <div className="full modal-actions">
-        <button type="submit" className="btn" disabled={status === 'sending' || interests.length === 0}>
+        <button type="submit" className="btn" disabled={status === 'sending' || interests.length === 0 || (Object.values(touched).some(Boolean) && !isValid)}>
           {status === 'sending' ? 'Sending…' : 'Send Enquiry'}
         </button>
         <button type="button" className="btn ghost" onClick={onClose}>Cancel</button>

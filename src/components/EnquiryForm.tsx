@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { submitEnquiry } from '../lib/enquiryApi'
+import { nameError, onlyDigits, phoneError } from '../lib/validation'
 
 const INTERESTS = [
   'Whole Birds', 'Desi Eggs', 'Poultry Equipment', 'Farm Construction',
@@ -16,11 +17,16 @@ export default function EnquiryForm() {
   const [businessType, setBusinessType] = useState('')
   const [notes, setNotes] = useState('')
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
+  const errors = { name: nameError(name), phone: phoneError(phone) }
+  const isValid = !errors.name && !errors.phone
 
   const toggleInterest = (i: string) =>
     setInterests((prev) => (prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]))
 
   const handleSubmit = async () => {
+    setTouched({ name: true, phone: true })
+    if (!isValid) return
     setStatus('sending')
     const ok = await submitEnquiry({
       source: 'B2B Enquiry',
@@ -70,11 +76,31 @@ export default function EnquiryForm() {
         <div className="field-grid">
           <label>
             Your Name
-            <input type="text" value={name} placeholder="Full name" onChange={(e) => setName(e.target.value)} />
+            <input
+              type="text"
+              value={name}
+              placeholder="Full name"
+              required
+              className={touched.name && errors.name ? 'field-invalid' : ''}
+              onChange={(e) => setName(e.target.value)}
+              onBlur={() => setTouched((t) => ({ ...t, name: true }))}
+            />
+            {touched.name && errors.name && <span className="field-error">{errors.name}</span>}
           </label>
           <label>
             Phone
-            <input type="tel" value={phone} placeholder="+91 …" onChange={(e) => setPhone(e.target.value)} />
+            <input
+              type="tel"
+              inputMode="numeric"
+              value={phone}
+              placeholder="+91 …"
+              required
+              maxLength={13}
+              className={touched.phone && errors.phone ? 'field-invalid' : ''}
+              onChange={(e) => setPhone(onlyDigits(e.target.value))}
+              onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
+            />
+            {touched.phone && errors.phone && <span className="field-error">{errors.phone}</span>}
           </label>
           <label>
             Breed
@@ -111,7 +137,7 @@ export default function EnquiryForm() {
         </div>
       </fieldset>
 
-      <button type="submit" className="btn btn-lg" disabled={status === 'sending'}>
+      <button type="submit" className="btn btn-lg" disabled={status === 'sending' || (Object.values(touched).some(Boolean) && !isValid)}>
         {status === 'sending' ? 'Sending…' : 'Get a B2B Quote'}
       </button>
       {status === 'error' && (

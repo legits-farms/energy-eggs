@@ -189,7 +189,7 @@ export default function B2BSupply() {
               <h3>Desi Eggs</h3>
               <ul className="story-list">
                 <li><span className="chk">✓</span> Ex-farm prices from ₹10.75 to ₹12.00 per egg, tiered by monthly commitment.</li>
-                <li><span className="chk">✓</span> Processing add-ons from ₹0.00 (unwashed) to ₹1.00 (washed, graded &amp; packed).</li>
+                <li><span className="chk">✓</span> Processing add-ons from ₹0.00 (unwashed) to ₹1.05 (washed, graded &amp; packed) — plus packing material at cost.</li>
                 <li><span className="chk">✓</span> Custom pricing at 100,000+ eggs per month; private label available.</li>
               </ul>
               <Link to="/eggs" className="panel-link">View full egg rate card →</Link>

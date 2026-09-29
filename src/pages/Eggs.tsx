@@ -98,7 +98,7 @@ export default function Eggs() {
               <Reveal key={service} className="addon">
                 <span className="addon-step">{String(i + 1).padStart(2, '0')}</span>
                 <h3>{service}</h3>
-                <div className="addon-price">{charge}<small>/egg</small></div>
+                <div className="addon-price">{charge}{charge.startsWith('₹') && <small>/egg</small>}</div>
                 <p>{note}</p>
               </Reveal>
             ))}
