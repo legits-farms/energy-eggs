@@ -1,0 +1,837 @@
+{
+  "nav": {
+    "services": "Services",
+    "birds": "Birds",
+    "eggs": "Eggs",
+    "equipment": "Farm Equipments",
+    "feed": "Feed",
+    "farmDevelopment": "Farm Development",
+    "contractFarming": "Contract Farming",
+    "partnership": "Partnership",
+    "about": "About Us",
+    "contact": "Contact",
+    "getRatecard": "Get Ratecard",
+    "getRateCardFull": "Get Rate Card",
+    "shop": "Shop"
+  },
+  "footer": {
+    "tagline": "Nourishing lives. Naturally.",
+    "tagSub": "The B2B Desi Poultry Ecosystem",
+    "about": "The B2B desi poultry ecosystem — birds, eggs, farms, equipment and partnerships, from farm development to reliable B2B supply.",
+    "servicesHeading": "Services",
+    "shop": "Shop",
+    "wholeBirds": "Whole Birds",
+    "desiEggs": "Desi Eggs",
+    "farmEquipments": "Farm Equipments",
+    "feed": "Feed",
+    "farmDevelopment": "Farm Development",
+    "partnershipsHeading": "Partnerships",
+    "contractFarming": "Contract Farming",
+    "partnership": "Partnership",
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "rateCard": "Rate Card",
+    "getInTouch": "Get in Touch",
+    "b2bEnquiry": "B2B Enquiry",
+    "copyright": "© 2026 Energy Eggs® Pvt Ltd. The B2B Desi Poultry Ecosystem.",
+    "breeds": "Sonali · Aseel · Kadaknath · Fiyoumi",
+    "getRateCard": "Get Rate Card",
+    "backToTop": "Back to top"
+  },
+  "seo": {
+    "home": { "title": "Energy Eggs — The B2B Desi Poultry Ecosystem", "description": "Sonali, Aseel, Kadaknath and Fiyoumi birds and eggs with published rate cards, poultry equipment, feed, farm development and contract farming partnerships." },
+    "birds": { "title": "Desi Birds & Country Chicken Rate Card | Energy Eggs", "description": "Live bird rates by age for Sonali, Aseel and Kadaknath — day-old chicks to 20+ weeks, male and female. Sonali ₹500/kg, Aseel ₹700/kg, Kadaknath ₹750/kg, Fiyoumi ₹1,500/kg. Minimum order 10 birds." },
+    "eggs": { "title": "Desi Egg Rate Card — Ex-Farm Prices | Energy Eggs", "description": "Ex-farm egg prices from ₹10.75 to ₹12.00 per egg, tiered by monthly commitment. Washing, grading and packing add-ons, custom packing and private label for bulk B2B orders." },
+    "equipment": { "title": "Poultry Farm Equipment | Energy Eggs", "description": "Poultry equipment for desi poultry farms — nipple drinking systems, brooding, feeders, drinkers and husk supply for farm setup and expansion." },
+    "feed": { "title": "Poultry Feed | Energy Eggs", "description": "Poultry feed programmes for every growth stage — from pre-starter to grower and finisher — supporting consistent desi bird performance." },
+    "farmDevelopment": { "title": "Poultry Farm Development & Design | Energy Eggs", "description": "End-to-end desi poultry farm development — farm design, shed construction and pasture planning, from land to farm-ready." },
+    "contractFarming": { "title": "Contract Farming — Pasture-Raised & Deep Litter Models | Energy Eggs", "description": "Structured Sonali contract farming with fixed-price egg procurement, 15-day payments, flock buyback and full technical support. Pasture-raised and deep-litter models." },
+    "b2bSupply": { "title": "B2B Poultry Supply & Volume Commitment | Energy Eggs", "description": "Structured B2B procurement for restaurants, hotels, QSRs, retailers and distributors — spot orders, scheduled supply and volume commitment programmes with priority supply." },
+    "shop": { "title": "Shop — Order Desi Birds, Eggs & Equipment | Energy Eggs", "description": "Order Sonali, Aseel, Kadaknath and Fiyoumi birds, desi eggs and poultry farm equipment at published B2B rates. Pick your product, send an enquiry and get a structured quote." },
+    "rateCard": { "title": "Rate Card — Bird & Egg Prices | Energy Eggs", "description": "The complete published B2B rate card — live bird rates by age for Sonali, Aseel and Kadaknath, and ex-farm egg prices tiered by monthly commitment with processing add-ons." },
+    "about": { "title": "About Energy Eggs — The B2B Desi Poultry Ecosystem", "description": "Energy Eggs connects desi poultry farmers and food businesses through structured production models, published pricing and dependable B2B supply." },
+    "contact": { "title": "Contact — B2B Enquiry | Energy Eggs", "description": "Tell us your requirement — birds, eggs, equipment, farm development or contract farming — and our B2B team will respond with a structured commercial proposal." }
+  },
+  "home": {
+    "badges": ["Birds", "Eggs", "Feed", "Equipment", "Partnerships"],
+    "scriptLine": "The B2B Desi Poultry Ecosystem",
+    "heroTitleLine1": "Desi Poultry.",
+    "heroTitleBusinessPre": "Built for ",
+    "heroTitleBusinessSpan": "Business.",
+    "heroTag": "Building a stronger desi poultry supply chain — from farm development and farmer partnerships to reliable B2B supply.",
+    "ctaPricing": "Get B2B Pricing",
+    "ctaFarmerPartner": "Become a Farmer Partner",
+    "statBreedsN": "4 Breeds",
+    "statBreedsSub": "Sonali · Aseel · Kadaknath · Fiyoumi",
+    "statModelsN": "2 Models",
+    "statModelsSub": "Deep Litter · Pasture-Raised",
+    "statEndToEndN": "End-to-End",
+    "statEndToEndSub": "Farm to B2B Market",
+    "floatBadge1": "Desi Poultry Ecosystem",
+    "floatBadge2": "Farmer Partnerships",
+    "marquee": ["Birds", "Eggs", "Farms", "Equipment", "Partnerships", "The B2B Desi Poultry Ecosystem"],
+    "whatWeDo": {
+      "eyebrow": "What We Do",
+      "heading": "Desi poultry. Built for business.",
+      "text": "Energy Eggs is a B2B poultry company connecting farmers, poultry farms and food businesses through a complete desi poultry ecosystem. We supply Sonali, Aseel, Kadaknath and Fiyoumi birds and eggs, provide poultry equipment and farm infrastructure, develop desi poultry farms with pasture planning, and work with farmers through structured contract farming models.",
+      "explore": "Explore →",
+      "items": [
+        { "title": "Whole Birds", "text": "Sonali • Aseel • Kadaknath • Fiyoumi" },
+        { "title": "Eggs", "text": "Sonali • Kadaknath • Aseel" },
+        { "title": "Poultry Equipment", "text": "Nipple Systems • Brooding • Feeders • Drinkers • Husk" },
+        { "title": "Farm Development", "text": "Construction • Farm Design • Pasture Planning" },
+        { "title": "Contract Farming", "text": "Deep Litter • Pasture-Raised Models • Farmer Partnerships" }
+      ]
+    },
+    "stats": [
+      { "n": "4", "label": "Desi Breeds" },
+      { "n": "2", "label": "Production Models" },
+      { "n": "6", "label": "Ecosystem Pillars" },
+      { "n": "100%", "label": "B2B Focused" }
+    ],
+    "ecosystem": {
+      "eyebrow": "Our Ecosystem",
+      "heading": "From farm to B2B market",
+      "text": "Energy Eggs is building an interconnected poultry ecosystem.",
+      "items": [
+        { "title": "FARM", "text": "We help develop suitable desi poultry production systems." },
+        { "title": "FARMER", "text": "We partner with farmers through defined production models." },
+        { "title": "PRODUCTION", "text": "Birds are raised through structured deep-litter or pasture-raised models, according to the applicable farm program." },
+        { "title": "AGGREGATION", "text": "Energy Eggs builds dependable supply from its own and partner farms." },
+        { "title": "B2B SUPPLY", "text": "Birds and eggs are supplied to businesses according to their requirements." },
+        { "title": "MARKET", "text": "Restaurants • Hotels • Retailers • Distributors • QSRs • Caterers • Food Businesses" }
+      ]
+    },
+    "breedsSection": {
+      "eyebrow": "Our Breeds",
+      "headingPre": "Four desi breeds. ",
+      "headingScript": "One supply partner.",
+      "text": "Traditionally raised, naturally stronger — with transparent, published per-kg rates.",
+      "chips": ["Live bird rates by age — day-old to 20+ weeks", "Minimum order 10 birds", "Quail also available"]
+    },
+    "paths": {
+      "eyebrow": "Where Do You Fit?",
+      "heading": "Three ways into the ecosystem",
+      "text": "Whether you buy poultry, farm it, or want to start — there's a structured path for you.",
+      "items": [
+        { "tag": "For Buyers", "title": "I want to buy", "text": "Birds, eggs, feed and equipment for restaurants, retailers, distributors and food businesses — with published rate cards and structured supply programmes.", "cta": "Explore B2B Supply →" },
+        { "tag": "For Farmers", "title": "I want to farm", "text": "Partner with Energy Eggs through structured contract farming — fixed-price egg procurement, 15-day payments, flock buyback and full technical support.", "cta": "See Contract Farming →" },
+        { "tag": "For Landowners", "title": "I want to build a farm", "text": "Have land? We help with farm design, shed construction, pasture planning and equipment to develop a productive desi poultry farm.", "cta": "Start Farm Development →" }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Energy Eggs?",
+      "heading": "More than a poultry supplier",
+      "items": [
+        { "num": "01", "title": "Desi Specialization", "text": "Focused categories including Sonali, Kadaknath and Aseel." },
+        { "num": "02", "title": "B2B First", "text": "Built around commercial customers and recurring supply." },
+        { "num": "03", "title": "Farm Development", "text": "Equipment and farm construction support." },
+        { "num": "04", "title": "Farmer Network", "text": "Contract farming and farmer partnerships." },
+        { "num": "05", "title": "Multiple Production Models", "text": "Deep litter and pasture-raised programmes." },
+        { "num": "06", "title": "End-to-End Ecosystem", "text": "From farm development to B2B market." }
+      ]
+    },
+    "brandPromise": {
+      "script": "Nourishing lives. Naturally.",
+      "text": "Farm raised, honest food — produced through ethical farming, natural feed and structured quality systems across our own and partner farms.",
+      "values": ["Healthy Birds", "Natural Feed", "Ethical Farming", "Better Taste & Nutrition", "Farm Raised", "Honest Food"],
+      "readStory": "Read our story →"
+    },
+    "closing": {
+      "script": "From Farm to Business",
+      "heading": "Birds. Eggs. Equipment. Farms. Partnerships.",
+      "text": "Energy Eggs is building a B2B ecosystem for the next generation of desi poultry.",
+      "becomeFarmerPartner": "Become a Farmer Partner"
+    }
+  },
+  "about": {
+    "hero": { "eyebrow": "About Energy Eggs", "titlePre": "Building the next generation of desi poultry ", "titleSpan": "supply." },
+    "story": {
+      "eyebrow": "Our Story",
+      "heading": "A simple opportunity",
+      "p1": "Energy Eggs was created around a simple opportunity: build a more organized connection between poultry farmers and the businesses that depend on reliable poultry supply.",
+      "p2": "Desi poultry in India is full of demand — restaurants, hotels, retailers and food businesses all want dependable access to Sonali, Aseel, Kadaknath and Fiyoumi birds and eggs. But supply is fragmented across thousands of independent farms, each working alone. We exist to close that gap.",
+      "p3": "We are developing a B2B ecosystem around desi birds, specialty eggs, farm infrastructure, feed, farm development and contract farming — so that production and demand can finally grow together."
+    },
+    "mission": { "eyebrow": "Our Mission", "heading": "Organize the desi poultry supply chain", "text": "Connect farmers and food businesses through structured production models, defined quality systems and dependable procurement — creating scalable opportunities on both sides of the supply chain." },
+    "vision": { "eyebrow": "Our Vision", "heading": "Greater control, visibility and consistency", "text": "Build greater control, visibility and consistency across the poultry value chain — so a farmer in Krishnagiri and a restaurant kitchen in the city are part of one reliable system." },
+    "stats": [
+      { "n": "4 Breeds", "label": "Sonali · Aseel · Kadaknath · Fiyoumi" },
+      { "n": "2 Models", "label": "Deep Litter · Pasture-Raised" },
+      { "n": "End-to-End", "label": "Farm Development to B2B Supply" },
+      { "n": "B2B First", "label": "Built for Commercial Customers" }
+    ],
+    "whyDesi": {
+      "eyebrow": "Why Desi Poultry",
+      "headingPre": "Why we bet on ",
+      "headingScript": "desi.",
+      "text": "India's poultry market is dominated by commodity broilers — but the fastest-growing demand is for something older and better.",
+      "items": [
+        { "title": "Heritage Breeds", "text": "Sonali, Aseel, Kadaknath and Fiyoumi carry generations of adaptation to Indian conditions — birds with real identity, not commodity genetics." },
+        { "title": "Naturally Stronger", "text": "Desi birds are hardy by nature. Raised under deep-litter and pasture systems, they grow slower — and healthier." },
+        { "title": "Taste & Nutrition", "text": "Slower growth and natural feed produce the distinct taste, texture and nutrition that desi poultry is prized for." },
+        { "title": "Premium Markets", "text": "Specialty restaurants, retailers and health-conscious consumers pay for authenticity — desi poultry is a growing premium category." }
+      ]
+    },
+    "whatWeDo": {
+      "eyebrow": "What We Do",
+      "heading": "One ecosystem. Six pillars.",
+      "text": "Everything we build serves the same goal — a stronger connection between desi poultry farms and the businesses they supply.",
+      "items": [
+        { "title": "Whole Birds", "text": "Sonali, Aseel, Kadaknath and Fiyoumi birds supplied to B2B customers at scale." },
+        { "title": "Desi Eggs", "text": "Specialty egg supply for food, retail and hospitality businesses." },
+        { "title": "Farm Equipments", "text": "Nipple systems, brooding, feeders, drinkers and husk for desi poultry farms." },
+        { "title": "Poultry Feed", "text": "Feed for every growth stage — from pre-starter to layer and finisher." },
+        { "title": "Farm Development", "text": "Farm design, construction and pasture planning, from land to farm-ready." },
+        { "title": "Contract Farming", "text": "Structured deep-litter and pasture-raised schemes with market linkage." }
+      ]
+    },
+    "howWeWork": {
+      "eyebrow": "How We Work",
+      "heading": "One ecosystem, two promises",
+      "text": "Everything we offer farmers strengthens what we can promise buyers — and vice versa.",
+      "farmersTitle": "For Farmer Partners",
+      "farmersItems": ["Farm design, SOPs, training and veterinary supervision", "Birds, feed and equipment through one ecosystem", "Fixed-price egg procurement with 15-day payment cycles", "Flock buyback and renewable one-year contracts"],
+      "farmersLink": "Explore contract farming →",
+      "buyersTitle": "For B2B Buyers",
+      "buyersItems": ["Published rate cards for birds and eggs — transparent, tiered pricing", "Spot orders, scheduled supply or volume commitment programmes", "Grading, processing, custom packing and private label options", "Supply built around your specification, volume and delivery schedule"],
+      "buyersLink": "Explore B2B supply →"
+    },
+    "values": {
+      "eyebrow": "What We Stand For",
+      "heading": "The principles behind the ecosystem",
+      "items": [
+        { "title": "Farmer First", "text": "Our ecosystem only works when farming works — so farmer viability sits at the centre of every programme we design." },
+        { "title": "Quality as a System", "text": "Quality comes from defined production models, SOPs and monitoring — not from slogans." },
+        { "title": "Desi Specialization", "text": "We focus on what we know: Sonali, Aseel, Kadaknath and Fiyoumi, and the farming systems built around them." },
+        { "title": "Reliability", "text": "B2B customers depend on supply. We build programmes around commitments, schedules and specifications." },
+        { "title": "Transparency", "text": "Clear terms for farmers and clear specifications for buyers — agreed upfront, in writing." },
+        { "title": "Long-Term Partnerships", "text": "We grow through renewable contracts and recurring supply relationships, not one-off transactions." }
+      ]
+    },
+    "brandPromise": {
+      "script": "Nourishing lives. Naturally.",
+      "text": "Behind the name is a simple promise — healthy birds, natural feed, ethical farming, and better taste and nutrition, from our farms and our partners' farms to your business.",
+      "taglines": ["Farm Fresh for a Healthier Tomorrow", "Stronger Farms, Healthier Tomorrows", "Good Eggs, Greater Possibilities", "Farm Raised · Honest Food"]
+    },
+    "cta": { "title": "Let's build your poultry supply.", "text": "Whether you need birds, eggs, equipment, a complete farm or a contract farming partnership — tell us what you are looking for.", "cta": "Get in Touch" }
+  },
+  "contact": {
+    "hero": { "eyebrow": "Contact / B2B Enquiry", "titlePre": "Let's build your poultry ", "titleSpan": "supply.", "text": "Whether you need birds, eggs, equipment, a complete farm or a contract farming partnership, tell us what you are looking for." },
+    "channels": {
+      "callLabel": "Call us",
+      "callBadge": "Fastest Response",
+      "whatsappLabel": "WhatsApp",
+      "emailLabel": "Email"
+    },
+    "side": {
+      "heading": "Talk to our B2B team",
+      "note": "We work with restaurants, hotels, retailers, distributors, institutions and farmer partners. The more detail you share, the faster we can put real numbers on the table.",
+      "tipsHeading": "A good enquiry includes",
+      "tips": ["Product and breed — birds, eggs, feed or equipment", "Volumes and frequency — daily, weekly, monthly or contract", "Grade, processing and packing requirements", "Delivery location and your business type"],
+      "beforeHeading": "Before you write",
+      "chips": ["Bird Rate Card", "Egg Rate Card", "Contract Farming Models"]
+    },
+    "nextSteps": {
+      "eyebrow": "What Happens Next",
+      "heading": "From enquiry to supply",
+      "items": [
+        { "title": "You Enquire", "text": "Send your requirement through the form, a call or WhatsApp — whatever is easiest." },
+        { "title": "We Propose", "text": "Our B2B team reviews your specification and responds with a structured commercial proposal." },
+        { "title": "Supply Begins", "text": "Once terms are agreed, procurement and delivery run on the schedule we set together." }
+      ]
+    },
+    "form": {
+      "interestedIn": "I am interested in",
+      "interests": ["Whole Birds", "Desi Eggs", "Poultry Equipment", "Farm Construction", "Pasture Farm Planning", "Contract Farming", "Farmer Partnership", "B2B Distribution"],
+      "myRequirement": "My requirement",
+      "yourName": "Your Name",
+      "fullName": "Full name",
+      "phone": "Phone",
+      "breed": "Breed",
+      "breeds": ["Sonali", "Aseel", "Kadaknath", "Fiyoumi", "Quail", "Other"],
+      "quantity": "Quantity",
+      "quantities": ["Daily", "Weekly", "Monthly", "Contract"],
+      "location": "Location",
+      "locationPlaceholder": "City / District / State",
+      "businessType": "Business Type",
+      "businessTypePlaceholder": "Restaurant, retailer, distributor…",
+      "additionalRequirements": "Additional Requirements",
+      "additionalPlaceholder": "Volumes, specifications, delivery frequency, timelines…",
+      "submit": "Get a B2B Quote",
+      "sending": "Sending…",
+      "error": "Something went wrong sending your enquiry. Please try again, or call us directly.",
+      "sentTitle": "Enquiry received ✓",
+      "sentText": "Thanks{{namePart}}! Our B2B team will get back to you shortly with availability and a structured quote."
+    }
+  },
+  "shop": {
+    "hero": { "eyebrow": "Shop", "titlePre": "Order direct. ", "titleSpan": "Farm to business.", "text": "Pick your birds, eggs and farm equipment, send an enquiry, and our B2B team confirms availability with a structured quote.", "chips": ["Published rates", "Minimum order: 10 birds", "Egg tiers by commitment"] },
+    "birds": { "eyebrow": "Live Birds", "heading": "Desi birds, ready to order", "text": "Desi breeds from day-old chicks to fully grown birds, male and female.", "orderBtn": "Order Birds", "underTen": "Orders under 10 birds billed per kg", "fullRateCard": "Full rate card by age →" },
+    "eggs": { "eyebrow": "Desi Eggs", "heading": "Specialty eggs, ex-farm", "text": "Ex-farm rates tiered by your monthly commitment.", "orderBtn": "Order Eggs", "washed": "Washed: +₹0.50/egg", "graded": "Graded: +₹0.50/egg", "packing": "Packing: +₹0.05/egg", "packingMaterial": "Packing material: at cost", "fullTiers": "Full egg tiers →" },
+    "equipment": { "eyebrow": "Farm Equipment", "heading": "Equip your farm, category by category", "textTemplate": "{{count}} products across {{groups}} categories — priced on your requirement and farm design.", "productsCount": "{{count}} products", "orderBtn": "Order Equipment", "completeSetups": "Complete farm setups available", "recurringHusk": "Recurring husk supply", "setupGuidance": "Setup guidance included", "fullCatalogue": "Full catalogue & setups →", "allRange": "All {{name}} (full range)" },
+    "also": {
+      "eyebrow": "Also From Energy Eggs",
+      "heading": "Beyond birds and eggs",
+      "farmDevTitle": "Farm Development",
+      "farmDevText": "Farm design, shed construction and pasture planning — end-to-end desi poultry farm development, from land to farm-ready.",
+      "farmDevLink": "Explore farm development →",
+      "feedTitle": "Poultry Feed",
+      "feedText": "Feed programmes for every growth stage — pre-starter to grower and finisher — for consistent desi bird performance.",
+      "feedLink": "Explore feed →"
+    },
+    "cta": { "title": "Need volumes, schedules or custom packing?", "text": "Tell us your product, volumes and delivery requirement — our B2B team responds with a structured commercial proposal.", "cta": "Talk to Our B2B Team" }
+  },
+  "eggs": {
+    "hero": { "eyebrow": "Desi Eggs", "titlePre": "Specialty eggs. ", "titleSpan": "Reliable supply.", "text": "Energy Eggs supplies desi eggs to B2B customers across food, retail and hospitality." },
+    "rateCardTitle": "Egg Rate Card",
+    "categories": {
+      "eyebrow": "Available Categories",
+      "heading": "Specialty desi egg supply",
+      "items": [
+        { "title": "Sonali Eggs", "text": "For businesses looking for consistent supply of Sonali eggs." },
+        { "title": "Kadaknath Eggs", "text": "Specialty eggs for premium and desi poultry programmes." },
+        { "title": "Aseel Eggs", "text": "Specialty Aseel egg supply according to customer requirements." }
+      ],
+      "bulkHeading": "Bulk B2B Programmes",
+      "programmes": ["Daily requirements", "Weekly requirements", "Monthly requirements", "Contract requirements"]
+    },
+    "rateCard": {
+      "eyebrow": "Egg Rate Card",
+      "heading": "Ex-farm prices, per egg",
+      "scriptText": "Premium quality eggs for a healthier tomorrow",
+      "restText": " — rates tiered by your monthly commitment. The more you commit, the better the rate.",
+      "monthlyCommitment": "Monthly commitment",
+      "eggsPerMonth": "eggs / month",
+      "aGrade": "A-Grade",
+      "abGrade": "A + B Grade",
+      "bGrade": "B Grade",
+      "addonEyebrow": "Processing & Add-On Charges",
+      "addonHeading": "Choose how your eggs arrive",
+      "processingItems": [
+        { "service": "Unwashed", "note": "Straight from the farm, as collected." },
+        { "service": "Washed", "note": "Cleaned to remove dirt and debris." },
+        { "service": "Graded", "note": "Sorted by size and quality." },
+        { "service": "Packing", "note": "Packed and sealed, ready to ship." },
+        { "service": "Packing Material", "note": "Cartons, trays or custom packaging billed at cost." }
+      ],
+      "chips": ["Custom packing for bulk orders", "Branding options", "Private label available"]
+    },
+    "why": {
+      "eyebrow": "Why Our Eggs",
+      "headingPre": "Good eggs, ",
+      "headingScript": "greater possibilities.",
+      "items": [
+        { "title": "Natural Nutrition", "text": "Wholesome eggs for healthier lives." },
+        { "title": "Quality Assured", "text": "Graded for consistency and freshness." },
+        { "title": "Reliable Supply", "text": "Consistent volumes for your business." },
+        { "title": "B2B Focus", "text": "Partnering with farms, retailers, food service and institutions." }
+      ]
+    },
+    "cta": { "title": "We structure supply around your business", "text": "Specify your quantity, product requirements, delivery frequency and location — we build the programme around it.", "cta": "Get Egg Pricing" }
+  },
+  "birds": {
+    "hero": { "eyebrow": "Whole Bird Supply", "titlePre": "Desi birds. At ", "titleSpan": "B2B scale.", "text": "Energy Eggs supplies whole birds to B2B customers looking for reliable access to specialty desi poultry." },
+    "rateCardTitle": "Bird Rate Card",
+    "breeds": {
+      "eyebrow": "Our Breeds",
+      "heading": "Four focused desi categories",
+      "text": "Traditionally raised. Naturally stronger. Exceptionally nutritious.",
+      "items": [
+        { "text": "A commercially relevant coloured-bird category for broader poultry programmes." },
+        { "text": "A distinctive desi poultry category with strong traditional and culinary positioning." },
+        { "text": "An indigenous breed positioned for specialty and premium poultry markets." },
+        { "text": "A rare specialty breed for premium and niche poultry programmes." }
+      ],
+      "customersHeading": "B2B Customers",
+      "customers": ["Meat retailers", "Restaurants", "Hotels", "QSRs", "Caterers", "Distributors", "Poultry businesses", "Institutional buyers", "Food businesses"]
+    },
+    "rateCard": {
+      "eyebrow": "Country Chicken Rate Card",
+      "heading": "Live bird rates by age",
+      "text": "Per-bird rates from day-old chicks to fully grown birds, for male and female.",
+      "ratePerBird": "Rate (₹) per bird · For orders less than 10 birds: {{perKg}}",
+      "tableWeek": "Week",
+      "tableAge": "Age (Days)",
+      "tableMale": "Male (₹)",
+      "tableFemale": "Female (₹)",
+      "chips": ["Minimum order: 10 birds", "Orders under 10 birds billed per kg", "Fiyoumi: ₹1,500 per kg", "Quail (male): ₹200 per piece"]
+    },
+    "cta": { "title": "Need regular supply?", "text": "Tell us your requirement and our B2B team can develop a supply programme around your volume and specifications.", "cta": "Request B2B Pricing" }
+  },
+  "rateCardPage": {
+    "hero": { "eyebrow": "Published Rate Card", "titlePre": "Every rate. ", "titleSpan": "One page.", "text": "All our B2B prices, published and transparent — live bird rates by breed and age, and ex-farm egg prices tiered by monthly commitment. No guesswork, no negotiation maze.", "chips": ["Bird rates by age", "Egg tiers by commitment", "Processing add-ons"] },
+    "bird": {
+      "eyebrow": "Live Bird Rate Card",
+      "heading": "Bird rates by age",
+      "text": "Per-bird rates from day-old chicks to fully grown birds, for male and female.",
+      "downloadPdf": "Download PDF",
+      "downloadTitle": "Download bird rate card as PDF",
+      "share": "Share",
+      "shareTitle": "Share the bird rate card",
+      "getBirds": "Get the Birds",
+      "ratePerBird": "Rate (₹) per bird · For orders less than 10 birds: {{perKg}}"
+    },
+    "table": { "week": "Week", "age": "Age (Days)", "male": "Male (₹)", "female": "Female (₹)" },
+    "egg": {
+      "eyebrow": "Egg Rate Card",
+      "heading": "Ex-farm prices, per egg",
+      "text": "Rates tiered by your monthly commitment — the more you commit, the better the rate.",
+      "downloadTitle": "Download egg rate card as PDF",
+      "shareTitle": "Share the egg rate card",
+      "getEggs": "Get the Eggs",
+      "monthlyCommitment": "Monthly commitment",
+      "eggsPerMonth": "eggs / month",
+      "aGrade": "A-Grade",
+      "abGrade": "A + B Grade",
+      "bGrade": "B Grade",
+      "addonEyebrow": "Processing & Add-On Charges",
+      "addonHeading": "Choose how your eggs arrive",
+      "chips": ["Custom packing for bulk orders", "Branding options", "Private label available"]
+    },
+    "locked": { "heading": "View our live B2B rates", "text": "Enter a few details to unlock the full rate card and download the PDF.", "button": "View the Rates" },
+    "unlockModal": { "title": "Unlock the live rate card", "subtitle": "Enter your details to view and download our full B2B rates.", "submitLabel": "View the Rates", "sentText": "Rates unlocked — you can now view and download the full rate card." },
+    "share": { "copied": "Link copied to clipboard" },
+    "cta": { "title": "Ready to order at these rates?", "text": "Tell us your product, volumes and delivery requirement — our B2B team responds with a structured commercial proposal.", "cta": "Talk to Our B2B Team" }
+  },
+  "equipment": {
+    "hero": { "eyebrow": "Poultry Equipment", "titlePre": "Everything your poultry farm ", "titleSpan": "needs.", "text": "Starting a poultry farm requires more than birds. Energy Eggs provides poultry equipment and farm requirements designed around the needs of desi poultry operations.", "chips": ["31 Products", "Deep Litter & Pasture Setups", "Recurring Husk Supply", "Setup Guidance"] },
+    "core": {
+      "eyebrow": "Equipment & Farm Inputs",
+      "heading": "Built around desi poultry operations",
+      "text": "Five core systems decide how well a shed runs — water, heat, feed, drinking access and bedding. We supply all of them, matched to your farm design.",
+      "items": [
+        { "title": "Nipple Drinking Systems", "text": "Clean, controlled water delivery with less spillage and drier litter — the backbone of flock hygiene." },
+        { "title": "Complete Brooding Systems", "text": "Heat, space and comfort for the critical first weeks — set up for strong, uniform chick growth." },
+        { "title": "Feeders", "text": "Feeding lines and feeders matched to your shed layout, flock size and farming model." },
+        { "title": "Drinkers", "text": "Drinking systems and accessories for every growth stage and farm configuration." },
+        { "title": "Husk & Litter", "text": "Quality husk supply for deep-litter bedding — dry, absorbent and ready for your flock." }
+      ]
+    },
+    "stats": [
+      { "n": "31", "label": "Products in Range" },
+      { "n": "6", "label": "Equipment Categories" },
+      { "n": "2", "label": "Farming Models Served" },
+      { "n": "5", "label": "Steps to a Running Farm" }
+    ],
+    "catalogue": {
+      "eyebrow": "Complete Range",
+      "heading": "The full equipment catalogue",
+      "text": "Every item we stock, in one place — request any combination in a single quote, from a full farm setup to a one-line top-up order.",
+      "itemsCount": "{{count}} items",
+      "categories": [
+        { "cat": "Feeders", "desc": "Even feed access for every bird — from chick trays to parent feeders.", "items": ["8kg Feeder Set", "Chick Feeder Set", "Parent Feeder"] },
+        { "cat": "Drinkers & Watering", "desc": "Clean water lines, nipples and tanks for hygienic, spill-free hydration.", "items": ["Classic Drinker Set", "Jumbo Drinker Set", "8 Manual Drinker Set", "4 Manual Drinker Set", "Chick Drinker Set", "360° Nipples", "Drinker Nozzles", "Blue Drinker Pipe", "Water Level Tubes", "20 L Water Tank"] },
+        { "cat": "Brooding", "desc": "Gas and electric brooders that hold day-old chicks at the right temperature.", "items": ["Gas Brooder (Single)", "Gas Brooder (Double)", "Electric Brooder with Fan", "Electric Brooder without Fan", "Chick Guard"] },
+        { "cat": "Handling & Transport", "desc": "Safe movement of birds, chicks and eggs between farm and market.", "items": ["Bird Transportation Box", "Chick Transport Boxes", "Egg Trays"] },
+        { "cat": "Tools & Accessories", "desc": "The day-to-day hardware that keeps operations precise and consistent.", "items": ["S Hooks", "Adjusting Chains", "Automatic Vaccination Guns", "Debeaking Machine", "Raking Tools", "Biscuits"] },
+        { "cat": "Litter & Farm Consumables", "desc": "Bedding and biosecurity inputs for a dry, sanitised shed.", "items": ["Husk", "Limestone", "Formaldehyde", "Potassium Permanganate"] }
+      ]
+    },
+    "requirementFlow": ["Bird capacity", "Farm size", "Farming model", "Equipment requirement"],
+    "who": {
+      "eyebrow": "Who We Equip",
+      "heading": "From first shed to full scale",
+      "text": "One supply relationship, whatever stage your farm is at.",
+      "items": [
+        { "title": "New Farms", "text": "Setting up your first desi poultry farm? Get the complete equipment package matched to your farm design from day one." },
+        { "title": "Expanding Farms", "text": "Adding sheds or scaling capacity — equipment planned around your existing setup and future batches." },
+        { "title": "Contract Farming Partners", "text": "Partners under Energy Eggs schemes get equipment aligned to the approved farm design and SOPs." },
+        { "title": "Independent Desi Farms", "text": "Running your own operation? Source reliable equipment and husk through one B2B relationship." }
+      ]
+    },
+    "setups": {
+      "eyebrow": "Setups By Farming Model",
+      "heading": "Matched to how you farm",
+      "text": "Equipment isn't one-size-fits-all — deep litter and pasture-raised farms need different setups.",
+      "link": "See the farming models →",
+      "items": [
+        { "title": "Deep Litter Setup", "points": ["Husk and litter supply for bedding management", "Feeders and nipple drinking lines sized to shed layout", "Brooding equipment for chick placement", "Configured for approx. 8,000 sq. ft. sheds and 5,000-bird batches"] },
+        { "title": "Pasture-Raised Setup", "points": ["Shed equipment plus pasture-area planning support", "Drinking and feeding systems for indoor-outdoor movement", "Brooding infrastructure for early stages", "Aligned with the Energy Eggs pasture-raised farm design"] }
+      ]
+    },
+    "how": {
+      "eyebrow": "How It Works",
+      "heading": "From requirement to a running farm",
+      "text": "A structured five-step path — no guesswork between enquiry and a working shed.",
+      "steps": [
+        { "title": "Share Requirement", "text": "Bird capacity, farm size, farming model and what you need." },
+        { "title": "Farm Assessment", "text": "We align equipment to your farm design or help plan a new one." },
+        { "title": "Plan & Quote", "text": "A structured equipment plan with a commercial proposal." },
+        { "title": "Supply", "text": "Equipment and husk delivered as per the agreed plan." },
+        { "title": "Setup Guidance", "text": "Guidance to get your farm running as designed." }
+      ]
+    },
+    "faq": {
+      "eyebrow": "Common Questions",
+      "heading": "Equipment, answered",
+      "items": [
+        { "q": "Can I buy equipment without a farming partnership?", "a": "Yes. Equipment and husk supply are available as standalone B2B purchases — you don't need to be a contract farming partner to source through Energy Eggs." },
+        { "q": "Is equipment included in contract farming schemes?", "a": "Under the contract farming models, shed construction and equipment are part of the farmer's investment — but everything is specified in the approved farm design, and we supply and guide the setup so it matches the programme's SOPs." },
+        { "q": "What should I share to get a quote?", "a": "Your bird capacity, farm or shed size, farming model (deep litter or pasture-raised) and the specific equipment you need. Our team responds with a structured plan and quote." },
+        { "q": "Do you help with installation and setup?", "a": "We provide setup guidance alongside supply, and for farms developed under Energy Eggs programmes, equipment installation follows the approved farm design." },
+        { "q": "Do you supply husk on a recurring basis?", "a": "Yes. Husk and litter supply can be structured as a recurring arrangement matched to your batch cycles, so fresh bedding arrives when each new batch is placed." }
+      ]
+    },
+    "cta": { "title": "From requirement to installation", "text": "Tell us your bird capacity, farm size, farming model and equipment requirement — and our team can help develop the appropriate farm setup.", "cta": "Enquire for Equipment" }
+  },
+  "feed": {
+    "hero": { "eyebrow": "Poultry Feed Supply", "titlePre": "Feed for your ", "titleSpan": "birds.", "text": "Energy Eggs sells poultry feed to farmers and poultry farms — feed for Sonali, Aseel, Kadaknath and Fiyoumi birds at every growth stage, supplied in bulk alongside our equipment and farm development services." },
+    "products": {
+      "eyebrow": "What We Sell",
+      "heading": "Feed for every stage of the bird",
+      "text": "From a chick's first feed to grower and finisher rations — matched to the breed and the farming model your birds are raised under.",
+      "items": [
+        { "title": "Pre-Starter Feed", "text": "For day-old chicks in the brooding stage — the first feed your birds eat." },
+        { "title": "Starter Feed", "text": "Feed for young growing chicks after the pre-starter stage." },
+        { "title": "Grower Feed", "text": "Feed for birds in the growing stage, before laying or finishing." },
+        { "title": "Finisher Feed", "text": "Feed for meat birds approaching market weight." },
+        { "title": "Grains, Grit & Supplements", "text": "Additional feed inputs for deep-litter and pasture-raised desi poultry farms." }
+      ]
+    },
+    "stages": ["Pre-Starter", "Starter", "Grower", "Finisher"],
+    "approach": {
+      "eyebrow": "Our Approach",
+      "heading": "Right feed. Right stage. Right system.",
+      "items": [
+        { "title": "Stage-Matched Nutrition", "text": "Every growth stage has a ration — from a chick's first feed through growing and finishing." },
+        { "title": "Model-Aware Feeding", "text": "Deep-litter and pasture-raised birds feed differently — pasture birds forage, so rations and supplements are planned accordingly." },
+        { "title": "Desi Breed Focus", "text": "Feed programmes built around Sonali, Aseel, Kadaknath and Fiyoumi — not generic broiler assumptions." },
+        { "title": "Scheduled Supply", "text": "By the bag or in bulk, delivered on a recurring schedule so your farm never runs dry." }
+      ]
+    },
+    "supply": {
+      "eyebrow": "How Supply Works",
+      "heading": "From flock details to scheduled delivery",
+      "steps": [
+        { "title": "Share Flock Details", "text": "Breed, bird count, age and your farming model." },
+        { "title": "Feed Plan", "text": "We map the right rations and quantities to your flock's stages." },
+        { "title": "Quote", "text": "A clear commercial proposal — bag or bulk, one-time or recurring." },
+        { "title": "Scheduled Delivery", "text": "Feed arrives on the agreed schedule, aligned to your batch cycle." }
+      ],
+      "buyersHeading": "Who Buys From Us",
+      "buyers": ["Poultry farmers", "Desi poultry farms", "Contract farming partners", "New farms set up by Energy Eggs", "Layer farms", "Broiler & desi meat bird farms"]
+    },
+    "ecosystem": {
+      "eyebrow": "One Ecosystem",
+      "heading": "Feed works better with the rest",
+      "text": "Birds, feed, equipment and farming programmes — designed to be sourced together.",
+      "items": [
+        { "tag": "Birds", "title": "Chicks + feed together", "text": "Placing day-old chicks or ready-to-lay birds? Pair them with a stage-matched feed plan from day one.", "cta": "See bird rate card →" },
+        { "tag": "Equipment", "title": "Feeders & husk too", "text": "Feeders, drinkers, brooding systems and husk — source the hardware and the feed in one order.", "cta": "Explore equipment →" },
+        { "tag": "Contract Farming", "title": "For farmer partners", "text": "Under our schemes, feed is the farmer's investment — and partners can source it through Energy Eggs, aligned to programme SOPs.", "cta": "See the models →" }
+      ]
+    },
+    "faq": {
+      "eyebrow": "Common Questions",
+      "heading": "Feed supply, answered",
+      "items": [
+        { "q": "Which breeds is the feed for?", "a": "Our feed programmes are built around desi poultry — Sonali, Aseel, Kadaknath and Fiyoumi — across both deep-litter and pasture-raised systems. Tell us your breed and we'll map the right rations." },
+        { "q": "Can I buy by the bag or only in bulk?", "a": "Both. We supply feed by the bag and in bulk, as one-time orders or on a recurring schedule matched to your batch cycle." },
+        { "q": "Is feed included in the contract farming schemes?", "a": "Feed costs are part of the farmer's responsibilities under the contract farming models — but partners can source feed through Energy Eggs so it stays aligned with the programme's SOPs and quality standards." },
+        { "q": "What should I share to get a feed quote?", "a": "Your breed, bird count, flock age, farming model and location. Our team responds with a feed plan and a clear quote." }
+      ]
+    },
+    "cta": { "title": "Order feed for your farm", "text": "Tell us your breed, bird count and farming model — and we can supply the right feed on a regular schedule, by the bag or in bulk.", "cta": "Enquire for Feed" }
+  },
+  "farmDevelopment": {
+    "hero": { "eyebrow": "Farm Construction", "titlePre": "Build your desi poultry farm with ", "titleSpan": "Energy Eggs.", "text": "From an empty piece of land to a functioning poultry farm — we help farmers plan their desi poultry infrastructure around the intended production model." },
+    "steps": {
+      "eyebrow": "Farm Development",
+      "heading": "From land to poultry, step by step",
+      "items": [
+        { "title": "Site Planning", "text": "Understand the land, capacity and intended farming model." },
+        { "title": "Farm Layout", "text": "Plan sheds, movement areas, brooding, feeding, drinking and operational zones." },
+        { "title": "Construction", "text": "Develop poultry infrastructure according to the farm requirement." },
+        { "title": "Equipment", "text": "Install suitable feeding, drinking and brooding systems." },
+        { "title": "Pasture Planning", "text": "For applicable pasture-based models, plan outdoor areas, bird movement, shade and pasture zones." },
+        { "title": "Farm Ready", "text": "Prepare the farm for the selected production programme." }
+      ]
+    },
+    "miniCta1": { "title": "One partner. From land to poultry.", "cta": "Build My Farm" },
+    "deliverables": {
+      "eyebrow": "What We Deliver",
+      "heading": "Everything between land and livestock",
+      "items": [
+        { "title": "Farm Design & Layout", "text": "Site assessment and a complete farm plan — sheds, zones, movement and utilities — before anything is built." },
+        { "title": "Shed Construction", "text": "Poultry shed construction to the approved design, sized to your capacity and farming model." },
+        { "title": "Equipment Installation", "text": "Feeding, drinking and brooding systems installed as part of the build, not bolted on later." },
+        { "title": "Pasture Planning", "text": "For pasture-based models — outdoor zones, shade, shelter and bird movement designed in from the start." },
+        { "title": "Biosecurity Planning", "text": "Farm hygiene, access control and operational movement planned into the layout." },
+        { "title": "Programme Alignment", "text": "Farms built for Energy Eggs schemes follow the approved design — construction starts only after design approval." }
+      ]
+    },
+    "reference": {
+      "eyebrow": "Reference Farm Specifications",
+      "heading": "What a programme-ready farm looks like",
+      "text": "These are the reference specifications used in the Energy Eggs contract farming models — a useful starting point for sizing your own build.",
+      "link": "See the full model terms →",
+      "farms": [
+        { "title": "Pasture-Raised Reference Farm", "points": ["Land: approx. 5 acres, including a dedicated pasture area", "Shed: approx. 8,000 sq. ft.", "Capacity: 5,000 birds per batch", "Outdoor zones, shade and movement areas designed in"], "alt": "Pasture-raised reference farm layout — 8,000 sq ft coop with a 5-acre bio-secured pasture area" },
+        { "title": "Deep Litter Reference Farm", "points": ["Land: approx. 25,000 sq. ft.", "Shed: approx. 8,000 sq. ft.", "Capacity: 5,000 birds per batch", "Litter management and ventilation planned into the layout"], "alt": "Deep litter reference farm layout — 8,000 sq ft shed on 25,000 sq ft of land for 5,000 birds" }
+      ]
+    },
+    "pasture": {
+      "eyebrow": "Pasture-Based Desi Poultry",
+      "heading": "Designing farms around the bird",
+      "text": "Pasture-based poultry requires more than simply providing outdoor space. Energy Eggs develops farm layouts around the full picture — our objective is a practical farm environment that works for both the farmer and the birds.",
+      "points": ["Outdoor access", "Bird movement", "Pasture areas", "Shade and shelter", "Feeding zones", "Drinking systems", "Farm hygiene", "Operational movement", "Breed and production requirements"],
+      "enquireBtn": "Enquire About Pasture Farming"
+    },
+    "whyBuild": {
+      "eyebrow": "Why Build With Energy Eggs",
+      "heading": "Infrastructure with a plan behind it",
+      "items": [
+        { "title": "Design Before Construction", "text": "No guesswork builds — every farm starts with a design and technical plan, and construction follows approval." },
+        { "title": "Built For The Programme", "text": "Farms are designed for the production model they will run — deep litter or pasture-raised — not adapted afterwards." },
+        { "title": "One Partner Throughout", "text": "Design, construction, equipment, feed and birds from a single ecosystem — no coordination headaches." },
+        { "title": "A Market After The Build", "text": "A farm built with Energy Eggs can plug into contract farming and B2B supply — infrastructure with a path to income." }
+      ]
+    },
+    "faq": {
+      "eyebrow": "Common Questions",
+      "heading": "Farm development, answered",
+      "items": [
+        { "q": "How much land do I need?", "a": "As a reference: the pasture-raised model uses approximately 5 acres including pasture area, while the deep-litter model needs around 25,000 sq. ft. — both with a shed of approximately 8,000 sq. ft. for a 5,000-bird batch. Your site assessment confirms what fits your land." },
+        { "q": "Do I have to join contract farming to build with you?", "a": "No. Farm development is available on its own. If you do want to join an Energy Eggs scheme, your farm must follow the approved farm design — so building with us keeps that door open." },
+        { "q": "Who pays for the construction?", "a": "Land and construction are the farm owner's investment. Under the contract farming schemes this is defined upfront in the model terms, alongside the support Energy Eggs provides." },
+        { "q": "What does farm development include?", "a": "Site planning, farm layout and design, shed construction, equipment installation, and pasture planning where applicable — through to a farm that is ready for its production programme." },
+        { "q": "What happens once the farm is ready?", "a": "The farm moves into its production programme — birds are placed, and if you are a contract farming partner, procurement and market linkage follow the scheme terms." }
+      ]
+    },
+    "cta": { "title": "Have land? Let's assess it.", "text": "Share your land size, location and the model you're considering — our team will help you understand what your site can support.", "cta": "Start With a Site Assessment" }
+  },
+  "contractFarming": {
+    "hero": { "eyebrow": "Contract Farming", "titlePre": "Grow with ", "titleSpan": "Energy Eggs.", "text": "We partner with farmers to create a structured desi poultry production network. Instead of every farmer working independently, Energy Eggs can provide a defined production framework and market linkage." },
+    "why": {
+      "eyebrow": "Why Farm With Us",
+      "headingPre": "You focus on the farm. ",
+      "headingScript": "We handle the rest.",
+      "text": "A structured production scheme with defined procurement, payment and buyback terms — so your effort goes into farming, not finding buyers.",
+      "benefits": [
+        { "title": "Assured Procurement", "text": "Energy Eggs procures your A-grade eggs at a fixed price — you farm, we handle the market." },
+        { "title": "Timely Payments", "text": "Payments processed every 15 days from invoice, against agreed quality and procurement terms." },
+        { "title": "Bird Contribution", "text": "₹100 per bird contribution/subsidy from Energy Eggs Pvt Ltd under the scheme." },
+        { "title": "Flock Buyback", "text": "At the end of each cycle, the flock is taken back at an agreed per-kg rate." },
+        { "title": "Technical Backbone", "text": "Farm design, SOPs, training, veterinary supervision and monitoring throughout the cycle." },
+        { "title": "Pickup Logistics", "text": "Egg collection and pickup logistics supported from your farm gate." }
+      ]
+    },
+    "modelsSection": { "eyebrow": "Two Core Production Models", "heading": "Choose your farming model", "text": "Choose the model that fits your land and how you want to run your farm. Both are structured Sonali egg production schemes with defined procurement, payment and buyback terms." },
+    "modelImageAlts": ["Pasture-raised farm layout — 8,000 sq ft coop with a 5-acre bio-secured pasture area for 5,000 birds", "Deep litter farm layout — 8,000 sq ft shed on 25,000 sq ft of land for 5,000 birds"],
+    "compareTable": {
+      "heading": "The two models at a glance",
+      "text": "Same birds, same batch size — the difference is land, system and rates.",
+      "paramHeader": "Parameter",
+      "pastureHeader": "Pasture-Raised",
+      "deepLitterHeader": "Deep Litter",
+      "rows": [
+        { "param": "Land Requirement", "pasture": "Approx. 5 acres, incl. pasture area", "deepLitter": "Approx. 25,000 sq. ft." },
+        { "param": "Shed Requirement", "pasture": "Approx. 8,000 sq. ft.", "deepLitter": "Approx. 8,000 sq. ft." },
+        { "param": "Batch Size", "pasture": "5,000 birds", "deepLitter": "5,000 birds" },
+        { "param": "Egg Procurement", "pasture": "₹9 per A-grade egg", "deepLitter": "₹7 per A-grade egg" },
+        { "param": "Flock Buyback", "pasture": "₹250 per kg", "deepLitter": "₹200 per kg" },
+        { "param": "Rearing Cycle", "pasture": "11–12 months", "deepLitter": "11–12 months" },
+        { "param": "Contract Period", "pasture": "1 year, renewable", "deepLitter": "1 year, renewable" }
+      ]
+    },
+    "models": [
+      {
+        "label": "Pasture-Raised",
+        "name": "Sonali Pasture-Raised Contract Farming Model",
+        "tag": "Designed for premium Sonali egg production under a pasture-based farming system.",
+        "specs": [
+          { "param": "Land Requirement", "detail": "Approximately 5 acres, including a dedicated pasture area." },
+          { "param": "Shed Requirement", "detail": "Approximately 8,000 sq. ft., with construction to commence after approval of the farm design by Energy Eggs Pvt Ltd." },
+          { "param": "Batch Size", "detail": "5,000 birds per batch" },
+          { "param": "Rearing Cycle", "detail": "Approximately 11–12 months" },
+          { "param": "Bird Cost", "detail": "₹550 per bird for 18-week-old ready-to-lay birds." },
+          { "param": "Egg Procurement", "detail": "₹9 per A-grade egg under the proposed fixed-price model." },
+          { "param": "Payment", "detail": "Payments will be processed every 15 days from the invoice, subject to the agreed quality and procurement terms." },
+          { "param": "Flock Replacement / Buyback", "detail": "At the completion of each batch, the flock will be taken back at the agreed rate of ₹250/kg, subject to the terms and conditions of the final agreement." },
+          { "param": "Energy Eggs Pvt Ltd Contribution", "detail": "₹100 per bird as a contribution/subsidy under the scheme." },
+          { "param": "Contract Period", "detail": "1 year, renewable by mutual agreement" }
+        ],
+        "farmer": ["Land and pasture development", "Shed construction", "Feed costs", "Electricity", "Labour", "Other farm operating expenses", "Insurance", "Statutory approvals/licences, where applicable", "Day-to-day farm management as per Energy Eggs Pvt Ltd guidelines"],
+        "support": ["Farm design and technical planning", "Farming SOPs", "Training", "Technology and technical guidance", "Veterinary supervision", "Flock-management guidance", "Egg collection/pickup logistics", "Quality standards and monitoring"]
+      },
+      {
+        "label": "Deep Litter",
+        "name": "Sonali Deep Litter Contract Farming Model",
+        "tag": "Suitable if you prefer to operate the farm without the larger pasture requirement. Birds are reared under a deep-litter system, following Energy Eggs Pvt Ltd approved farming, management and biosecurity protocols.",
+        "specs": [
+          { "param": "Land Requirement", "detail": "Approximately 25,000 sq. ft." },
+          { "param": "Shed Requirement", "detail": "Approximately 8,000 sq. ft., with construction to commence after approval of the farm design by Energy Eggs Pvt Ltd." },
+          { "param": "Batch Size", "detail": "5,000 birds per batch" },
+          { "param": "Rearing Cycle", "detail": "Approximately 11–12 months" },
+          { "param": "Bird Cost", "detail": "₹550 per bird for 18-week-old ready-to-lay birds." },
+          { "param": "Egg Procurement", "detail": "₹7 per A-grade egg under the proposed fixed-price model." },
+          { "param": "Payment", "detail": "Payments will be processed every 15 days from the invoice, subject to the agreed quality and procurement terms." },
+          { "param": "Flock Replacement / Buyback", "detail": "At the end of the production cycle, the birds can be taken back at the agreed rate of ₹200/kg, subject to the final contract terms." },
+          { "param": "Energy Eggs Pvt Ltd Contribution", "detail": "₹100 per bird as a contribution/subsidy under the scheme." },
+          { "param": "Contract Period", "detail": "1 year, renewable by mutual agreement" }
+        ],
+        "farmer": ["Land", "Shed construction", "Feed", "Labour", "Electricity", "Water and litter", "Farm maintenance", "Other miscellaneous operating expenses", "Insurance", "Required approvals and licences", "Day-to-day flock management"],
+        "support": ["Farm and shed design", "Technical training", "Farming SOPs", "Production and flock-management protocols", "Veterinary supervision", "Technical monitoring", "Egg quality standards", "Egg pickup/logistics support", "Guidance throughout the production cycle"]
+      }
+    ],
+    "lockGate": { "heading": "View the full model details", "text": "Enter a few details to unlock the specifications, responsibilities and support." },
+    "specTable": { "parameter": "Parameter", "details": "Specification Details" },
+    "farmerResponsibilities": "Farmer's Responsibilities",
+    "eeSupport": "Energy Eggs Pvt Ltd Support",
+    "terms": {
+      "heading": "Terms & Conditions",
+      "items": [
+        "All terms, guidelines, rates, and figures mentioned herein are indicative and subject to the execution of a final, legally binding bilateral agreement between Energy Eggs Pvt Ltd and the farmer.",
+        "Continued eligibility under this scheme is contingent upon strict adherence to standard operating procedures (SOPs), quality benchmarks, and management guidelines prescribed by Energy Eggs Pvt Ltd from time to time.",
+        "Energy Eggs Pvt Ltd reserves the right to amend, update, or modify the scheme terms, technical specifications, and operational parameters with prior notice."
+      ]
+    },
+    "journey": {
+      "eyebrow": "The Partnership Journey",
+      "heading": "From enquiry to your first buyback",
+      "items": [
+        { "title": "Enquire", "text": "Share your land details, location and preferred farming model with our team." },
+        { "title": "Farm Design", "text": "Energy Eggs prepares the farm design and technical plan. Construction begins only after design approval." },
+        { "title": "Build & Setup", "text": "Construct the shed (approx. 8,000 sq. ft.) and set up equipment as per the approved design." },
+        { "title": "Bird Placement", "text": "18-week-old ready-to-lay Sonali birds are placed at ₹550 per bird, with a ₹100 per bird contribution." },
+        { "title": "Produce & Supply", "text": "Run production under Energy Eggs SOPs. A-grade eggs are procured at the fixed price, paid every 15 days." },
+        { "title": "Buyback & Renew", "text": "At the end of the 11–12 month cycle, the flock is bought back and the contract can renew for the next batch." }
+      ]
+    },
+    "farmerPartners": {
+      "eyebrow": "Farmer Partners",
+      "heading": "Your land. Our ecosystem.",
+      "text": "Have land and want to enter desi poultry farming? Energy Eggs can help you explore:",
+      "flow": ["Farm Design", "Construction", "Equipment", "Bird Programme", "Farming Model", "Technical Support", "Procurement / Market Linkage"],
+      "cta": { "title": "Who can partner?", "text": "Farmers with suitable land who are willing to operate according to the production, welfare, biosecurity and quality requirements of the applicable Energy Eggs programme.", "cta": "Become a Farmer Partner" }
+    },
+    "faq": {
+      "eyebrow": "Common Questions",
+      "heading": "Contract farming, answered",
+      "items": [
+        { "q": "What do I need to get started?", "a": "Suitable land — approximately 5 acres for the pasture-raised model or 25,000 sq. ft. for deep litter — plus the ability to construct a shed of around 8,000 sq. ft. after your farm design is approved, and a willingness to operate as per Energy Eggs SOPs." },
+        { "q": "Who buys my eggs, and at what price?", "a": "Energy Eggs procures your A-grade eggs under a proposed fixed-price model — ₹9 per egg on the pasture-raised model and ₹7 per egg on the deep-litter model — with pickup logistics supported." },
+        { "q": "How and when do I get paid?", "a": "Payments are processed every 15 days from the invoice, subject to the agreed quality and procurement terms." },
+        { "q": "What happens at the end of a batch?", "a": "The flock is taken back under the buyback arrangement — at ₹250/kg on the pasture-raised model or ₹200/kg on deep litter, subject to final contract terms — and the 1-year contract can be renewed by mutual agreement for the next batch." },
+        { "q": "What support does Energy Eggs provide?", "a": "Farm and shed design, farming SOPs, technical training, veterinary supervision, flock-management guidance, quality standards and monitoring, and egg pickup logistics — throughout the production cycle." },
+        { "q": "Are these figures guaranteed?", "a": "All terms, rates and figures are indicative and subject to a final, legally binding bilateral agreement between Energy Eggs Pvt Ltd and the farmer, with continued eligibility linked to adherence to the prescribed SOPs and quality benchmarks." }
+      ]
+    },
+    "finalCta": { "title": "Ready to explore a partnership?", "text": "Tell us about your land, location and preferred model — our team will assess the fit and walk you through the scheme in detail.", "cta": "Apply for Contract Farming" }
+  },
+  "volumeCommitment": {
+    "eyebrow": "Energy Eggs Program",
+    "heading": "Priority Supply & Volume Commitment",
+    "text": "The objective is simple: your commitment helps us plan production and supply, while we offer you better pricing and greater supply assurance.",
+    "underHeading": "Under the program",
+    "items": [
+      "Vendor commits to a monthly purchase volume.",
+      "The committed volume determines your preferential price slab.",
+      "Tolerance is 90%.",
+      "A Commitment Advance (25%) is collected against the agreed monthly commitment.",
+      "If the actual lifting is lower than the committed volume, pricing will be adjusted to the applicable volume slab for that month. [Deduction is made in the Commitment Advance. Vendor to replenish the advance before placing the next order.]",
+      "If Energy Eggs is unable to fulfil the committed volume due to production or supply constraints, the agreed price will remain protected.",
+      "Grade, processing, packing and delivery requirements will be agreed upfront."
+    ],
+    "cta": { "title": "Ready to commit a monthly volume?", "text": "Tell us your product, monthly volume and grade, processing, packing and delivery requirements — and we'll structure your preferential price slab.", "cta": "Start a Volume Commitment" }
+  },
+  "b2bSupply": {
+    "hero": { "eyebrow": "B2B Procurement", "titlePre": "Tell us what you need. We build the supply ", "titleSpan": "around it.", "text": "Every business has a different requirement. That's why Energy Eggs is designed around commercial procurement rather than a one-size-fits-all catalogue." },
+    "serve": {
+      "eyebrow": "Who We Serve",
+      "heading": "Built for businesses that depend on supply",
+      "items": [
+        { "title": "Restaurants", "text": "Reliable poultry and egg supply for daily kitchen requirements." },
+        { "title": "Hotels & Resorts", "text": "Scheduled supply with defined specifications." },
+        { "title": "QSR Chains", "text": "Predictable volumes and standardized procurement." },
+        { "title": "Meat Retailers", "text": "Whole birds and specialty desi poultry." },
+        { "title": "Distributors", "text": "Wholesale supply for regional markets." },
+        { "title": "Caterers", "text": "Bulk requirements for events and institutional catering." },
+        { "title": "Supermarkets", "text": "Egg and poultry programmes according to retail requirements." },
+        { "title": "Food Businesses", "text": "Structured procurement for recurring poultry requirements." }
+      ]
+    },
+    "supplyRange": {
+      "eyebrow": "What We Supply",
+      "heading": "One partner. The whole ecosystem.",
+      "text": "Procure across the desi poultry chain through a single B2B relationship.",
+      "explore": "Explore →",
+      "items": [
+        { "title": "Desi Birds", "text": "Sonali, Aseel, Kadaknath and Fiyoumi — live birds supplied at B2B scale." },
+        { "title": "Desi Eggs", "text": "Graded specialty eggs with tiered ex-farm pricing and processing options." },
+        { "title": "Poultry Feed", "text": "Feed programmes to support consistent bird performance." },
+        { "title": "Equipment", "text": "Poultry equipment for farm setup and expansion." },
+        { "title": "Farm Development", "text": "End-to-end support for developing productive desi poultry farms." }
+      ]
+    },
+    "how": {
+      "eyebrow": "How It Works",
+      "heading": "From requirement to scheduled supply",
+      "steps": [
+        { "title": "Select", "text": "Birds / Eggs / Equipment / Farm Development" },
+        { "title": "Define", "text": "Quantity • Breed • Specifications • Farming model • Location" },
+        { "title": "Plan", "text": "Daily / Weekly / Monthly / Contract requirement" },
+        { "title": "Quote", "text": "Our B2B team develops a commercial proposal." },
+        { "title": "Supply", "text": "Scheduled procurement and delivery according to the agreed programme." }
+      ],
+      "ctaLabel": "Request a Commercial Quote"
+    },
+    "engagement": {
+      "eyebrow": "Ways To Work With Us",
+      "heading": "Three levels of partnership",
+      "text": "Start with a spot order, grow into a schedule, commit for the best terms.",
+      "items": [
+        { "tag": "Start here", "title": "Spot Orders", "text": "One-time bulk orders at published rate-card prices. Minimum order quantities apply — a straightforward way to evaluate our quality and service." },
+        { "tag": "Grow with us", "title": "Scheduled Supply", "text": "Recurring daily, weekly or monthly deliveries against an agreed schedule, specification and price. Built for kitchens and retailers that depend on consistency." },
+        { "tag": "Best pricing", "title": "Volume Commitment", "text": "Commit a monthly volume and unlock a preferential price slab with priority supply assurance. Our deepest partnership model for serious buyers." }
+      ]
+    },
+    "rateSnapshot": {
+      "eyebrow": "Commercial Snapshot",
+      "heading": "Transparent, published pricing",
+      "text": "Headline numbers from our current rate cards — full details on the product pages.",
+      "birdsTitle": "Desi Birds",
+      "birdsItems": ["Sonali ₹500/kg · Aseel ₹700/kg · Kadaknath ₹750/kg · Fiyoumi ₹1,500/kg", "Per-bird rates published by age — day-old chicks to 20+ weeks, male and female.", "Minimum order 10 birds; smaller orders billed per kg."],
+      "birdsLink": "View full bird rate card →",
+      "eggsTitle": "Desi Eggs",
+      "eggsItems": ["Ex-farm prices from ₹10.75 to ₹12.00 per egg, tiered by monthly commitment.", "Processing add-ons from ₹0.00 (unwashed) to ₹1.05 (washed, graded & packed) — plus packing material at cost.", "Custom pricing at 100,000+ eggs per month; private label available."],
+      "eggsLink": "View full egg rate card →"
+    },
+    "whyPartner": {
+      "eyebrow": "Why Energy Eggs",
+      "heading": "A supply partner, not just a supplier",
+      "items": [
+        { "title": "Ecosystem Depth", "text": "Birds, eggs, feed, equipment and farm development — one partner across the desi poultry chain." },
+        { "title": "Transparent Pricing", "text": "Published rate cards for birds and eggs, so you always know where your price comes from." },
+        { "title": "Supply Assurance", "text": "Committed volumes let us plan production — and protect your supply when markets tighten." },
+        { "title": "B2B-First Design", "text": "No retail catalogue mindset. Programmes are structured around your specification, volume and delivery." }
+      ]
+    },
+    "quality": {
+      "eyebrow": "Quality & Traceability",
+      "heading": "Quality is a system. Not a slogan.",
+      "text": "Energy Eggs is building systems around every step of the supply chain.",
+      "items": [
+        { "title": "Source", "text": "Understanding where birds and eggs originate." },
+        { "title": "Production", "text": "Defined farming and production programmes." },
+        { "title": "Quality Control", "text": "Documented handling and quality processes applicable to the product." },
+        { "title": "Batch Visibility", "text": "Maintaining source and batch information where supported." },
+        { "title": "Supply", "text": "Structured procurement and delivery programmes." }
+      ]
+    },
+    "faq": {
+      "eyebrow": "Common Questions",
+      "heading": "B2B procurement, answered",
+      "items": [
+        { "q": "What are the minimum order quantities?", "a": "For country chicken, the minimum order is 10 birds — orders below 10 birds are billed per kg at the applicable breed rate. Egg programmes start from a monthly commitment of 5,000 eggs." },
+        { "q": "How does egg pricing work?", "a": "Egg prices are ex-farm, per egg, and tiered by your monthly commitment — from 5,000 eggs per month up to 100,000+, where pricing is fully custom. Processing add-ons (washing, grading, packing) are charged per egg on top." },
+        { "q": "Which breeds do you supply?", "a": "We focus on four desi categories: Sonali, Aseel, Kadaknath and Fiyoumi, plus quail. Live bird rates are published by age from day-old chicks to fully grown birds, for both male and female." },
+        { "q": "Can you do custom packing or private label?", "a": "Yes. Custom packing, branding and private label options are available for bulk orders. Washed, graded and packed eggs are supplied retail-ready." },
+        { "q": "What is the Volume Commitment program?", "a": "You commit a monthly purchase volume and receive a preferential price slab with priority supply. Tolerance is 90%, and a 25% Commitment Advance is collected against the agreed volume. If we cannot fulfil your committed volume, your agreed price remains protected." },
+        { "q": "How do I get a commercial quote?", "a": "Send us your requirement — product, quantity, breed or grade, processing and packing needs, delivery frequency and location. Our B2B team responds with a structured commercial proposal." }
+      ]
+    },
+    "finalCta": { "title": "Still have a question?", "text": "Tell us about your business and requirement — our B2B team will walk you through pricing, programmes and terms.", "cta": "Talk to the B2B Team" }
+  }
+}

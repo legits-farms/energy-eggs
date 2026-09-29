@@ -1,39 +1,68 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import Logo from './Logo'
 import { EnquiryProvider } from './EnquiryModal'
 import { CALL_DISPLAY, CALL_NUMBER } from './CallButton'
+import { LocaleLink, LocaleNavLink, pathWithLang, stripLangPrefix } from './LocaleLink'
 
-const SERVICES = [
-  ['/birds', 'Birds'],
-  ['/eggs', 'Eggs'],
-  ['/equipment', 'Farm Equipments'],
-  ['/feed', 'Feed'],
-  ['/farm-development', 'Farm Development'],
+const SERVICES: [to: string, key: string][] = [
+  ['/birds', 'nav.birds'],
+  ['/eggs', 'nav.eggs'],
+  ['/equipment', 'nav.equipment'],
+  ['/feed', 'nav.feed'],
+  ['/farm-development', 'nav.farmDevelopment'],
 ]
 
 const SITE_URL = 'https://energyeggs.vercel.app'
 
-const ROUTE_META: Record<string, [title: string, description: string]> = {
-  '/': ['Energy Eggs — The B2B Desi Poultry Ecosystem', 'Sonali, Aseel, Kadaknath and Fiyoumi birds and eggs with published rate cards, poultry equipment, feed, farm development and contract farming partnerships.'],
-  '/birds': ['Desi Birds & Country Chicken Rate Card | Energy Eggs', 'Live bird rates by age for Sonali, Aseel and Kadaknath — day-old chicks to 20+ weeks, male and female. Sonali ₹500/kg, Aseel ₹700/kg, Kadaknath ₹750/kg, Fiyoumi ₹1,500/kg. Minimum order 10 birds.'],
-  '/eggs': ['Desi Egg Rate Card — Ex-Farm Prices | Energy Eggs', 'Ex-farm egg prices from ₹10.75 to ₹12.00 per egg, tiered by monthly commitment. Washing, grading and packing add-ons, custom packing and private label for bulk B2B orders.'],
-  '/equipment': ['Poultry Farm Equipment | Energy Eggs', 'Poultry equipment for desi poultry farms — nipple drinking systems, brooding, feeders, drinkers and husk supply for farm setup and expansion.'],
-  '/feed': ['Poultry Feed | Energy Eggs', 'Poultry feed programmes for every growth stage — from pre-starter to grower and finisher — supporting consistent desi bird performance.'],
-  '/farm-development': ['Poultry Farm Development & Design | Energy Eggs', 'End-to-end desi poultry farm development — farm design, shed construction and pasture planning, from land to farm-ready.'],
-  '/contract-farming': ['Contract Farming — Pasture-Raised & Deep Litter Models | Energy Eggs', 'Structured Sonali contract farming with fixed-price egg procurement, 15-day payments, flock buyback and full technical support. Pasture-raised and deep-litter models.'],
-  '/b2b-supply': ['B2B Poultry Supply & Volume Commitment | Energy Eggs', 'Structured B2B procurement for restaurants, hotels, QSRs, retailers and distributors — spot orders, scheduled supply and volume commitment programmes with priority supply.'],
-  '/shop': ['Shop — Order Desi Birds, Eggs & Equipment | Energy Eggs', 'Order Sonali, Aseel, Kadaknath and Fiyoumi birds, desi eggs and poultry farm equipment at published B2B rates. Pick your product, send an enquiry and get a structured quote.'],
-  '/rate-card': ['Rate Card — Bird & Egg Prices | Energy Eggs', 'The complete published B2B rate card — live bird rates by age for Sonali, Aseel and Kadaknath, and ex-farm egg prices tiered by monthly commitment with processing add-ons.'],
-  '/about': ['About Energy Eggs — The B2B Desi Poultry Ecosystem', 'Energy Eggs connects desi poultry farmers and food businesses through structured production models, published pricing and dependable B2B supply.'],
-  '/contact': ['Contact — B2B Enquiry | Energy Eggs', 'Tell us your requirement — birds, eggs, equipment, farm development or contract farming — and our B2B team will respond with a structured commercial proposal.'],
+// Maps a canonical (un-prefixed) path to its seo.* translation key
+const SEO_KEYS: Record<string, string> = {
+  '/': 'home',
+  '/birds': 'birds',
+  '/eggs': 'eggs',
+  '/equipment': 'equipment',
+  '/feed': 'feed',
+  '/farm-development': 'farmDevelopment',
+  '/contract-farming': 'contractFarming',
+  '/b2b-supply': 'b2bSupply',
+  '/shop': 'shop',
+  '/rate-card': 'rateCard',
+  '/about': 'about',
+  '/contact': 'contact',
+}
+
+// Ensures a <link rel="alternate" hreflang="..."> tag exists for each
+// language variant of the current page, so search engines know these URLs
+// are the same content and serve the right one per searcher — this is what
+// actually keeps a multi-language site SEO-safe (no gate/interstitial needed).
+function setHreflang(base: string) {
+  const variants: [hreflang: string, href: string][] = [
+    ['en', `${SITE_URL}${base}`],
+    ['hi', `${SITE_URL}${base === '/' ? '/hi' : `/hi${base}`}`],
+    ['x-default', `${SITE_URL}${base}`],
+  ]
+  for (const [hreflang, href] of variants) {
+    let el = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${hreflang}"]`)
+    if (!el) {
+      el = document.createElement('link')
+      el.rel = 'alternate'
+      el.hreflang = hreflang
+      document.head.appendChild(el)
+    }
+    el.href = href
+  }
 }
 
 function SeoMeta() {
   const { pathname } = useLocation()
+  const { t } = useTranslation()
   useEffect(() => {
-    const [title, description] = ROUTE_META[pathname] ?? ROUTE_META['/']
+    const base = stripLangPrefix(pathname)
+    const key = SEO_KEYS[base] ?? 'home'
+    const title = t(`seo.${key}.title`)
+    const description = t(`seo.${key}.description`)
     const url = `${SITE_URL}${pathname === '/' ? '/' : pathname}`
     document.title = title
     const set = (selector: string, attr: string, value: string) => {
@@ -46,7 +75,9 @@ function SeoMeta() {
     set('meta[property="og:url"]', 'content', url)
     set('meta[name="twitter:title"]', 'content', title)
     set('meta[name="twitter:description"]', 'content', description)
-  }, [pathname])
+    setHreflang(base)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname, t])
   return null
 }
 
@@ -65,6 +96,53 @@ function ScrollToTop() {
   return null
 }
 
+const LANG_CHOICE_KEY = 'ee-lang-choice'
+
+// A small, dismissible suggestion banner — never a blocking gate. The real
+// page underneath always renders regardless, so crawlers and users both see
+// actual content first; this just offers a switch for browsers set to Hindi.
+function LangSuggest() {
+  const { pathname } = useLocation()
+  const { i18n } = useTranslation()
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    if (i18n.language !== 'en') return
+    try {
+      if (localStorage.getItem(LANG_CHOICE_KEY)) return
+    } catch { /* ignore */ }
+    const browserLang = navigator.language || navigator.languages?.[0] || ''
+    if (browserLang.toLowerCase().startsWith('hi')) setShow(true)
+  }, [i18n.language])
+
+  const dismiss = (choice: string) => {
+    try { localStorage.setItem(LANG_CHOICE_KEY, choice) } catch { /* ignore */ }
+    setShow(false)
+  }
+
+  if (!show) return null
+
+  return (
+    <div className="lang-suggest" role="region" aria-label="Language suggestion">
+      <span>यह वेबसाइट हिंदी में भी उपलब्ध है।</span>
+      <div className="lang-suggest-actions">
+        <Link to={pathWithLang(pathname, 'hi')} className="btn sm" onClick={() => dismiss('hi')}>हिंदी में देखें</Link>
+        <button type="button" className="lang-suggest-close" aria-label="Dismiss" onClick={() => dismiss('en')}>✕</button>
+      </div>
+    </div>
+  )
+}
+
+function LangSwitch({ pathname, className = 'lang-switch' }: { pathname: string; className?: string }) {
+  const { i18n } = useTranslation()
+  return (
+    <div className={className} role="group" aria-label="Language">
+      <Link to={pathWithLang(pathname, 'en')} className={i18n.language === 'en' ? 'on' : ''}>EN</Link>
+      <Link to={pathWithLang(pathname, 'hi')} className={i18n.language === 'hi' ? 'on' : ''}>हिं</Link>
+    </div>
+  )
+}
+
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
@@ -72,9 +150,11 @@ export default function Layout() {
   const dropRef = useRef<HTMLDivElement>(null)
   const navRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
+  const { t } = useTranslation()
   const { scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 35, damping: 14, mass: 0.4, restDelta: 0.001 })
-  const onServicePage = SERVICES.some(([to]) => to === pathname)
+  const basePath = stripLangPrefix(pathname)
+  const onServicePage = SERVICES.some(([to]) => to === basePath)
 
   const closeAll = () => {
     setMenuOpen(false)
@@ -118,6 +198,7 @@ export default function Layout() {
     <EnquiryProvider>
       <SeoMeta />
       <ScrollToTop />
+      <LangSuggest />
 
       {/* NAV */}
       <header className={scrolled ? 'scrolled' : ''}>
@@ -125,7 +206,7 @@ export default function Layout() {
         <div className="wrap">
           <nav aria-label="Main navigation" ref={navRef}>
             <Logo />
-            <div className={`navlinks ${menuOpen ? 'open' : ''}`}> 
+            <div className={`navlinks ${menuOpen ? 'open' : ''}`}>
 
               <div className={`has-dropdown ${servicesOpen ? 'open' : ''}`} ref={dropRef}>
                 <button
@@ -135,25 +216,27 @@ export default function Layout() {
                   aria-expanded={servicesOpen}
                   onClick={() => setServicesOpen((o) => !o)}
                 >
-                  Services <span className="caret" aria-hidden="true">▾</span>
+                  {t('nav.services')} <span className="caret" aria-hidden="true">▾</span>
                 </button>
                 <div className="dropdown">
-                  {SERVICES.map(([to, label]) => (
-                    <NavLink key={to} to={to} onClick={closeAll}>{label}</NavLink>
+                  {SERVICES.map(([to, key]) => (
+                    <LocaleNavLink key={to} to={to} onClick={closeAll}>{t(key)}</LocaleNavLink>
                   ))}
                 </div>
               </div>
 
-              <NavLink to="/contract-farming" onClick={closeAll}>Contract Farming</NavLink>
-              <NavLink to="/b2b-supply" onClick={closeAll}>Partnership</NavLink>
-              <NavLink to="/about" onClick={closeAll}>About Us</NavLink>
-              <NavLink to="/contact" onClick={closeAll}>Contact</NavLink>
-              <Link to="/rate-card" className="btn menu-cta" onClick={closeAll}>Get Ratecard</Link>
-              <Link to="/shop" className="btn ghost menu-cta" onClick={closeAll}>Shop</Link>
+              <LocaleNavLink to="/contract-farming" onClick={closeAll}>{t('nav.contractFarming')}</LocaleNavLink>
+              <LocaleNavLink to="/b2b-supply" onClick={closeAll}>{t('nav.partnership')}</LocaleNavLink>
+              <LocaleNavLink to="/about" onClick={closeAll}>{t('nav.about')}</LocaleNavLink>
+              <LocaleNavLink to="/contact" onClick={closeAll}>{t('nav.contact')}</LocaleNavLink>
+              <LocaleLink to="/rate-card" className="btn menu-cta" onClick={closeAll}>{t('nav.getRatecard')}</LocaleLink>
+              <LocaleLink to="/shop" className="btn ghost menu-cta" onClick={closeAll}>{t('nav.shop')}</LocaleLink>
+              <LangSwitch pathname={pathname} className="lang-switch lang-switch-mobile" />
             </div>
             <div className="nav-ctas">
-              <Link to="/rate-card" className="btn nav-cta">Get Rate Card</Link>
-              <Link to="/shop" className="btn nav-cta ghost">Shop</Link>
+              <LangSwitch pathname={pathname} />
+              <LocaleLink to="/rate-card" className="btn nav-cta">{t('nav.getRateCardFull')}</LocaleLink>
+              <LocaleLink to="/shop" className="btn nav-cta ghost">{t('nav.shop')}</LocaleLink>
             </div>
             <button
               className={`menu-toggle ${menuOpen ? 'is-open' : ''}`}
@@ -187,51 +270,47 @@ export default function Layout() {
         <div className="wrap">
           <div className="foot-top">
             <div>
-              <span className="script foot-tagline">Nourishing lives. Naturally.</span>
-              <p className="foot-tagsub">The B2B Desi Poultry Ecosystem</p>
+              <span className="script foot-tagline">{t('footer.tagline')}</span>
+              <p className="foot-tagsub">{t('footer.tagSub')}</p>
             </div>
-            <Link to="/rate-card" className="btn">Get Rate Card</Link>
+            <LocaleLink to="/rate-card" className="btn">{t('footer.getRateCard')}</LocaleLink>
           </div>
           <div className="foot-grid">
             <div>
               <Logo light />
-              <p>
-                The B2B desi poultry ecosystem — birds, eggs, farms, equipment and partnerships,
-                from farm development to reliable B2B supply.
-              </p>
+              <p>{t('footer.about')}</p>
             </div>
             <div>
-              <h4>Services</h4>
-              <Link to="/shop">Shop</Link>
-              <Link to="/birds">Whole Birds</Link>
-              <Link to="/eggs">Desi Eggs</Link>
-              <Link to="/equipment">Farm Equipments</Link>
-              <Link to="/feed">Feed</Link>
-              <Link to="/farm-development">Farm Development</Link>
-              
+              <h4>{t('footer.servicesHeading')}</h4>
+              <LocaleLink to="/shop">{t('footer.shop')}</LocaleLink>
+              <LocaleLink to="/birds">{t('footer.wholeBirds')}</LocaleLink>
+              <LocaleLink to="/eggs">{t('footer.desiEggs')}</LocaleLink>
+              <LocaleLink to="/equipment">{t('footer.farmEquipments')}</LocaleLink>
+              <LocaleLink to="/feed">{t('footer.feed')}</LocaleLink>
+              <LocaleLink to="/farm-development">{t('footer.farmDevelopment')}</LocaleLink>
             </div>
             <div>
-              <h4>Partnerships</h4>
-              <Link to="/contract-farming">Contract Farming</Link>
-              <Link to="/b2b-supply">Partnership</Link>
-              <Link to="/about">About Us</Link>
-              <Link to="/contact">Contact Us</Link>
-              <Link to="/rate-card">Rate Card</Link>
+              <h4>{t('footer.partnershipsHeading')}</h4>
+              <LocaleLink to="/contract-farming">{t('footer.contractFarming')}</LocaleLink>
+              <LocaleLink to="/b2b-supply">{t('footer.partnership')}</LocaleLink>
+              <LocaleLink to="/about">{t('footer.aboutUs')}</LocaleLink>
+              <LocaleLink to="/contact">{t('footer.contactUs')}</LocaleLink>
+              <LocaleLink to="/rate-card">{t('footer.rateCard')}</LocaleLink>
             </div>
             <div>
-              <h4>Get in Touch</h4>
+              <h4>{t('footer.getInTouch')}</h4>
               <a href="tel:+917878787226">+91 78 78 78 7226</a>
               <a href="mailto:hello@energyeggs.in">hello@energyeggs.in</a>
-              <Link to="/contact">B2B Enquiry</Link>
+              <LocaleLink to="/contact">{t('footer.b2bEnquiry')}</LocaleLink>
             </div>
           </div>
           <div className="foot-bottom">
-            <span>© 2026 Energy Eggs® Pvt Ltd. The B2B Desi Poultry Ecosystem.</span>
-            <span className="foot-breeds">Sonali · Aseel · Kadaknath · Fiyoumi</span>
+            <span>{t('footer.copyright')}</span>
+            <span className="foot-breeds">{t('footer.breeds')}</span>
             <button
               type="button"
               className="to-top"
-              aria-label="Back to top"
+              aria-label={t('footer.backToTop')}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               ↑

@@ -1,62 +1,31 @@
-import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { LocaleLink as Link } from '../components/LocaleLink'
 import Reveal from '../components/Reveal'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import VolumeCommitment from '../components/VolumeCommitment'
 import aboutHeroImg from '../assets/about-hero.jpg'
 
-const PILLARS = [
-  ['/birds', 'Whole Birds', 'Sonali, Aseel, Kadaknath and Fiyoumi birds supplied to B2B customers at scale.'],
-  ['/eggs', 'Desi Eggs', 'Specialty egg supply for food, retail and hospitality businesses.'],
-  ['/equipment', 'Farm Equipments', 'Nipple systems, brooding, feeders, drinkers and husk for desi poultry farms.'],
-  ['/feed', 'Poultry Feed', 'Feed for every growth stage — from pre-starter to layer and finisher.'],
-  ['/farm-development', 'Farm Development', 'Farm design, construction and pasture planning, from land to farm-ready.'],
-  ['/contract-farming', 'Contract Farming', 'Structured deep-litter and pasture-raised schemes with market linkage.'],
-]
+// Static per-item routes (not translatable) — merged by index with the
+// translated title/text arrays from i18n at render time.
+const PILLAR_LINKS = ['/birds', '/eggs', '/equipment', '/feed', '/farm-development', '/contract-farming']
 
-const VALUES = [
-  ['01', 'Farmer First', 'Our ecosystem only works when farming works — so farmer viability sits at the centre of every programme we design.'],
-  ['02', 'Quality as a System', 'Quality comes from defined production models, SOPs and monitoring — not from slogans.'],
-  ['03', 'Desi Specialization', 'We focus on what we know: Sonali, Aseel, Kadaknath and Fiyoumi, and the farming systems built around them.'],
-  ['04', 'Reliability', 'B2B customers depend on supply. We build programmes around commitments, schedules and specifications.'],
-  ['05', 'Transparency', 'Clear terms for farmers and clear specifications for buyers — agreed upfront, in writing.'],
-  ['06', 'Long-Term Partnerships', 'We grow through renewable contracts and recurring supply relationships, not one-off transactions.'],
-]
-
-const WHY_DESI = [
-  ['Heritage Breeds', 'Sonali, Aseel, Kadaknath and Fiyoumi carry generations of adaptation to Indian conditions — birds with real identity, not commodity genetics.'],
-  ['Naturally Stronger', 'Desi birds are hardy by nature. Raised under deep-litter and pasture systems, they grow slower — and healthier.'],
-  ['Taste & Nutrition', 'Slower growth and natural feed produce the distinct taste, texture and nutrition that desi poultry is prized for.'],
-  ['Premium Markets', 'Specialty restaurants, retailers and health-conscious consumers pay for authenticity — desi poultry is a growing premium category.'],
-]
-
-const FOR_FARMERS = [
-  'Farm design, SOPs, training and veterinary supervision',
-  'Birds, feed and equipment through one ecosystem',
-  'Fixed-price egg procurement with 15-day payment cycles',
-  'Flock buyback and renewable one-year contracts',
-]
-
-const FOR_BUYERS = [
-  'Published rate cards for birds and eggs — transparent, tiered pricing',
-  'Spot orders, scheduled supply or volume commitment programmes',
-  'Grading, processing, custom packing and private label options',
-  'Supply built around your specification, volume and delivery schedule',
-]
-
-const TAGLINES = ['Farm Fresh for a Healthier Tomorrow', 'Stronger Farms, Healthier Tomorrows', 'Good Eggs, Greater Possibilities', 'Farm Raised · Honest Food']
-
-const STATS = [
-  ['4 Breeds', 'Sonali · Aseel · Kadaknath · Fiyoumi'],
-  ['2 Models', 'Deep Litter · Pasture-Raised'],
-  ['End-to-End', 'Farm Development to B2B Supply'],
-  ['B2B First', 'Built for Commercial Customers'],
-]
+type TextPair = { title: string; text: string }
+type StatItem = { n: string; label: string }
 
 export default function About() {
+  const { t } = useTranslation()
+  const stats = t('about.stats', { returnObjects: true }) as StatItem[]
+  const whyDesiItems = t('about.whyDesi.items', { returnObjects: true }) as TextPair[]
+  const pillars = t('about.whatWeDo.items', { returnObjects: true }) as TextPair[]
+  const farmersItems = t('about.howWeWork.farmersItems', { returnObjects: true }) as string[]
+  const buyersItems = t('about.howWeWork.buyersItems', { returnObjects: true }) as string[]
+  const values = t('about.values.items', { returnObjects: true }) as TextPair[]
+  const taglines = t('about.brandPromise.taglines', { returnObjects: true }) as string[]
+
   return (
     <>
-      <PageHero eyebrow="About Energy Eggs" title={<>Building the next generation of desi poultry <span>supply.</span></>} bg={aboutHeroImg} bgPosition="center 30%" />
+      <PageHero eyebrow={t('about.hero.eyebrow')} title={<>{t('about.hero.titlePre')}<span>{t('about.hero.titleSpan')}</span></>} bg={aboutHeroImg} bgPosition="center 30%" />
 
       {/* OUR STORY */}
       <section>
@@ -71,24 +40,11 @@ export default function About() {
               </svg>
             </Reveal>
             <Reveal>
-              <span className="eyebrow">Our Story</span>
-              <h2>A simple opportunity</h2>
-              <p style={{ color: 'var(--brown-soft)', marginTop: 14 }}>
-                Energy Eggs was created around a simple opportunity: build a more organized
-                connection between poultry farmers and the businesses that depend on reliable
-                poultry supply.
-              </p>
-              <p style={{ color: 'var(--brown-soft)', marginTop: 14 }}>
-                Desi poultry in India is full of demand — restaurants, hotels, retailers and food
-                businesses all want dependable access to Sonali, Aseel, Kadaknath and Fiyoumi birds
-                and eggs. But supply is fragmented across thousands of independent farms, each working
-                alone. We exist to close that gap.
-              </p>
-              <p style={{ color: 'var(--brown-soft)', marginTop: 14 }}>
-                We are developing a B2B ecosystem around desi birds, specialty eggs, farm
-                infrastructure, feed, farm development and contract farming — so that production
-                and demand can finally grow together.
-              </p>
+              <span className="eyebrow">{t('about.story.eyebrow')}</span>
+              <h2>{t('about.story.heading')}</h2>
+              <p style={{ color: 'var(--brown-soft)', marginTop: 14 }}>{t('about.story.p1')}</p>
+              <p style={{ color: 'var(--brown-soft)', marginTop: 14 }}>{t('about.story.p2')}</p>
+              <p style={{ color: 'var(--brown-soft)', marginTop: 14 }}>{t('about.story.p3')}</p>
             </Reveal>
           </div>
         </div>
@@ -99,27 +55,19 @@ export default function About() {
         <div className="wrap">
           <div className="cards-2">
             <Reveal className="breed-card">
-              <span className="eyebrow">Our Mission</span>
-              <h3>Organize the desi poultry supply chain</h3>
-              <p>
-                Connect farmers and food businesses through structured production models, defined
-                quality systems and dependable procurement — creating scalable opportunities on
-                both sides of the supply chain.
-              </p>
+              <span className="eyebrow">{t('about.mission.eyebrow')}</span>
+              <h3>{t('about.mission.heading')}</h3>
+              <p>{t('about.mission.text')}</p>
             </Reveal>
             <Reveal className="breed-card">
-              <span className="eyebrow">Our Vision</span>
-              <h3>Greater control, visibility and consistency</h3>
-              <p>
-                Build greater control, visibility and consistency across the poultry value chain —
-                so a farmer in Krishnagiri and a restaurant kitchen in the city are part of one
-                reliable system.
-              </p>
+              <span className="eyebrow">{t('about.vision.eyebrow')}</span>
+              <h3>{t('about.vision.heading')}</h3>
+              <p>{t('about.vision.text')}</p>
             </Reveal>
           </div>
           <Reveal className="hero-stats about-stats">
-            {STATS.map(([n, label]) => (
-              <div key={n}><span className="n">{n}</span><small>{label}</small></div>
+            {stats.map((s) => (
+              <div key={s.label}><span className="n">{s.n}</span><small>{s.label}</small></div>
             ))}
           </Reveal>
         </div>
@@ -129,18 +77,15 @@ export default function About() {
       <section>
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">Why Desi Poultry</span>
-            <h2>Why we bet on <span className="script">desi.</span></h2>
-            <p>
-              India's poultry market is dominated by commodity broilers — but the fastest-growing
-              demand is for something older and better.
-            </p>
+            <span className="eyebrow">{t('about.whyDesi.eyebrow')}</span>
+            <h2>{t('about.whyDesi.headingPre')}<span className="script">{t('about.whyDesi.headingScript')}</span></h2>
+            <p>{t('about.whyDesi.text')}</p>
           </Reveal>
           <div className="features features-4">
-            {WHY_DESI.map(([title, text]) => (
-              <Reveal key={title} className="feature">
-                <h3>{title}</h3>
-                <p>{text}</p>
+            {whyDesiItems.map((w) => (
+              <Reveal key={w.title} className="feature">
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
               </Reveal>
             ))}
           </div>
@@ -151,19 +96,16 @@ export default function About() {
       <section className="alt">
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">What We Do</span>
-            <h2>One ecosystem. Six pillars.</h2>
-            <p>
-              Everything we build serves the same goal — a stronger connection between desi poultry
-              farms and the businesses they supply.
-            </p>
+            <span className="eyebrow">{t('about.whatWeDo.eyebrow')}</span>
+            <h2>{t('about.whatWeDo.heading')}</h2>
+            <p>{t('about.whatWeDo.text')}</p>
           </Reveal>
           <div className="features features-3">
-            {PILLARS.map(([to, title, text]) => (
-              <Reveal key={to} className="feature feature-link">
-                <Link to={to}>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
+            {pillars.map((p, i) => (
+              <Reveal key={p.title} className="feature feature-link">
+                <Link to={PILLAR_LINKS[i]}>
+                  <h3>{p.title}</h3>
+                  <p>{p.text}</p>
                 </Link>
               </Reveal>
             ))}
@@ -175,28 +117,28 @@ export default function About() {
       <section>
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">How We Work</span>
-            <h2>One ecosystem, two promises</h2>
-            <p>Everything we offer farmers strengthens what we can promise buyers — and vice versa.</p>
+            <span className="eyebrow">{t('about.howWeWork.eyebrow')}</span>
+            <h2>{t('about.howWeWork.heading')}</h2>
+            <p>{t('about.howWeWork.text')}</p>
           </Reveal>
           <div className="cards-2">
             <Reveal className="panel">
-              <h3>For Farmer Partners</h3>
+              <h3>{t('about.howWeWork.farmersTitle')}</h3>
               <ul className="story-list">
-                {FOR_FARMERS.map((f) => (
+                {farmersItems.map((f) => (
                   <li key={f}><span className="chk">✓</span> {f}</li>
                 ))}
               </ul>
-              <Link to="/contract-farming" className="panel-link">Explore contract farming →</Link>
+              <Link to="/contract-farming" className="panel-link">{t('about.howWeWork.farmersLink')}</Link>
             </Reveal>
             <Reveal className="panel">
-              <h3>For B2B Buyers</h3>
+              <h3>{t('about.howWeWork.buyersTitle')}</h3>
               <ul className="story-list">
-                {FOR_BUYERS.map((f) => (
+                {buyersItems.map((f) => (
                   <li key={f}><span className="chk">✓</span> {f}</li>
                 ))}
               </ul>
-              <Link to="/b2b-supply" className="panel-link">Explore B2B supply →</Link>
+              <Link to="/b2b-supply" className="panel-link">{t('about.howWeWork.buyersLink')}</Link>
             </Reveal>
           </div>
         </div>
@@ -206,15 +148,15 @@ export default function About() {
       <section className="values">
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow" style={{ color: 'var(--orange-light)' }}>What We Stand For</span>
-            <h2>The principles behind the ecosystem</h2>
+            <span className="eyebrow" style={{ color: 'var(--orange-light)' }}>{t('about.values.eyebrow')}</span>
+            <h2>{t('about.values.heading')}</h2>
           </Reveal>
           <div className="vgrid vgrid-3">
-            {VALUES.map(([num, title, text]) => (
-              <Reveal key={num} className="value">
-                <div className="num">{num}</div>
-                <h3>{title}</h3>
-                <p>{text}</p>
+            {values.map((v, i) => (
+              <Reveal key={v.title} className="value">
+                <div className="num">{String(i + 1).padStart(2, '0')}</div>
+                <h3>{v.title}</h3>
+                <p>{v.text}</p>
               </Reveal>
             ))}
           </div>
@@ -225,13 +167,10 @@ export default function About() {
       <section className="alt">
         <div className="wrap">
           <Reveal className="about-copy">
-            <span className="script" style={{ fontSize: '1.5rem' }}>Nourishing lives. Naturally.</span>
-            <p>
-              Behind the name is a simple promise — healthy birds, natural feed, ethical farming,
-              and better taste and nutrition, from our farms and our partners' farms to your business.
-            </p>
+            <span className="script" style={{ fontSize: '1.5rem' }}>{t('about.brandPromise.script')}</span>
+            <p>{t('about.brandPromise.text')}</p>
             <div className="chips" style={{ justifyContent: 'center' }}>
-              {TAGLINES.map((t) => <span key={t} className="pill">{t}</span>)}
+              {taglines.map((tg) => <span key={tg} className="pill">{tg}</span>)}
             </div>
           </Reveal>
         </div>
@@ -241,9 +180,9 @@ export default function About() {
       <section>
         <div className="wrap">
           <MiniCta
-            title="Let's build your poultry supply."
-            text="Whether you need birds, eggs, equipment, a complete farm or a contract farming partnership — tell us what you are looking for."
-            cta="Get in Touch"
+            title={t('about.cta.title')}
+            text={t('about.cta.text')}
+            cta={t('about.cta.cta')}
             source="General Enquiry"
           />
         </div>

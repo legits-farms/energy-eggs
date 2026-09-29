@@ -1,5 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { LocaleLink as Link } from '../components/LocaleLink'
 import { MotionConfig } from 'framer-motion'
 import { MItem, MReveal, MStagger } from '../components/Motion'
 import PageHero from '../components/PageHero'
@@ -79,6 +80,8 @@ const EQUIPMENT_FALLBACK: { name: string; text: string; icon: ReactNode; items: 
 type ShopModal = { kind: QuoteKind; interest: string; options?: string[] } | null
 
 export default function Shop() {
+  const { t } = useTranslation()
+  const heroChips = t('shop.hero.chips', { returnObjects: true }) as string[]
   const [modal, setModal] = useState<ShopModal>(null)
   const live = useLiveProducts()
 
@@ -142,15 +145,10 @@ export default function Shop() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <PageHero eyebrow="Shop" title={<>Order direct. <span>Farm to business.</span></>}>
-        <p>
-          Pick your birds, eggs and farm equipment, send an enquiry, and our B2B team
-          confirms availability with a structured quote.
-        </p>
+      <PageHero eyebrow={t('shop.hero.eyebrow')} title={<>{t('shop.hero.titlePre')}<span>{t('shop.hero.titleSpan')}</span></>}>
+        <p>{t('shop.hero.text')}</p>
         <div className="chips" style={{ justifyContent: 'center', marginTop: 22 }}>
-          <span className="pill">Published rates</span>
-          <span className="pill">Minimum order: 10 birds</span>
-          <span className="pill">Egg tiers by commitment</span>
+          {heroChips.map((c) => <span key={c} className="pill">{c}</span>)}
         </div>
       </PageHero>
 
@@ -158,9 +156,9 @@ export default function Shop() {
       <section id="shop-birds">
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Live Birds</span>
-            <h2>Desi birds, ready to order</h2>
-            <p>Desi breeds from day-old chicks to fully grown birds, male and female.</p>
+            <span className="eyebrow">{t('shop.birds.eyebrow')}</span>
+            <h2>{t('shop.birds.heading')}</h2>
+            <p>{t('shop.birds.text')}</p>
           </MReveal>
           <MStagger className="shop-grid">
             {birdProducts.map(([name, option, rate, note, img]) => (
@@ -172,7 +170,7 @@ export default function Shop() {
                 <div className="shop-price">{rate}</div>
                 <p>{note}</p>
                 <button type="button" className="btn" onClick={() => setModal({ kind: 'birds', interest: option, options: birdOptions })}>
-                  Order Birds
+                  {t('shop.birds.orderBtn')}
                 </button>
               </MItem>
             ))}
@@ -180,8 +178,8 @@ export default function Shop() {
           <MReveal className="chip-row">
             <div className="chips">
               {quailPill && <span className="pill">{quailPill}</span>}
-              <span className="pill">Orders under 10 birds billed per kg</span>
-              <Link to="/rate-card#bird-rates" className="pill">Full rate card by age →</Link>
+              <span className="pill">{t('shop.birds.underTen')}</span>
+              <Link to="/rate-card#bird-rates" className="pill">{t('shop.birds.fullRateCard')}</Link>
             </div>
           </MReveal>
         </div>
@@ -191,9 +189,9 @@ export default function Shop() {
       <section className="alt" id="shop-eggs">
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Desi Eggs</span>
-            <h2>Specialty eggs, ex-farm</h2>
-            <p>Ex-farm rates tiered by your monthly commitment.</p>
+            <span className="eyebrow">{t('shop.eggs.eyebrow')}</span>
+            <h2>{t('shop.eggs.heading')}</h2>
+            <p>{t('shop.eggs.text')}</p>
           </MReveal>
           <MStagger className="shop-grid shop-grid-3">
             {eggProducts.map(([name, option, , text, rate]) => (
@@ -202,18 +200,18 @@ export default function Shop() {
                 <div className="shop-price">{rate} <small>/egg</small></div>
                 <p>{text}</p>
                 <button type="button" className="btn" onClick={() => setModal({ kind: 'eggs', interest: option, options: eggOptions })}>
-                  Order Eggs
+                  {t('shop.eggs.orderBtn')}
                 </button>
               </MItem>
             ))}
           </MStagger>
           <MReveal className="chip-row">
             <div className="chips">
-              <span className="pill">Washed: +₹0.50/egg</span>
-              <span className="pill">Graded: +₹0.50/egg</span>
-              <span className="pill">Packing: +₹0.05/egg</span>
-              <span className="pill">Packing material: at cost</span>
-              <Link to="/rate-card#egg-rates" className="pill">Full egg tiers →</Link>
+              <span className="pill">{t('shop.eggs.washed')}</span>
+              <span className="pill">{t('shop.eggs.graded')}</span>
+              <span className="pill">{t('shop.eggs.packing')}</span>
+              <span className="pill">{t('shop.eggs.packingMaterial')}</span>
+              <Link to="/rate-card#egg-rates" className="pill">{t('shop.eggs.fullTiers')}</Link>
             </div>
           </MReveal>
         </div>
@@ -223,16 +221,16 @@ export default function Shop() {
       <section id="shop-equipment">
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Farm Equipment</span>
-            <h2>Equip your farm, category by category</h2>
-            <p>{equipmentCount} products across {equipmentGroups.length} categories — priced on your requirement and farm design.</p>
+            <span className="eyebrow">{t('shop.equipment.eyebrow')}</span>
+            <h2>{t('shop.equipment.heading')}</h2>
+            <p>{t('shop.equipment.textTemplate', { count: equipmentCount, groups: equipmentGroups.length })}</p>
           </MReveal>
           <MStagger className="shop-grid shop-grid-3">
             {equipmentGroups.map(({ name, text, icon, items }) => (
               <MItem key={name} className="shop-card">
                 <div className="shop-img shop-ic">{icon}</div>
                 <h3>{name}</h3>
-                <div className="shop-price">{items.length} products</div>
+                <div className="shop-price">{t('shop.equipment.productsCount', { count: items.length })}</div>
                 <p>{text}</p>
                 <button
                   type="button"
@@ -240,20 +238,20 @@ export default function Shop() {
                   onClick={() => setModal({
                     kind: 'equipment',
                     interest: items[0],
-                    options: [...items, `All ${name} (full range)`],
+                    options: [...items, t('shop.equipment.allRange', { name })],
                   })}
                 >
-                  Order Equipment
+                  {t('shop.equipment.orderBtn')}
                 </button>
               </MItem>
             ))}
           </MStagger>
           <MReveal className="chip-row">
             <div className="chips">
-              <span className="pill">Complete farm setups available</span>
-              <span className="pill">Recurring husk supply</span>
-              <span className="pill">Setup guidance included</span>
-              <Link to="/equipment" className="pill">Full catalogue &amp; setups →</Link>
+              <span className="pill">{t('shop.equipment.completeSetups')}</span>
+              <span className="pill">{t('shop.equipment.recurringHusk')}</span>
+              <span className="pill">{t('shop.equipment.setupGuidance')}</span>
+              <Link to="/equipment" className="pill">{t('shop.equipment.fullCatalogue')}</Link>
             </div>
           </MReveal>
         </div>
@@ -263,31 +261,25 @@ export default function Shop() {
       <section className="alt">
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Also From Energy Eggs</span>
-            <h2>Beyond birds and eggs</h2>
+            <span className="eyebrow">{t('shop.also.eyebrow')}</span>
+            <h2>{t('shop.also.heading')}</h2>
           </MReveal>
           <MStagger className="cards-2" gap={0.15}>
             <MItem className="panel rate-mini">
-              <h3>Farm Development</h3>
-              <p style={{ color: 'var(--brown-soft)', fontSize: '.94rem' }}>
-                Farm design, shed construction and pasture planning — end-to-end desi poultry
-                farm development, from land to farm-ready.
-              </p>
-              <Link to="/farm-development" className="panel-link">Explore farm development →</Link>
+              <h3>{t('shop.also.farmDevTitle')}</h3>
+              <p style={{ color: 'var(--brown-soft)', fontSize: '.94rem' }}>{t('shop.also.farmDevText')}</p>
+              <Link to="/farm-development" className="panel-link">{t('shop.also.farmDevLink')}</Link>
             </MItem>
             <MItem className="panel rate-mini">
-              <h3>Poultry Feed</h3>
-              <p style={{ color: 'var(--brown-soft)', fontSize: '.94rem' }}>
-                Feed programmes for every growth stage — pre-starter to grower and finisher —
-                for consistent desi bird performance.
-              </p>
-              <Link to="/feed" className="panel-link">Explore feed →</Link>
+              <h3>{t('shop.also.feedTitle')}</h3>
+              <p style={{ color: 'var(--brown-soft)', fontSize: '.94rem' }}>{t('shop.also.feedText')}</p>
+              <Link to="/feed" className="panel-link">{t('shop.also.feedLink')}</Link>
             </MItem>
           </MStagger>
           <MiniCta
-            title="Need volumes, schedules or custom packing?"
-            text="Tell us your product, volumes and delivery requirement — our B2B team responds with a structured commercial proposal."
-            cta="Talk to Our B2B Team"
+            title={t('shop.cta.title')}
+            text={t('shop.cta.text')}
+            cta={t('shop.cta.cta')}
             source="B2B Supply"
           />
         </div>

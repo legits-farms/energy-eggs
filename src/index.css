@@ -10,8 +10,8 @@
   --ink:#414042;
   --line:#ecdcca;
   --shadow:0 20px 50px -25px rgba(65,64,66,.45);
-  --font-head:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --font-body:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-head:"Poppins","Noto Sans Devanagari",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-body:"Poppins","Noto Sans Devanagari",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;color-scheme:light;scrollbar-color:#d8bfa6 var(--cream);-webkit-text-size-adjust:100%;text-size-adjust:100%}
@@ -72,6 +72,16 @@ nav{display:flex;align-items:center;justify-content:space-between;height:74px;ga
 .btn.ghost.light:hover{background:#fff;color:var(--orange)}
 .btn-lg{padding:16px 40px;font-size:1rem}
 .nav-ctas{display:flex;align-items:center;gap:10px}
+.lang-switch{display:flex;gap:2px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:3px}
+.lang-switch a{padding:6px 12px;border-radius:24px;font-size:.72rem;font-weight:700;letter-spacing:.03em;color:var(--brown-soft);transition:background .2s,color .2s}
+.lang-switch a.on{background:var(--orange-soft);color:var(--orange)}
+.lang-switch-mobile{display:none}
+.lang-suggest{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:var(--brown);color:#fff;padding:10px 20px;font-size:.85rem;text-align:center}
+.lang-suggest-actions{display:flex;align-items:center;gap:10px}
+.lang-suggest .btn.sm{padding:8px 18px;font-size:.78rem}
+.lang-suggest-close{background:none;border:0;color:#fff;font-size:1rem;line-height:1;cursor:pointer;opacity:.7;padding:4px;transition:opacity .2s}
+.lang-suggest-close:hover{opacity:1}
+@media(max-width:560px){.lang-suggest{font-size:.8rem;padding:10px 14px;gap:8px 12px}}
 .nav-cta{white-space:nowrap;padding:11px 22px;font-size:.82rem;background:linear-gradient(120deg,var(--orange),var(--orange-light))}
 .nav-cta.ghost{padding:9px 20px;background:transparent}
 .menu-cta{display:none}
@@ -399,11 +409,19 @@ a.pill:hover{border-color:#f0c5a4}
 .cat-panel>p{font-size:.85rem;color:var(--brown-soft);margin-bottom:16px}
 .cat-panel .chips{justify-content:flex-start;gap:8px}
 .cat-panel .pill{font-size:.66rem;padding:6px 12px}
+.item-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:16px}
+.item-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:14px 8px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.item-card:hover{transform:translateY(-3px);box-shadow:0 12px 22px -16px rgba(65,64,66,.4);border-color:#f0c5a4}
+.ic-xs{width:36px;height:36px;border-radius:10px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--orange);flex:none}
+.ic-xs svg{width:19px;height:19px}
+.item-card span{font-size:.74rem;font-weight:600;color:var(--brown-soft);line-height:1.3}
 @media(max-width:960px){.cat-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){
   .cat-grid{grid-template-columns:1fr;gap:14px}
   .cat-head{flex-wrap:wrap}
   .cat-count{flex-basis:100%;margin-left:54px;margin-top:-4px}
+  .item-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px}
+  .item-card{padding:12px 6px}
 }
 
 /* ---------- Contract farming model cards ---------- */
@@ -587,6 +605,7 @@ footer p{font-size:.92rem;max-width:34ch}
   .navlinks{display:none}
   .nav-ctas{display:none}
   .menu-toggle{display:flex}
+  .lang-switch-mobile{display:flex;justify-content:center;margin:10px auto 0}
   .nav-scrim.show{opacity:1;visibility:visible}
   .navlinks.open{display:flex;position:absolute;top:calc(74px + 8px);left:12px;right:12px;flex-direction:column;background:rgba(255,253,250,.98);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);padding:14px;padding-bottom:calc(14px + env(safe-area-inset-bottom));border:1px solid var(--line);border-radius:22px;gap:4px;font-size:.98rem;align-items:stretch;box-shadow:0 30px 60px -24px rgba(65,64,66,.5);max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain;animation:menu-drop .34s cubic-bezier(.2,.9,.3,1) both}
   @keyframes menu-drop{from{opacity:0;transform:translateY(-14px) scale(.98)}to{opacity:1;transform:none}}
@@ -658,6 +677,7 @@ footer p{font-size:.92rem;max-width:34ch}
   .hero .badges{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -18px 22px;padding:0 18px 2px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent);mask-image:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent)}
   .hero .badges::-webkit-scrollbar{display:none}
   .hero .badges .pill{flex:none;font-size:.62rem;padding:6px 12px}
+  .hero .badges .pill:last-child{display:none}
   .hero-stats{gap:18px 28px;margin-top:32px}
   .hero-stats.about-stats{gap:18px 28px}
   .hero-stats .n{font-size:1.35rem}

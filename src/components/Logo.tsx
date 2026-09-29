@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { LocaleLink as Link } from './LocaleLink'
 import logo from '../assets/logo.png'
 import logoLight from '../assets/logo-light.png'
 

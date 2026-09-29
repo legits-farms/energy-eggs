@@ -1,19 +1,21 @@
+import type { ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 import Reveal from '../components/Reveal'
 import PageHero from '../components/PageHero'
 import EnquiryForm from '../components/EnquiryForm'
-import { Link } from 'react-router-dom'
+import { LocaleLink as Link } from '../components/LocaleLink'
 
-const CHANNELS = [
+const CHANNEL_META: { href: string; key: string; value: string; badgeKey?: string; icon: ReactNode }[] = [
   {
     href: 'tel:+9178 78 78 7226',
-    label: 'Call us',
+    key: 'callLabel',
     value: '+91 78 78 78 7226',
-    badge: 'Fastest Response',
+    badgeKey: 'callBadge',
     icon: <path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />,
   },
   {
     href: 'https://wa.me/917878787226',
-    label: 'WhatsApp',
+    key: 'whatsappLabel',
     value: '+91 78 78 78 7226',
     icon: (
       <>
@@ -24,7 +26,7 @@ const CHANNELS = [
   },
   {
     href: 'mailto:hello@energyeggs.in',
-    label: 'Email',
+    key: 'emailLabel',
     value: 'hello@energyeggs.in',
     icon: (
       <>
@@ -35,47 +37,40 @@ const CHANNELS = [
   },
 ]
 
-const ENQUIRY_TIPS = [
-  'Product and breed — birds, eggs, feed or equipment',
-  'Volumes and frequency — daily, weekly, monthly or contract',
-  'Grade, processing and packing requirements',
-  'Delivery location and your business type',
-]
+const CHIP_LINKS = ['/birds', '/eggs', '/contract-farming']
 
-const NEXT_STEPS = [
-  ['01', 'You Enquire', 'Send your requirement through the form, a call or WhatsApp — whatever is easiest.'],
-  ['02', 'We Propose', 'Our B2B team reviews your specification and responds with a structured commercial proposal.'],
-  ['03', 'Supply Begins', 'Once terms are agreed, procurement and delivery run on the schedule we set together.'],
-]
+type TextPair = { title: string; text: string }
 
 export default function Contact() {
+  const { t } = useTranslation()
+  const tips = t('contact.side.tips', { returnObjects: true }) as string[]
+  const chips = t('contact.side.chips', { returnObjects: true }) as string[]
+  const nextSteps = t('contact.nextSteps.items', { returnObjects: true }) as TextPair[]
+
   return (
     <>
-      <PageHero eyebrow="Contact / B2B Enquiry" title={<>Let's build your poultry <span>supply.</span></>}>
-        <p>
-          Whether you need birds, eggs, equipment, a complete farm or a contract farming
-          partnership, tell us what you are looking for.
-        </p>
+      <PageHero eyebrow={t('contact.hero.eyebrow')} title={<>{t('contact.hero.titlePre')}<span>{t('contact.hero.titleSpan')}</span></>}>
+        <p>{t('contact.hero.text')}</p>
       </PageHero>
 
       <section>
         <div className="wrap">
           <div className="contact-channels">
-            {CHANNELS.map((c) => (
-              <Reveal key={c.label} className="in">
+            {CHANNEL_META.map((c) => (
+              <Reveal key={c.key} className="in">
                 <a
-                  className={`channel${'badge' in c ? ' featured' : ''}`}
+                  className={`channel${c.badgeKey ? ' featured' : ''}`}
                   href={c.href}
                   {...(c.href.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {})}
                 >
-                  {'badge' in c && <span className="channel-badge">{c.badge as string}</span>}
+                  {c.badgeKey && <span className="channel-badge">{t(`contact.channels.${c.badgeKey}`)}</span>}
                   <span className="ic">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                       {c.icon}
                     </svg>
                   </span>
                   <span>
-                    <small>{c.label}</small>
+                    <small>{t(`contact.channels.${c.key}`)}</small>
                     <b>{c.value}</b>
                   </span>
                 </a>
@@ -85,22 +80,19 @@ export default function Contact() {
 
           <div className="contact-grid">
             <Reveal className="panel contact-side">
-              <h3>Talk to our B2B team</h3>
-              <p className="contact-note">
-                We work with restaurants, hotels, retailers, distributors, institutions and farmer
-                partners. The more detail you share, the faster we can put real numbers on the table.
-              </p>
-              <h4 className="contact-sub">A good enquiry includes</h4>
+              <h3>{t('contact.side.heading')}</h3>
+              <p className="contact-note">{t('contact.side.note')}</p>
+              <h4 className="contact-sub">{t('contact.side.tipsHeading')}</h4>
               <ul className="story-list">
-                {ENQUIRY_TIPS.map((t) => (
-                  <li key={t}><span className="chk">✓</span> {t}</li>
+                {tips.map((tip) => (
+                  <li key={tip}><span className="chk">✓</span> {tip}</li>
                 ))}
               </ul>
-              <h4 className="contact-sub">Before you write</h4>
+              <h4 className="contact-sub">{t('contact.side.beforeHeading')}</h4>
               <div className="chips contact-chips">
-                <Link to="/birds" className="pill">Bird Rate Card</Link>
-                <Link to="/eggs" className="pill">Egg Rate Card</Link>
-                <Link to="/contract-farming" className="pill">Contract Farming Models</Link>
+                {chips.map((c, i) => (
+                  <Link key={c} to={CHIP_LINKS[i]} className="pill">{c}</Link>
+                ))}
               </div>
             </Reveal>
 
@@ -114,15 +106,15 @@ export default function Contact() {
       <section className="alt">
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">What Happens Next</span>
-            <h2>From enquiry to supply</h2>
+            <span className="eyebrow">{t('contact.nextSteps.eyebrow')}</span>
+            <h2>{t('contact.nextSteps.heading')}</h2>
           </Reveal>
           <div className="steps">
-            {NEXT_STEPS.map(([num, title, text]) => (
-              <Reveal key={num} className="step">
-                <div className="num">{num}</div>
-                <h3>{title}</h3>
-                <p>{text}</p>
+            {nextSteps.map((s, i) => (
+              <Reveal key={s.title} className="step">
+                <div className="num">{String(i + 1).padStart(2, '0')}</div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
               </Reveal>
             ))}
           </div>

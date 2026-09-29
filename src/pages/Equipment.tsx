@@ -1,122 +1,112 @@
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { LocaleLink as Link } from '../components/LocaleLink'
 import { MotionConfig } from 'framer-motion'
 import { CountUp, MItem, MReveal, MStagger, pop } from '../components/Motion'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 
-const EQUIPMENT: [name: string, text: string, icon: ReactNode][] = [
-  ['Nipple Drinking Systems', 'Clean, controlled water delivery with less spillage and drier litter — the backbone of flock hygiene.',
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 0 1-12 0c0-3.2 2.5-6.5 6-11z" /><path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5" /></svg>],
-  ['Complete Brooding Systems', 'Heat, space and comfort for the critical first weeks — set up for strong, uniform chick growth.',
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="14" r="6" /><path d="M12 8V4M8 5l1.5 2M16 5l-1.5 2" /></svg>],
-  ['Feeders', 'Feeding lines and feeders matched to your shed layout, flock size and farming model.',
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 10h16l-2 9H6l-2-9z" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg>],
-  ['Drinkers', 'Drinking systems and accessories for every growth stage and farm configuration.',
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3h10l-1.5 16a2 2 0 0 1-2 1.8h-3A2 2 0 0 1 8.5 19L7 3z" /><path d="M8 9h8" /></svg>],
-  ['Husk & Litter', 'Quality husk supply for deep-litter bedding — dry, absorbent and ready for your flock.',
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-5 9 5-9 5-9-5z" /><path d="M3 14l9 5 9-5" /></svg>],
+// Icons are static (not translatable) — merged by index with the translated
+// title/text arrays from i18n at render time.
+const EQUIPMENT_ICONS: ReactNode[] = [
+  <svg key="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 0 1-12 0c0-3.2 2.5-6.5 6-11z" /><path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5" /></svg>,
+  <svg key="1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="14" r="6" /><path d="M12 8V4M8 5l1.5 2M16 5l-1.5 2" /></svg>,
+  <svg key="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 10h16l-2 9H6l-2-9z" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg>,
+  <svg key="3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3h10l-1.5 16a2 2 0 0 1-2 1.8h-3A2 2 0 0 1 8.5 19L7 3z" /><path d="M8 9h8" /></svg>,
+  <svg key="4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-5 9 5-9 5-9-5z" /><path d="M3 14l9 5 9-5" /></svg>,
 ]
 
-const EQUIP_STATS: [n: string, label: string][] = [
-  ['31', 'Products in Range'],
-  ['6', 'Equipment Categories'],
-  ['2', 'Farming Models Served'],
-  ['5', 'Steps to a Running Farm'],
-]
+type CatalogueMeta = { icon: ReactNode; items: ReactNode[] }
 
-const CATALOGUE: { cat: string; desc: string; icon: ReactNode; items: string[] }[] = [
+const CATALOGUE_META: CatalogueMeta[] = [
   {
-    cat: 'Feeders',
-    desc: 'Even feed access for every bird — from chick trays to parent feeders.',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 10h16l-2 9H6l-2-9z" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg>,
-    items: ['8kg Feeder Set', 'Chick Feeder Set', 'Parent Feeder'],
+    items: [
+      <><path d="M6 4h12l-2 7H8L6 4z" /><path d="M8 11v4a4 4 0 0 0 8 0v-4" /></>,
+      <><rect x="3" y="13" width="18" height="6" rx="2" /><path d="M8 13V9a4 4 0 1 1 8 0v4" /></>,
+      <><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z" /><ellipse cx="12" cy="14" rx="3" ry="1.4" /></>,
+    ],
   },
   {
-    cat: 'Drinkers & Watering',
-    desc: 'Clean water lines, nipples and tanks for hygienic, spill-free hydration.',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 0 1-12 0c0-3.2 2.5-6.5 6-11z" /></svg>,
-    items: ['Classic Drinker Set', 'Jumbo Drinker Set', '8 Manual Drinker Set', '4 Manual Drinker Set', 'Chick Drinker Set', '360° Nipples', 'Drinker Nozzles', 'Blue Drinker Pipe', 'Water Level Tubes', '20 L Water Tank'],
+    items: [
+      <><path d="M12 3v4" /><path d="M7 7h10l-1 12a2 2 0 0 1-2 1.8h-4A2 2 0 0 1 8 19L7 7z" /></>,
+      <><path d="M12 2v3" /><path d="M5 6h14l-1.5 14a2 2 0 0 1-2 1.8h-7A2 2 0 0 1 6.5 20L5 6z" /></>,
+      <><circle cx="7" cy="8" r="2.4" /><circle cx="17" cy="8" r="2.4" /><path d="M7 10.4V15M17 10.4V15" /><path d="M4 19h16" /></>,
+      <><circle cx="12" cy="8" r="2.6" /><path d="M12 10.6V16" /><path d="M8 19h8" /></>,
+      <><ellipse cx="12" cy="16" rx="6" ry="3" /><path d="M12 13V6" /><circle cx="12" cy="5" r="1.4" /></>,
+      <><path d="M12 4v9" /><path d="M9 6h6" /><circle cx="12" cy="16" r="2.4" /></>,
+      <><path d="M12 4v9" /><path d="M9 6h6" /><path d="M12 13l-2.5 5h5L12 13z" /></>,
+      <><path d="M4 12h16" /><path d="M8 8v8M16 8v8" /></>,
+      <><rect x="9" y="3" width="6" height="18" rx="2" /><path d="M9 13h6" /></>,
+      <><rect x="5" y="6" width="14" height="14" rx="2" /><path d="M9 6V4h6v2" /></>,
+    ],
   },
   {
-    cat: 'Brooding',
-    desc: 'Gas and electric brooders that hold day-old chicks at the right temperature.',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1" /></svg>,
-    items: ['Gas Brooder (Single)', 'Gas Brooder (Double)', 'Electric Brooder with Fan', 'Electric Brooder without Fan', 'Chick Guard'],
+    items: [
+      <><circle cx="12" cy="15" r="5" /><path d="M12 3c1.5 2 2 3.2 2 4.3A2 2 0 0 1 12 9.3 2 2 0 0 1 10 7.3C10 6.2 10.5 5 12 3z" /></>,
+      <><circle cx="8" cy="16" r="4" /><circle cx="16" cy="16" r="4" /><path d="M12 3c1.2 1.7 1.6 2.7 1.6 3.6a1.6 1.6 0 1 1-3.2 0C10.4 5.7 10.8 4.7 12 3z" /></>,
+      <><circle cx="12" cy="12" r="2.6" /><path d="M12 9.4c0-2 1.2-3.2 2.4-2.8S15.6 9 13.9 10.1M12 14.6c0 2-1.2 3.2-2.4 2.8S8.4 15 10.1 13.9M9.4 12c-2 0-3.2-1.2-2.8-2.4S9 8.4 10.1 10.1M14.6 12c2 0 3.2 1.2 2.8 2.4S15 15.6 13.9 13.9" /></>,
+      <><circle cx="12" cy="13" r="6" /><path d="M9 5h6M12 5V2" /></>,
+      <><path d="M4 13a8 8 0 0 1 16 0" /><path d="M4 13v3M8 13v4M12 13v5M16 13v4M20 13v3" /></>,
+    ],
   },
   {
-    cat: 'Handling & Transport',
-    desc: 'Safe movement of birds, chicks and eggs between farm and market.',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg>,
-    items: ['Bird Transportation Box', 'Chick Transport Boxes', 'Egg Trays'],
+    items: [
+      <><rect x="3" y="8" width="18" height="11" rx="1.5" /><path d="M3 8l3-4h12l3 4" /><path d="M9 13h.01M15 13h.01M9 16h.01M15 16h.01" /></>,
+      <><rect x="5" y="9" width="14" height="9" rx="1.5" /><path d="M8 9V7a4 4 0 0 1 8 0v2" /><path d="M9 13h.01M12 13h.01M15 13h.01" /></>,
+      <><rect x="3" y="6" width="18" height="12" rx="2" /><ellipse cx="8" cy="12" rx="2" ry="2.6" /><ellipse cx="16" cy="12" rx="2" ry="2.6" /></>,
+    ],
   },
   {
-    cat: 'Tools & Accessories',
-    desc: 'The day-to-day hardware that keeps operations precise and consistent.',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4L15 12l-3-3 2.7-2.7z" /></svg>,
-    items: ['S Hooks', 'Adjusting Chains', 'Automatic Vaccination Guns', 'Debeaking Machine', 'Raking Tools', 'Biscuits'],
+    items: [
+      <><path d="M15 5a3 3 0 1 1-3 3" /><path d="M9 19a3 3 0 1 0 3-3" /><path d="M12 8v8" /></>,
+      <><circle cx="7" cy="7" r="3" /><circle cx="17" cy="17" r="3" /><path d="M9.5 9.5l5 5" /></>,
+      <><path d="M3 13l7-7 3 3-7 7H3v-3z" /><path d="M13 6l3-3 5 5-3 3" /></>,
+      <><path d="M4 20l7-7" /><path d="M13 5l6 6-3 3-6-6 3-3z" /><path d="M9 13l2 2" /></>,
+      <><path d="M12 3v13" /><path d="M6 3h12" /><path d="M6 3l1 4M10 3l.5 4M13.5 3l.5 4M18 3l-1 4" /></>,
+      <><circle cx="12" cy="12" r="7" /><circle cx="12" cy="12" r="2.6" /></>,
+    ],
   },
   {
-    cat: 'Litter & Farm Consumables',
-    desc: 'Bedding and biosecurity inputs for a dry, sanitised shed.',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-5 9 5-9 5-9-5z" /><path d="M3 14l9 5 9-5" /></svg>,
-    items: ['Husk', 'Limestone', 'Formaldehyde', 'Potassium Permanganate'],
+    items: [
+      <><path d="M4 15c3-6 13-6 16 0" /><path d="M6 18h12" /><circle cx="9" cy="12" r=".6" fill="currentColor" /><circle cx="12" cy="10.5" r=".6" fill="currentColor" /><circle cx="15" cy="12" r=".6" fill="currentColor" /></>,
+      <path d="M5 17l3-9 4 3 3-6 4 12z" />,
+      <><path d="M10 3h4v5l4 9a2 2 0 0 1-2 3H8a2 2 0 0 1-2-3l4-9V3z" /><path d="M9 13h6" /></>,
+      <><path d="M10 3h4v4l3 8a2 2 0 0 1-2 3H9a2 2 0 0 1-2-3l3-8V3z" /><circle cx="12" cy="14" r="1" fill="currentColor" /><circle cx="10.5" cy="16.5" r=".8" fill="currentColor" /><circle cx="13.5" cy="16.5" r=".8" fill="currentColor" /></>,
+    ],
   },
 ]
 
-const WHO_WE_EQUIP = [
-  ['New Farms', 'Setting up your first desi poultry farm? Get the complete equipment package matched to your farm design from day one.'],
-  ['Expanding Farms', 'Adding sheds or scaling capacity — equipment planned around your existing setup and future batches.'],
-  ['Contract Farming Partners', 'Partners under Energy Eggs schemes get equipment aligned to the approved farm design and SOPs.'],
-  ['Independent Desi Farms', 'Running your own operation? Source reliable equipment and husk through one B2B relationship.'],
-]
-
-const SETUPS: [title: string, points: string[]][] = [
-  ['Deep Litter Setup', [
-    'Husk and litter supply for bedding management',
-    'Feeders and nipple drinking lines sized to shed layout',
-    'Brooding equipment for chick placement',
-    'Configured for approx. 8,000 sq. ft. sheds and 5,000-bird batches',
-  ]],
-  ['Pasture-Raised Setup', [
-    'Shed equipment plus pasture-area planning support',
-    'Drinking and feeding systems for indoor-outdoor movement',
-    'Brooding infrastructure for early stages',
-    'Aligned with the Energy Eggs pasture-raised farm design',
-  ]],
-]
-
-const STEPS = [
-  ['01', 'Share Requirement', 'Bird capacity, farm size, farming model and what you need.'],
-  ['02', 'Farm Assessment', 'We align equipment to your farm design or help plan a new one.'],
-  ['03', 'Plan & Quote', 'A structured equipment plan with a commercial proposal.'],
-  ['04', 'Supply', 'Equipment and husk delivered as per the agreed plan.'],
-  ['05', 'Setup Guidance', 'Guidance to get your farm running as designed.'],
-]
-
-const REQUIREMENT_FLOW = ['Bird capacity', 'Farm size', 'Farming model', 'Equipment requirement']
-
-const FAQ: [q: string, a: string][] = [
-  ['Can I buy equipment without a farming partnership?', 'Yes. Equipment and husk supply are available as standalone B2B purchases — you don’t need to be a contract farming partner to source through Energy Eggs.'],
-  ['Is equipment included in contract farming schemes?', 'Under the contract farming models, shed construction and equipment are part of the farmer’s investment — but everything is specified in the approved farm design, and we supply and guide the setup so it matches the programme’s SOPs.'],
-  ['What should I share to get a quote?', 'Your bird capacity, farm or shed size, farming model (deep litter or pasture-raised) and the specific equipment you need. Our team responds with a structured plan and quote.'],
-  ['Do you help with installation and setup?', 'We provide setup guidance alongside supply, and for farms developed under Energy Eggs programmes, equipment installation follows the approved farm design.'],
-  ['Do you supply husk on a recurring basis?', 'Yes. Husk and litter supply can be structured as a recurring arrangement matched to your batch cycles, so fresh bedding arrives when each new batch is placed.'],
-]
+type TextPair = { title: string; text: string }
+type CatalogueItem = { cat: string; desc: string; items: string[] }
+type SetupItem = { title: string; points: string[] }
+type StepItem = { title: string; text: string }
+type FaqItem = { q: string; a: string }
+type StatItem = { n: string; label: string }
 
 export default function Equipment() {
+  const { t } = useTranslation()
+  const heroChips = t('equipment.hero.chips', { returnObjects: true }) as string[]
+  const coreItems = t('equipment.core.items', { returnObjects: true }) as TextPair[]
+  const stats = t('equipment.stats', { returnObjects: true }) as StatItem[]
+  const categories = t('equipment.catalogue.categories', { returnObjects: true }) as CatalogueItem[]
+  const requirementFlow = t('equipment.requirementFlow', { returnObjects: true }) as string[]
+  const whoItems = t('equipment.who.items', { returnObjects: true }) as TextPair[]
+  const setupItems = t('equipment.setups.items', { returnObjects: true }) as SetupItem[]
+  const steps = t('equipment.how.steps', { returnObjects: true }) as StepItem[]
+  const faqItems = t('equipment.faq.items', { returnObjects: true }) as FaqItem[]
+
   return (
     <MotionConfig reducedMotion="user">
-      <PageHero eyebrow="Poultry Equipment" title={<>Everything your poultry farm <span>needs.</span></>}>
-        <p>
-          Starting a poultry farm requires more than birds. Energy Eggs provides poultry equipment
-          and farm requirements designed around the needs of desi poultry operations.
-        </p>
+      <PageHero eyebrow={t('equipment.hero.eyebrow')} title={<>{t('equipment.hero.titlePre')}<span>{t('equipment.hero.titleSpan')}</span></>}>
+        <p>{t('equipment.hero.text')}</p>
         <div className="chips" style={{ justifyContent: 'center', marginTop: 22 }}>
-          <span className="pill">31 Products</span>
-          <span className="pill">Deep Litter &amp; Pasture Setups</span>
-          <span className="pill">Recurring Husk Supply</span>
-          <span className="pill">Setup Guidance</span>
+          {heroChips.map((c) => <span key={c} className="pill">{c}</span>)}
         </div>
       </PageHero>
 
@@ -124,27 +114,24 @@ export default function Equipment() {
       <section>
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Equipment &amp; Farm Inputs</span>
-            <h2>Built around desi poultry operations</h2>
-            <p>
-              Five core systems decide how well a shed runs — water, heat, feed, drinking access
-              and bedding. We supply all of them, matched to your farm design.
-            </p>
+            <span className="eyebrow">{t('equipment.core.eyebrow')}</span>
+            <h2>{t('equipment.core.heading')}</h2>
+            <p>{t('equipment.core.text')}</p>
           </MReveal>
           <MStagger className="features features-5">
-            {EQUIPMENT.map(([name, text, icon]) => (
-              <MItem key={name} className="feature">
-                <div className="ic">{icon}</div>
-                <h3>{name}</h3>
-                <p>{text}</p>
+            {coreItems.map((c, i) => (
+              <MItem key={c.title} className="feature">
+                <div className="ic">{EQUIPMENT_ICONS[i]}</div>
+                <h3>{c.title}</h3>
+                <p>{c.text}</p>
               </MItem>
             ))}
           </MStagger>
           <MStagger className="stats-band" gap={0.1} amount={0.3}>
-            {EQUIP_STATS.map(([n, label]) => (
-              <MItem key={label} variants={pop}>
-                <CountUp value={n} />
-                <small>{label}</small>
+            {stats.map((s) => (
+              <MItem key={s.label} variants={pop}>
+                <CountUp value={s.n} />
+                <small>{s.label}</small>
               </MItem>
             ))}
           </MStagger>
@@ -155,33 +142,39 @@ export default function Equipment() {
       <section className="alt">
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Complete Range</span>
-            <h2>The full equipment catalogue</h2>
-            <p>
-              Every item we stock, in one place — request any combination in a single quote,
-              from a full farm setup to a one-line top-up order.
-            </p>
+            <span className="eyebrow">{t('equipment.catalogue.eyebrow')}</span>
+            <h2>{t('equipment.catalogue.heading')}</h2>
+            <p>{t('equipment.catalogue.text')}</p>
           </MReveal>
           <MStagger className="cat-grid" gap={0.1}>
-            {CATALOGUE.map(({ cat, desc, icon, items }) => (
-              <MItem key={cat} className="panel cat-panel">
+            {categories.map((c, ci) => (
+              <MItem key={c.cat} className="panel cat-panel">
                 <div className="cat-head">
-                  <div className="ic-sm">{icon}</div>
-                  <h3>{cat}</h3>
-                  <span className="cat-count">{items.length} items</span>
+                  <div className="ic-sm">{CATALOGUE_META[ci].icon}</div>
+                  <h3>{c.cat}</h3>
+                  <span className="cat-count">{t('equipment.catalogue.itemsCount', { count: c.items.length })}</span>
                 </div>
-                <p>{desc}</p>
-                <div className="chips">
-                  {items.map((p) => <span key={p} className="pill">{p}</span>)}
+                <p>{c.desc}</p>
+                <div className="item-grid">
+                  {c.items.map((name, ii) => (
+                    <div key={name} className="item-card">
+                      <div className="ic-xs">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                          {CATALOGUE_META[ci].items[ii]}
+                        </svg>
+                      </div>
+                      <span>{name}</span>
+                    </div>
+                  ))}
                 </div>
               </MItem>
             ))}
           </MStagger>
           <MReveal className="chain wrap-chain" style={{ marginTop: 56 }}>
-            {REQUIREMENT_FLOW.map((s, i) => (
+            {requirementFlow.map((s, i) => (
               <span key={s} className="chain-item">
                 <span>{s}</span>
-                {i < REQUIREMENT_FLOW.length - 1 && <span className="ar">→</span>}
+                {i < requirementFlow.length - 1 && <span className="ar">→</span>}
               </span>
             ))}
           </MReveal>
@@ -192,16 +185,16 @@ export default function Equipment() {
       <section>
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Who We Equip</span>
-            <h2>From first shed to full scale</h2>
-            <p>One supply relationship, whatever stage your farm is at.</p>
+            <span className="eyebrow">{t('equipment.who.eyebrow')}</span>
+            <h2>{t('equipment.who.heading')}</h2>
+            <p>{t('equipment.who.text')}</p>
           </MReveal>
           <MStagger className="features features-4">
-            {WHO_WE_EQUIP.map(([name, text], i) => (
-              <MItem key={name} className="step">
+            {whoItems.map((w, i) => (
+              <MItem key={w.title} className="step">
                 <div className="num">0{i + 1}</div>
-                <h3>{name}</h3>
-                <p>{text}</p>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
               </MItem>
             ))}
           </MStagger>
@@ -212,20 +205,20 @@ export default function Equipment() {
       <section className="alt">
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Setups By Farming Model</span>
-            <h2>Matched to how you farm</h2>
-            <p>Equipment isn't one-size-fits-all — deep litter and pasture-raised farms need different setups.</p>
+            <span className="eyebrow">{t('equipment.setups.eyebrow')}</span>
+            <h2>{t('equipment.setups.heading')}</h2>
+            <p>{t('equipment.setups.text')}</p>
           </MReveal>
           <MStagger className="cards-2" gap={0.15}>
-            {SETUPS.map(([title, points]) => (
-              <MItem key={title} className="panel">
-                <h3>{title}</h3>
+            {setupItems.map((s) => (
+              <MItem key={s.title} className="panel">
+                <h3>{s.title}</h3>
                 <ul className="story-list">
-                  {points.map((p) => (
+                  {s.points.map((p) => (
                     <li key={p}><span className="chk">✓</span> {p}</li>
                   ))}
                 </ul>
-                <Link to="/contract-farming" className="panel-link">See the farming models →</Link>
+                <Link to="/contract-farming" className="panel-link">{t('equipment.setups.link')}</Link>
               </MItem>
             ))}
           </MStagger>
@@ -236,16 +229,16 @@ export default function Equipment() {
       <section>
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">How It Works</span>
-            <h2>From requirement to a running farm</h2>
-            <p>A structured five-step path — no guesswork between enquiry and a working shed.</p>
+            <span className="eyebrow">{t('equipment.how.eyebrow')}</span>
+            <h2>{t('equipment.how.heading')}</h2>
+            <p>{t('equipment.how.text')}</p>
           </MReveal>
           <MStagger className="steps steps-5">
-            {STEPS.map(([num, title, text]) => (
-              <MItem key={num} className="step">
-                <div className="num">{num}</div>
-                <h3>{title}</h3>
-                <p>{text}</p>
+            {steps.map((s, i) => (
+              <MItem key={s.title} className="step">
+                <div className="num">{String(i + 1).padStart(2, '0')}</div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
               </MItem>
             ))}
           </MStagger>
@@ -256,21 +249,21 @@ export default function Equipment() {
       <section className="alt">
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Common Questions</span>
-            <h2>Equipment, answered</h2>
+            <span className="eyebrow">{t('equipment.faq.eyebrow')}</span>
+            <h2>{t('equipment.faq.heading')}</h2>
           </MReveal>
           <MReveal className="faq">
-            {FAQ.map(([q, a]) => (
-              <details key={q}>
-                <summary>{q}</summary>
-                <p>{a}</p>
+            {faqItems.map((f) => (
+              <details key={f.q}>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
               </details>
             ))}
           </MReveal>
           <MiniCta
-            title="From requirement to installation"
-            text="Tell us your bird capacity, farm size, farming model and equipment requirement — and our team can help develop the appropriate farm setup."
-            cta="Enquire for Equipment"
+            title={t('equipment.cta.title')}
+            text={t('equipment.cta.text')}
+            cta={t('equipment.cta.cta')}
             source="Equipment Enquiry"
           />
         </div>

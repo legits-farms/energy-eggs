@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { LocaleLink as Link } from '../components/LocaleLink'
 import Reveal from '../components/Reveal'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
@@ -17,85 +18,45 @@ const HERO_SLIDES = [
   { src: slideFarm, pos: 'center 55%' },
 ]
 
-const SERVE = [
-  ['Restaurants', 'Reliable poultry and egg supply for daily kitchen requirements.'],
-  ['Hotels & Resorts', 'Scheduled supply with defined specifications.'],
-  ['QSR Chains', 'Predictable volumes and standardized procurement.'],
-  ['Meat Retailers', 'Whole birds and specialty desi poultry.'],
-  ['Distributors', 'Wholesale supply for regional markets.'],
-  ['Caterers', 'Bulk requirements for events and institutional catering.'],
-  ['Supermarkets', 'Egg and poultry programmes according to retail requirements.'],
-  ['Food Businesses', 'Structured procurement for recurring poultry requirements.'],
-]
+// Static per-item routes (not translatable) — merged by index with the
+// translated title/text arrays from i18n at render time.
+const SUPPLY_LINKS = ['/birds', '/eggs', '/feed', '/equipment', '/farm-development']
 
-const SUPPLY_RANGE: [name: string, text: string, to: string][] = [
-  ['Desi Birds', 'Sonali, Aseel, Kadaknath and Fiyoumi — live birds supplied at B2B scale.', '/birds'],
-  ['Desi Eggs', 'Graded specialty eggs with tiered ex-farm pricing and processing options.', '/eggs'],
-  ['Poultry Feed', 'Feed programmes to support consistent bird performance.', '/feed'],
-  ['Equipment', 'Poultry equipment for farm setup and expansion.', '/equipment'],
-  ['Farm Development', 'End-to-end support for developing productive desi poultry farms.', '/farm-development'],
-]
-
-const PROCUREMENT_STEPS = [
-  ['01', 'Select', 'Birds / Eggs / Equipment / Farm Development'],
-  ['02', 'Define', 'Quantity • Breed • Specifications • Farming model • Location'],
-  ['03', 'Plan', 'Daily / Weekly / Monthly / Contract requirement'],
-  ['04', 'Quote', 'Our B2B team develops a commercial proposal.'],
-  ['05', 'Supply', 'Scheduled procurement and delivery according to the agreed programme.'],
-]
-
-const ENGAGEMENT: [name: string, tag: string, text: string][] = [
-  ['Spot Orders', 'Start here', 'One-time bulk orders at published rate-card prices. Minimum order quantities apply — a straightforward way to evaluate our quality and service.'],
-  ['Scheduled Supply', 'Grow with us', 'Recurring daily, weekly or monthly deliveries against an agreed schedule, specification and price. Built for kitchens and retailers that depend on consistency.'],
-  ['Volume Commitment', 'Best pricing', 'Commit a monthly volume and unlock a preferential price slab with priority supply assurance. Our deepest partnership model for serious buyers.'],
-]
-
-const QUALITY = [
-  ['Source', 'Understanding where birds and eggs originate.'],
-  ['Production', 'Defined farming and production programmes.'],
-  ['Quality Control', 'Documented handling and quality processes applicable to the product.'],
-  ['Batch Visibility', 'Maintaining source and batch information where supported.'],
-  ['Supply', 'Structured procurement and delivery programmes.'],
-]
-
-const WHY_PARTNER = [
-  ['Ecosystem Depth', 'Birds, eggs, feed, equipment and farm development — one partner across the desi poultry chain.'],
-  ['Transparent Pricing', 'Published rate cards for birds and eggs, so you always know where your price comes from.'],
-  ['Supply Assurance', 'Committed volumes let us plan production — and protect your supply when markets tighten.'],
-  ['B2B-First Design', 'No retail catalogue mindset. Programmes are structured around your specification, volume and delivery.'],
-]
-
-const FAQ: [q: string, a: string][] = [
-  ['What are the minimum order quantities?', 'For country chicken, the minimum order is 10 birds — orders below 10 birds are billed per kg at the applicable breed rate. Egg programmes start from a monthly commitment of 5,000 eggs.'],
-  ['How does egg pricing work?', 'Egg prices are ex-farm, per egg, and tiered by your monthly commitment — from 5,000 eggs per month up to 100,000+, where pricing is fully custom. Processing add-ons (washing, grading, packing) are charged per egg on top.'],
-  ['Which breeds do you supply?', 'We focus on four desi categories: Sonali, Aseel, Kadaknath and Fiyoumi, plus quail. Live bird rates are published by age from day-old chicks to fully grown birds, for both male and female.'],
-  ['Can you do custom packing or private label?', 'Yes. Custom packing, branding and private label options are available for bulk orders. Washed, graded and packed eggs are supplied retail-ready.'],
-  ['What is the Volume Commitment program?', 'You commit a monthly purchase volume and receive a preferential price slab with priority supply. Tolerance is 90%, and a 25% Commitment Advance is collected against the agreed volume. If we cannot fulfil your committed volume, your agreed price remains protected.'],
-  ['How do I get a commercial quote?', 'Send us your requirement — product, quantity, breed or grade, processing and packing needs, delivery frequency and location. Our B2B team responds with a structured commercial proposal.'],
-]
+type TextPair = { title: string; text: string }
+type StepItem = { title: string; text: string }
+type EngagementItem = { tag: string; title: string; text: string }
+type FaqItem = { q: string; a: string }
 
 export default function B2BSupply() {
+  const { t } = useTranslation()
+  const serveItems = t('b2bSupply.serve.items', { returnObjects: true }) as TextPair[]
+  const supplyItems = t('b2bSupply.supplyRange.items', { returnObjects: true }) as TextPair[]
+  const steps = t('b2bSupply.how.steps', { returnObjects: true }) as StepItem[]
+  const engagementItems = t('b2bSupply.engagement.items', { returnObjects: true }) as EngagementItem[]
+  const birdsItems = t('b2bSupply.rateSnapshot.birdsItems', { returnObjects: true }) as string[]
+  const eggsItems = t('b2bSupply.rateSnapshot.eggsItems', { returnObjects: true }) as string[]
+  const whyPartner = t('b2bSupply.whyPartner.items', { returnObjects: true }) as TextPair[]
+  const qualityItems = t('b2bSupply.quality.items', { returnObjects: true }) as TextPair[]
+  const faqItems = t('b2bSupply.faq.items', { returnObjects: true }) as FaqItem[]
+
   return (
     <>
-      <PageHero eyebrow="B2B Procurement" title={<>Tell us what you need. We build the supply <span>around it.</span></>} slides={HERO_SLIDES}>
-        <p>
-          Every business has a different requirement. That's why Energy Eggs is designed around
-          commercial procurement rather than a one-size-fits-all catalogue.
-        </p>
+      <PageHero eyebrow={t('b2bSupply.hero.eyebrow')} title={<>{t('b2bSupply.hero.titlePre')}<span>{t('b2bSupply.hero.titleSpan')}</span></>} slides={HERO_SLIDES}>
+        <p>{t('b2bSupply.hero.text')}</p>
       </PageHero>
 
       {/* WHO WE SERVE */}
       <section>
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">Who We Serve</span>
-            <h2>Built for businesses that depend on supply</h2>
+            <span className="eyebrow">{t('b2bSupply.serve.eyebrow')}</span>
+            <h2>{t('b2bSupply.serve.heading')}</h2>
           </Reveal>
           <div className="features features-4">
-            {SERVE.map(([name, text]) => (
-              <Reveal key={name} className="feature">
-                <h3>{name}</h3>
-                <p>{text}</p>
+            {serveItems.map((s) => (
+              <Reveal key={s.title} className="feature">
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
               </Reveal>
             ))}
           </div>
@@ -106,17 +67,17 @@ export default function B2BSupply() {
       <section className="alt">
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">What We Supply</span>
-            <h2>One partner. The whole ecosystem.</h2>
-            <p>Procure across the desi poultry chain through a single B2B relationship.</p>
+            <span className="eyebrow">{t('b2bSupply.supplyRange.eyebrow')}</span>
+            <h2>{t('b2bSupply.supplyRange.heading')}</h2>
+            <p>{t('b2bSupply.supplyRange.text')}</p>
           </Reveal>
           <div className="features features-5">
-            {SUPPLY_RANGE.map(([name, text, to]) => (
-              <Reveal key={name} className="feature feature-link">
-                <Link to={to}>
-                  <h3>{name}</h3>
-                  <p>{text}</p>
-                  <span className="feature-more">Explore →</span>
+            {supplyItems.map((s, i) => (
+              <Reveal key={s.title} className="feature feature-link">
+                <Link to={SUPPLY_LINKS[i]}>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                  <span className="feature-more">{t('b2bSupply.supplyRange.explore')}</span>
                 </Link>
               </Reveal>
             ))}
@@ -128,19 +89,19 @@ export default function B2BSupply() {
       <section>
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">How It Works</span>
-            <h2>From requirement to scheduled supply</h2>
+            <span className="eyebrow">{t('b2bSupply.how.eyebrow')}</span>
+            <h2>{t('b2bSupply.how.heading')}</h2>
           </Reveal>
           <div className="steps steps-5">
-            {PROCUREMENT_STEPS.map(([num, title, text]) => (
-              <Reveal key={num} className="step">
-                <div className="num">{num}</div>
-                <h3>{title}</h3>
-                <p>{text}</p>
+            {steps.map((s, i) => (
+              <Reveal key={s.title} className="step">
+                <div className="num">{String(i + 1).padStart(2, '0')}</div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
               </Reveal>
             ))}
           </div>
-          <MiniCta center cta="Request a Commercial Quote" source="B2B Supply" />
+          <MiniCta center cta={t('b2bSupply.how.ctaLabel')} source="B2B Supply" />
         </div>
       </section>
 
@@ -148,16 +109,16 @@ export default function B2BSupply() {
       <section className="alt">
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">Ways To Work With Us</span>
-            <h2>Three levels of partnership</h2>
-            <p>Start with a spot order, grow into a schedule, commit for the best terms.</p>
+            <span className="eyebrow">{t('b2bSupply.engagement.eyebrow')}</span>
+            <h2>{t('b2bSupply.engagement.heading')}</h2>
+            <p>{t('b2bSupply.engagement.text')}</p>
           </Reveal>
           <div className="cards-3">
-            {ENGAGEMENT.map(([name, tag, text]) => (
-              <Reveal key={name} className="breed-card">
-                <span className="eyebrow">{tag}</span>
-                <h3>{name}</h3>
-                <p>{text}</p>
+            {engagementItems.map((e) => (
+              <Reveal key={e.title} className="breed-card">
+                <span className="eyebrow">{e.tag}</span>
+                <h3>{e.title}</h3>
+                <p>{e.text}</p>
               </Reveal>
             ))}
           </div>
@@ -171,28 +132,24 @@ export default function B2BSupply() {
       <section className="alt">
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">Commercial Snapshot</span>
-            <h2>Transparent, published pricing</h2>
-            <p>Headline numbers from our current rate cards — full details on the product pages.</p>
+            <span className="eyebrow">{t('b2bSupply.rateSnapshot.eyebrow')}</span>
+            <h2>{t('b2bSupply.rateSnapshot.heading')}</h2>
+            <p>{t('b2bSupply.rateSnapshot.text')}</p>
           </Reveal>
           <div className="cards-2">
             <Reveal className="panel">
-              <h3>Desi Birds</h3>
+              <h3>{t('b2bSupply.rateSnapshot.birdsTitle')}</h3>
               <ul className="story-list">
-                <li><span className="chk">✓</span> Sonali ₹500/kg · Aseel ₹700/kg · Kadaknath ₹750/kg · Fiyoumi ₹1,500/kg</li>
-                <li><span className="chk">✓</span> Per-bird rates published by age — day-old chicks to 20+ weeks, male and female.</li>
-                <li><span className="chk">✓</span> Minimum order 10 birds; smaller orders billed per kg.</li>
+                {birdsItems.map((b) => <li key={b}><span className="chk">✓</span> {b}</li>)}
               </ul>
-              <Link to="/birds" className="panel-link">View full bird rate card →</Link>
+              <Link to="/birds" className="panel-link">{t('b2bSupply.rateSnapshot.birdsLink')}</Link>
             </Reveal>
             <Reveal className="panel">
-              <h3>Desi Eggs</h3>
+              <h3>{t('b2bSupply.rateSnapshot.eggsTitle')}</h3>
               <ul className="story-list">
-                <li><span className="chk">✓</span> Ex-farm prices from ₹10.75 to ₹12.00 per egg, tiered by monthly commitment.</li>
-                <li><span className="chk">✓</span> Processing add-ons from ₹0.00 (unwashed) to ₹1.05 (washed, graded &amp; packed) — plus packing material at cost.</li>
-                <li><span className="chk">✓</span> Custom pricing at 100,000+ eggs per month; private label available.</li>
+                {eggsItems.map((e) => <li key={e}><span className="chk">✓</span> {e}</li>)}
               </ul>
-              <Link to="/eggs" className="panel-link">View full egg rate card →</Link>
+              <Link to="/eggs" className="panel-link">{t('b2bSupply.rateSnapshot.eggsLink')}</Link>
             </Reveal>
           </div>
         </div>
@@ -202,15 +159,15 @@ export default function B2BSupply() {
       <section className="values">
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">Why Energy Eggs</span>
-            <h2>A supply partner, not just a supplier</h2>
+            <span className="eyebrow">{t('b2bSupply.whyPartner.eyebrow')}</span>
+            <h2>{t('b2bSupply.whyPartner.heading')}</h2>
           </Reveal>
           <div className="vgrid">
-            {WHY_PARTNER.map(([name, text], i) => (
-              <Reveal key={name} className="value">
+            {whyPartner.map((w, i) => (
+              <Reveal key={w.title} className="value">
                 <div className="num">0{i + 1}</div>
-                <h3>{name}</h3>
-                <p>{text}</p>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
               </Reveal>
             ))}
           </div>
@@ -221,15 +178,15 @@ export default function B2BSupply() {
       <section>
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">Quality &amp; Traceability</span>
-            <h2>Quality is a system. Not a slogan.</h2>
-            <p>Energy Eggs is building systems around every step of the supply chain.</p>
+            <span className="eyebrow">{t('b2bSupply.quality.eyebrow')}</span>
+            <h2>{t('b2bSupply.quality.heading')}</h2>
+            <p>{t('b2bSupply.quality.text')}</p>
           </Reveal>
           <div className="features features-5">
-            {QUALITY.map(([name, text]) => (
-              <Reveal key={name} className="feature">
-                <h3>{name}</h3>
-                <p>{text}</p>
+            {qualityItems.map((q) => (
+              <Reveal key={q.title} className="feature">
+                <h3>{q.title}</h3>
+                <p>{q.text}</p>
               </Reveal>
             ))}
           </div>
@@ -240,21 +197,21 @@ export default function B2BSupply() {
       <section className="alt">
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">Common Questions</span>
-            <h2>B2B procurement, answered</h2>
+            <span className="eyebrow">{t('b2bSupply.faq.eyebrow')}</span>
+            <h2>{t('b2bSupply.faq.heading')}</h2>
           </Reveal>
           <Reveal className="faq">
-            {FAQ.map(([q, a]) => (
-              <details key={q}>
-                <summary>{q}</summary>
-                <p>{a}</p>
+            {faqItems.map((f) => (
+              <details key={f.q}>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
               </details>
             ))}
           </Reveal>
           <MiniCta
-            title="Still have a question?"
-            text="Tell us about your business and requirement — our B2B team will walk you through pricing, programmes and terms."
-            cta="Talk to the B2B Team"
+            title={t('b2bSupply.finalCta.title')}
+            text={t('b2bSupply.finalCta.text')}
+            cta={t('b2bSupply.finalCta.cta')}
             source="B2B Supply"
           />
         </div>

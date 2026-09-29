@@ -1,13 +1,23 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { submitEnquiry } from '../lib/enquiryApi'
 import { nameError, onlyDigits, phoneError } from '../lib/validation'
 
-const INTERESTS = [
+// Canonical (English) values sent to the backend — stay stable regardless of
+// UI language so the admin dashboard's data is always consistent.
+const INTEREST_VALUES = [
   'Whole Birds', 'Desi Eggs', 'Poultry Equipment', 'Farm Construction',
   'Pasture Farm Planning', 'Contract Farming', 'Farmer Partnership', 'B2B Distribution',
 ]
+const BREED_VALUES = ['Sonali', 'Aseel', 'Kadaknath', 'Fiyoumi', 'Quail', 'Other']
+const QUANTITY_VALUES = ['Daily', 'Weekly', 'Monthly', 'Contract']
 
 export default function EnquiryForm() {
+  const { t } = useTranslation()
+  const interestLabels = t('contact.form.interests', { returnObjects: true }) as string[]
+  const breedLabels = t('contact.form.breeds', { returnObjects: true }) as string[]
+  const quantityLabels = t('contact.form.quantities', { returnObjects: true }) as string[]
+
   const [interests, setInterests] = useState<string[]>([])
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -47,8 +57,8 @@ export default function EnquiryForm() {
   if (status === 'sent') {
     return (
       <div className="enquiry enquiry-sent">
-        <h3>Enquiry received ✓</h3>
-        <p>Thanks{name ? `, ${name}` : ''}! Our B2B team will get back to you shortly with availability and a structured quote.</p>
+        <h3>{t('contact.form.sentTitle')}</h3>
+        <p>{t('contact.form.sentText', { namePart: name ? `, ${name}` : '' })}</p>
       </div>
     )
   }
@@ -56,39 +66,39 @@ export default function EnquiryForm() {
   return (
     <form className="enquiry" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
       <fieldset className="enq-block">
-        <legend>I am interested in</legend>
+        <legend>{t('contact.form.interestedIn')}</legend>
         <div className="check-grid">
-          {INTERESTS.map((i) => (
+          {INTEREST_VALUES.map((i, idx) => (
             <label key={i} className={`check ${interests.includes(i) ? 'on' : ''}`}>
               <input
                 type="checkbox"
                 checked={interests.includes(i)}
                 onChange={() => toggleInterest(i)}
               />
-              {i}
+              {interestLabels[idx]}
             </label>
           ))}
         </div>
       </fieldset>
 
       <fieldset className="enq-block">
-        <legend>My requirement</legend>
+        <legend>{t('contact.form.myRequirement')}</legend>
         <div className="field-grid">
           <label>
-            Your Name
+            {t('contact.form.yourName')}
             <input
               type="text"
               value={name}
-              placeholder="Full name"
+              placeholder={t('contact.form.fullName')}
               required
               className={touched.name && errors.name ? 'field-invalid' : ''}
               onChange={(e) => setName(e.target.value)}
-              onBlur={() => setTouched((t) => ({ ...t, name: true }))}
+              onBlur={() => setTouched((t2) => ({ ...t2, name: true }))}
             />
             {touched.name && errors.name && <span className="field-error">{errors.name}</span>}
           </label>
           <label>
-            Phone
+            {t('contact.form.phone')}
             <input
               type="tel"
               inputMode="numeric"
@@ -98,50 +108,42 @@ export default function EnquiryForm() {
               maxLength={13}
               className={touched.phone && errors.phone ? 'field-invalid' : ''}
               onChange={(e) => setPhone(onlyDigits(e.target.value))}
-              onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
+              onBlur={() => setTouched((t2) => ({ ...t2, phone: true }))}
             />
             {touched.phone && errors.phone && <span className="field-error">{errors.phone}</span>}
           </label>
           <label>
-            Breed
+            {t('contact.form.breed')}
             <select value={breed} onChange={(e) => setBreed(e.target.value)}>
-              <option>Sonali</option>
-              <option>Aseel</option>
-              <option>Kadaknath</option>
-              <option>Fiyoumi</option>
-              <option>Quail</option>
-              <option>Other</option>
+              {BREED_VALUES.map((b, idx) => <option key={b} value={b}>{breedLabels[idx]}</option>)}
             </select>
           </label>
           <label>
-            Quantity
+            {t('contact.form.quantity')}
             <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
-              <option>Daily</option>
-              <option>Weekly</option>
-              <option>Monthly</option>
-              <option>Contract</option>
+              {QUANTITY_VALUES.map((q, idx) => <option key={q} value={q}>{quantityLabels[idx]}</option>)}
             </select>
           </label>
           <label>
-            Location
-            <input type="text" value={location} placeholder="City / District / State" onChange={(e) => setLocation(e.target.value)} />
+            {t('contact.form.location')}
+            <input type="text" value={location} placeholder={t('contact.form.locationPlaceholder')} onChange={(e) => setLocation(e.target.value)} />
           </label>
           <label>
-            Business Type
-            <input type="text" value={businessType} placeholder="Restaurant, retailer, distributor…" onChange={(e) => setBusinessType(e.target.value)} />
+            {t('contact.form.businessType')}
+            <input type="text" value={businessType} placeholder={t('contact.form.businessTypePlaceholder')} onChange={(e) => setBusinessType(e.target.value)} />
           </label>
           <label className="full">
-            Additional Requirements
-            <textarea rows={4} value={notes} placeholder="Volumes, specifications, delivery frequency, timelines…" onChange={(e) => setNotes(e.target.value)} />
+            {t('contact.form.additionalRequirements')}
+            <textarea rows={4} value={notes} placeholder={t('contact.form.additionalPlaceholder')} onChange={(e) => setNotes(e.target.value)} />
           </label>
         </div>
       </fieldset>
 
       <button type="submit" className="btn btn-lg" disabled={status === 'sending' || (Object.values(touched).some(Boolean) && !isValid)}>
-        {status === 'sending' ? 'Sending…' : 'Get a B2B Quote'}
+        {status === 'sending' ? t('contact.form.sending') : t('contact.form.submit')}
       </button>
       {status === 'error' && (
-        <p className="enq-error">Something went wrong sending your enquiry. Please try again, or call us directly.</p>
+        <p className="enq-error">{t('contact.form.error')}</p>
       )}
     </form>
   )

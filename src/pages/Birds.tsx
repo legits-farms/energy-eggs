@@ -1,65 +1,68 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import Reveal from '../components/Reveal'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import RateActions from '../components/RateActions'
+import LockGate from '../components/LockGate'
 import { BIRD_RATE_CARDS as RATE_CARDS } from '../data/rates'
 import sonaliImg from '../assets/sonali.jpg'
 import aseelImg from '../assets/aseel.png'
 import kadaknathImg from '../assets/kadaknath.png'
 import fiyoumiImg from '../assets/fiyoumi.png'
 
-const BREEDS = [
-  ['Sonali', '₹500 /kg', 'A commercially relevant coloured-bird category for broader poultry programmes.', sonaliImg],
-  ['Aseel', '₹700 /kg', 'A distinctive desi poultry category with strong traditional and culinary positioning.', aseelImg],
-  ['Kadaknath', '₹750 /kg', 'An indigenous breed positioned for specialty and premium poultry markets.', kadaknathImg],
-  ['Fiyoumi', '₹1,500 /kg', 'A rare specialty breed for premium and niche poultry programmes.', fiyoumiImg],
+// Name/rate/image are static (proper nouns, currency, assets) — merged by
+// index with the translated description text from i18n at render time.
+const BREED_META = [
+  ['Sonali', '₹500 /kg', sonaliImg],
+  ['Aseel', '₹700 /kg', aseelImg],
+  ['Kadaknath', '₹750 /kg', kadaknathImg],
+  ['Fiyoumi', '₹1,500 /kg', fiyoumiImg],
 ]
 
-const BIRD_CUSTOMERS = [
-  'Meat retailers', 'Restaurants', 'Hotels', 'QSRs', 'Caterers', 'Distributors',
-  'Poultry businesses', 'Institutional buyers', 'Food businesses',
-]
+type BreedItem = { text: string }
 
 export default function Birds() {
+  const { t } = useTranslation()
+  const breedItems = t('birds.breeds.items', { returnObjects: true }) as BreedItem[]
+  const customers = t('birds.breeds.customers', { returnObjects: true }) as string[]
+  const chips = t('birds.rateCard.chips', { returnObjects: true }) as string[]
+
   const [active, setActive] = useState(0)
   const card = RATE_CARDS[active]
 
   return (
     <>
-      <PageHero eyebrow="Whole Bird Supply" title={<>Desi birds. At <span>B2B scale.</span></>}>
-        <p>
-          Energy Eggs supplies whole birds to B2B customers looking for reliable access to
-          specialty desi poultry.
-        </p>
+      <PageHero eyebrow={t('birds.hero.eyebrow')} title={<>{t('birds.hero.titlePre')}<span>{t('birds.hero.titleSpan')}</span></>}>
+        <p>{t('birds.hero.text')}</p>
       </PageHero>
 
-      <RateActions title="Bird Rate Card" />
+      <RateActions title={t('birds.rateCardTitle')} />
 
       <section>
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">Our Breeds</span>
-            <h2>Four focused desi categories</h2>
-            <p>Traditionally raised. Naturally stronger. Exceptionally nutritious.</p>
+            <span className="eyebrow">{t('birds.breeds.eyebrow')}</span>
+            <h2>{t('birds.breeds.heading')}</h2>
+            <p>{t('birds.breeds.text')}</p>
           </Reveal>
           <div className="cards-2">
-            {BREEDS.map(([name, rate, text, img]) => (
+            {BREED_META.map(([name, rate, img], i) => (
               <Reveal key={name} className="breed-card has-img">
                 <div className="breed-img">
                   <img src={img} alt={`${name} bird`} loading="lazy" />
                 </div>
                 <div>
                   <h3>{name} <span className="breed-rate">{rate}</span></h3>
-                  <p>{text}</p>
+                  <p>{breedItems[i].text}</p>
                 </div>
               </Reveal>
             ))}
           </div>
           <Reveal className="chip-row">
-            <h4>B2B Customers</h4>
+            <h4>{t('birds.breeds.customersHeading')}</h4>
             <div className="chips">
-              {BIRD_CUSTOMERS.map((c) => <span key={c} className="pill">{c}</span>)}
+              {customers.map((c) => <span key={c} className="pill">{c}</span>)}
             </div>
           </Reveal>
         </div>
@@ -68,9 +71,9 @@ export default function Birds() {
       <section className="alt">
         <div className="wrap">
           <Reveal className="sec-head">
-            <span className="eyebrow">Country Chicken Rate Card</span>
-            <h2>Live bird rates by age</h2>
-            <p>Per-bird rates from day-old chicks to fully grown birds, for male and female.</p>
+            <span className="eyebrow">{t('birds.rateCard.eyebrow')}</span>
+            <h2>{t('birds.rateCard.heading')}</h2>
+            <p>{t('birds.rateCard.text')}</p>
           </Reveal>
 
           <Reveal className="rate-tabs">
@@ -86,19 +89,26 @@ export default function Birds() {
             ))}
           </Reveal>
 
+          <LockGate
+            storageKey="ee-rates-unlocked"
+            source="Rate Card Download"
+            interest="Rate Card"
+            heading={t('rateCardPage.locked.heading')}
+            text={t('rateCardPage.locked.text')}
+          >
           <Reveal className="rate-card model">
             <div className="model-top">
               <h3>{card.name}</h3>
-              <p>Rate (₹) per bird · For orders less than 10 birds: {card.perKg}</p>
+              <p>{t('birds.rateCard.ratePerBird', { perKg: card.perKg })}</p>
             </div>
             <div className="rate-table-wrap">
               <table className="spec-table">
                 <thead>
                   <tr>
-                    <th>Week</th>
-                    <th>Age (Days)</th>
-                    <th>Male (₹)</th>
-                    <th>Female (₹)</th>
+                    <th>{t('birds.rateCard.tableWeek')}</th>
+                    <th>{t('birds.rateCard.tableAge')}</th>
+                    <th>{t('birds.rateCard.tableMale')}</th>
+                    <th>{t('birds.rateCard.tableFemale')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -114,20 +124,18 @@ export default function Birds() {
               </table>
             </div>
           </Reveal>
+          </LockGate>
 
           <Reveal className="chip-row">
             <div className="chips">
-              <span className="pill">Minimum order: 10 birds</span>
-              <span className="pill">Orders under 10 birds billed per kg</span>
-              <span className="pill">Fiyoumi: ₹1,500 per kg</span>
-              <span className="pill">Quail (male): ₹200 per piece</span>
+              {chips.map((c) => <span key={c} className="pill">{c}</span>)}
             </div>
           </Reveal>
 
           <MiniCta
-            title="Need regular supply?"
-            text="Tell us your requirement and our B2B team can develop a supply programme around your volume and specifications."
-            cta="Request B2B Pricing"
+            title={t('birds.cta.title')}
+            text={t('birds.cta.text')}
+            cta={t('birds.cta.cta')}
             source="Birds Enquiry"
           />
         </div>

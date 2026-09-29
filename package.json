@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "framer-motion": "^13.4.1",
+    "i18next": "^26.4.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-i18next": "^17.0.15",
     "react-router-dom": "^7.18.4"
   },
   "devDependencies": {

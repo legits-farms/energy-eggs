@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 import { MotionConfig } from 'framer-motion'
 import { MItem, MReveal, MStagger } from '../components/Motion'
 import PageHero from '../components/PageHero'
@@ -24,19 +25,20 @@ function printCard(target: 'birds' | 'eggs') {
   setTimeout(() => window.print(), 40)
 }
 
-async function shareRateCard(title: string) {
+async function shareRateCard(title: string, copiedMessage: string) {
   const url = window.location.href
   const data = { title: `Energy Eggs — ${title}`, text: `Energy Eggs published ${title.toLowerCase()}.`, url }
   if (typeof navigator !== 'undefined' && navigator.share) {
     try { await navigator.share(data) } catch { /* cancelled */ }
   } else {
-    try { await navigator.clipboard.writeText(url); alert('Link copied to clipboard') }
+    try { await navigator.clipboard.writeText(url); alert(copiedMessage) }
     catch { window.open(`https://wa.me/?text=${encodeURIComponent(`${data.text} ${url}`)}`, '_blank') }
   }
 }
 
 
 function Locked({ unlocked, onUnlock, children }: { unlocked: boolean; onUnlock: () => void; children: ReactNode }) {
+  const { t } = useTranslation()
   if (unlocked) return <>{children}</>
   return (
     <div className="rate-lock">
@@ -46,9 +48,9 @@ function Locked({ unlocked, onUnlock, children }: { unlocked: boolean; onUnlock:
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <rect x="4.5" y="10.5" width="15" height="10" rx="2" /><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
           </svg>
-          <h4>View our live B2B rates</h4>
-          <p>Enter a few details to unlock the full rate card and download the PDF.</p>
-          <button type="button" className="btn" onClick={onUnlock}>View the Rates</button>
+          <h4>{t('rateCardPage.locked.heading')}</h4>
+          <p>{t('rateCardPage.locked.text')}</p>
+          <button type="button" className="btn" onClick={onUnlock}>{t('rateCardPage.locked.button')}</button>
         </div>
       </div>
     </div>
@@ -56,6 +58,9 @@ function Locked({ unlocked, onUnlock, children }: { unlocked: boolean; onUnlock:
 }
 
 export default function RateCard() {
+  const { t } = useTranslation()
+  const heroChips = t('rateCardPage.hero.chips', { returnObjects: true }) as string[]
+  const eggChips = t('rateCardPage.egg.chips', { returnObjects: true }) as string[]
   const { birdCards, birdNotes, eggRates, processing } = useLiveRates()
   const [active, setActive] = useState(0)
   const [modal, setModal] = useState<QuoteKind | null>(null)
@@ -74,10 +79,10 @@ export default function RateCard() {
   const requestUnlock = (after?: () => void) => open({
     source: 'Rate Card Download',
     interest: 'Rate Card',
-    title: 'Unlock the live rate card',
-    subtitle: 'Enter your details to view and download our full B2B rates.',
-    submitLabel: 'View the Rates',
-    sentText: 'Rates unlocked — you can now view and download the full rate card.',
+    title: t('rateCardPage.unlockModal.title'),
+    subtitle: t('rateCardPage.unlockModal.subtitle'),
+    submitLabel: t('rateCardPage.unlockModal.submitLabel'),
+    sentText: t('rateCardPage.unlockModal.sentText'),
     onSubmitted: () => { unlock(); after?.() },
   })
 
@@ -89,8 +94,9 @@ export default function RateCard() {
 
   // Share: same lead gate — collect details first, then open the share sheet.
   const gatedShare = (label: string) => {
-    if (unlocked) { void shareRateCard(label); return }
-    requestUnlock(() => { void shareRateCard(label) })
+    const copied = t('rateCardPage.share.copied')
+    if (unlocked) { void shareRateCard(label, copied); return }
+    requestUnlock(() => { void shareRateCard(label, copied) })
   }
 
   useEffect(() => {
@@ -101,15 +107,10 @@ export default function RateCard() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <PageHero eyebrow="Published Rate Card" title={<>Every rate. <span>One page.</span></>}>
-        <p>
-          All our B2B prices, published and transparent — live bird rates by breed and age,
-          and ex-farm egg prices tiered by monthly commitment. No guesswork, no negotiation maze.
-        </p>
+      <PageHero eyebrow={t('rateCardPage.hero.eyebrow')} title={<>{t('rateCardPage.hero.titlePre')}<span>{t('rateCardPage.hero.titleSpan')}</span></>}>
+        <p>{t('rateCardPage.hero.text')}</p>
         <div className="chips" style={{ justifyContent: 'center', marginTop: 22 }}>
-          <span className="pill">Bird rates by age</span>
-          <span className="pill">Egg tiers by commitment</span>
-          <span className="pill">Processing add-ons</span>
+          {heroChips.map((c) => <span key={c} className="pill">{c}</span>)}
         </div>
       </PageHero>
 
@@ -117,14 +118,14 @@ export default function RateCard() {
       <div className="print-head print-head-birds" aria-hidden="true">
         <img src={logo} alt="Energy Eggs" />
         <div className="print-head-meta">
-          <strong>Bird Rate Card</strong>
+          <strong>{t('rateCardPage.bird.eyebrow')}</strong>
           <span>www.energyeggs.in · +91 78787 87226 · hello@energyeggs.in</span>
         </div>
       </div>
       <div className="print-head print-head-eggs" aria-hidden="true">
         <img src={logo} alt="Energy Eggs" />
         <div className="print-head-meta">
-          <strong>Egg Rate Card</strong>
+          <strong>{t('rateCardPage.egg.eyebrow')}</strong>
           <span>www.energyeggs.in · +91 78787 87226 · hello@energyeggs.in</span>
         </div>
       </div>
@@ -133,9 +134,9 @@ export default function RateCard() {
       <section id="bird-rates">
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Live Bird Rate Card</span>
-            <h2>Bird rates by age</h2>
-            <p>Per-bird rates from day-old chicks to fully grown birds, for male and female.</p>
+            <span className="eyebrow">{t('rateCardPage.bird.eyebrow')}</span>
+            <h2>{t('rateCardPage.bird.heading')}</h2>
+            <p>{t('rateCardPage.bird.text')}</p>
           </MReveal>
 
           <MReveal className="rate-tabs">
@@ -153,16 +154,16 @@ export default function RateCard() {
           </MReveal>
 
           <MReveal className="card-cta card-cta-actions" style={{ maxWidth: 860 }}>
-            <button type="button" className="btn ghost rate-icon-btn" onClick={() => gatedDownload('birds')} title="Download bird rate card as PDF">
+            <button type="button" className="btn ghost rate-icon-btn" onClick={() => gatedDownload('birds')} title={t('rateCardPage.bird.downloadTitle')}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3v12" /><path d="M8 11l4 4 4-4" /><path d="M4 21h16" /></svg>
-              Download PDF
+              {t('rateCardPage.bird.downloadPdf')}
             </button>
-            <button type="button" className="btn ghost rate-icon-btn" onClick={() => gatedShare('Bird Rate Card')} title="Share the bird rate card">
+            <button type="button" className="btn ghost rate-icon-btn" onClick={() => gatedShare(t('birds.rateCardTitle'))} title={t('rateCardPage.bird.shareTitle')}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" /></svg>
-              Share
+              {t('rateCardPage.bird.share')}
             </button>
             <button type="button" className="btn" onClick={() => setModal('birds')}>
-              Get the Birds
+              {t('rateCardPage.bird.getBirds')}
             </button>
           </MReveal>
 
@@ -172,11 +173,11 @@ export default function RateCard() {
               <div key={c.name} className="rate-card model">
                 <div className="model-top">
                   <h3>{c.name}</h3>
-                  <p>Rate (₹) per bird · For orders less than 10 birds: {c.perKg}</p>
+                  <p>{t('rateCardPage.bird.ratePerBird', { perKg: c.perKg })}</p>
                 </div>
                 <table className="spec-table">
                   <thead>
-                    <tr><th>Week</th><th>Age (Days)</th><th>Male (₹)</th><th>Female (₹)</th></tr>
+                    <tr><th>{t('rateCardPage.table.week')}</th><th>{t('rateCardPage.table.age')}</th><th>{t('rateCardPage.table.male')}</th><th>{t('rateCardPage.table.female')}</th></tr>
                   </thead>
                   <tbody>
                     {c.rows.map(([week, age, male, female]) => (
@@ -196,7 +197,7 @@ export default function RateCard() {
             <div className="model-top model-top-flex">
               <div>
                 <h3>{card.name}</h3>
-                <p>Rate (₹) per bird · For orders less than 10 birds: {card.perKg}</p>
+                <p>{t('rateCardPage.bird.ratePerBird', { perKg: card.perKg })}</p>
               </div>
               {BREED_IMAGES[card.name] && (
                 <div className="model-top-bird">
@@ -208,10 +209,10 @@ export default function RateCard() {
               <table className="spec-table">
                 <thead>
                   <tr>
-                    <th>Week</th>
-                    <th>Age (Days)</th>
-                    <th>Male (₹)</th>
-                    <th>Female (₹)</th>
+                    <th>{t('rateCardPage.table.week')}</th>
+                    <th>{t('rateCardPage.table.age')}</th>
+                    <th>{t('rateCardPage.table.male')}</th>
+                    <th>{t('rateCardPage.table.female')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -241,24 +242,22 @@ export default function RateCard() {
       <section className="alt" id="egg-rates">
         <div className="wrap">
           <MReveal className="sec-head">
-            <span className="eyebrow">Egg Rate Card</span>
-            <h2>Ex-farm prices, per egg</h2>
-            <p>
-              Rates tiered by your monthly commitment — the more you commit, the better the rate.
-            </p>
+            <span className="eyebrow">{t('rateCardPage.egg.eyebrow')}</span>
+            <h2>{t('rateCardPage.egg.heading')}</h2>
+            <p>{t('rateCardPage.egg.text')}</p>
           </MReveal>
 
           <MReveal className="card-cta card-cta-actions" style={{ maxWidth: 920 }}>
-            <button type="button" className="btn ghost rate-icon-btn" onClick={() => gatedDownload('eggs')} title="Download egg rate card as PDF">
+            <button type="button" className="btn ghost rate-icon-btn" onClick={() => gatedDownload('eggs')} title={t('rateCardPage.egg.downloadTitle')}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3v12" /><path d="M8 11l4 4 4-4" /><path d="M4 21h16" /></svg>
-              Download PDF
+              {t('rateCardPage.bird.downloadPdf')}
             </button>
-            <button type="button" className="btn ghost rate-icon-btn" onClick={() => gatedShare('Egg Rate Card')} title="Share the egg rate card">
+            <button type="button" className="btn ghost rate-icon-btn" onClick={() => gatedShare(t('eggs.rateCardTitle'))} title={t('rateCardPage.egg.shareTitle')}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" /></svg>
-              Share
+              {t('rateCardPage.bird.share')}
             </button>
             <button type="button" className="btn" onClick={() => setModal('eggs')}>
-              Get the Eggs
+              {t('rateCardPage.egg.getEggs')}
             </button>
           </MReveal>
 
@@ -269,14 +268,14 @@ export default function RateCard() {
               return (
                 <MItem key={commitment} className={`tier${custom ? ' custom' : ''}`}>
                   <div className="tier-range">
-                    <small>Monthly commitment</small>
+                    <small>{t('rateCardPage.egg.monthlyCommitment')}</small>
                     <strong>{commitment}</strong>
-                    <span>eggs / month</span>
+                    <span>{t('rateCardPage.egg.eggsPerMonth')}</span>
                   </div>
                   <div className="tier-prices">
-                    <div className="tp"><small>A-Grade</small><b>{a}</b></div>
-                    <div className="tp"><small>A + B Grade</small><b>{ab}</b></div>
-                    <div className="tp"><small>B Grade</small><b>{b}</b></div>
+                    <div className="tp"><small>{t('rateCardPage.egg.aGrade')}</small><b>{a}</b></div>
+                    <div className="tp"><small>{t('rateCardPage.egg.abGrade')}</small><b>{ab}</b></div>
+                    <div className="tp"><small>{t('rateCardPage.egg.bGrade')}</small><b>{b}</b></div>
                   </div>
                 </MItem>
               )
@@ -284,8 +283,8 @@ export default function RateCard() {
           </MStagger>
 
           <MReveal className="sub-head">
-            <span className="eyebrow">Processing &amp; Add-On Charges</span>
-            <h3>Choose how your eggs arrive</h3>
+            <span className="eyebrow">{t('rateCardPage.egg.addonEyebrow')}</span>
+            <h3>{t('rateCardPage.egg.addonHeading')}</h3>
           </MReveal>
           <MStagger className="addon-grid" gap={0.12}>
             {processing.map(([service, charge, note], i) => (
@@ -301,9 +300,7 @@ export default function RateCard() {
 
           <MReveal className="chip-row">
             <div className="chips">
-              <span className="pill">Custom packing for bulk orders</span>
-              <span className="pill">Branding options</span>
-              <span className="pill">Private label available</span>
+              {eggChips.map((c) => <span key={c} className="pill">{c}</span>)}
             </div>
           </MReveal>
         </div>
@@ -313,9 +310,9 @@ export default function RateCard() {
       <section>
         <div className="wrap">
           <MiniCta
-            title="Ready to order at these rates?"
-            text="Tell us your product, volumes and delivery requirement — our B2B team responds with a structured commercial proposal."
-            cta="Talk to Our B2B Team"
+            title={t('rateCardPage.cta.title')}
+            text={t('rateCardPage.cta.text')}
+            cta={t('rateCardPage.cta.cta')}
             source="B2B Supply"
           />
         </div>
