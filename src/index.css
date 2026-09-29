@@ -698,6 +698,7 @@ footer p{font-size:.92rem;max-width:34ch}
   footer h4{margin-bottom:14px}
   footer a{font-size:.88rem;margin-bottom:2px;padding:6px 0}
   .foot-bottom{flex-direction:column;justify-content:center;text-align:center;gap:10px;padding-top:20px}
+  .foot-breeds{white-space:nowrap;font-size:.78rem;letter-spacing:.01em}
   nav{height:62px}
   .logo img{height:42px}
   .navlinks.open{top:calc(62px + 8px);max-height:calc(100dvh - 90px)}

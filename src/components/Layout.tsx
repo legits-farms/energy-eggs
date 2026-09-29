@@ -227,7 +227,7 @@ export default function Layout() {
           </div>
           <div className="foot-bottom">
             <span>© 2026 Energy Eggs® Pvt Ltd. The B2B Desi Poultry Ecosystem.</span>
-            <span>Sonali · Aseel · Kadaknath · Fiyoumi</span>
+            <span className="foot-breeds">Sonali · Aseel · Kadaknath · Fiyoumi</span>
             <button
               type="button"
               className="to-top"
