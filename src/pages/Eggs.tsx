@@ -4,12 +4,7 @@ import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import RateActions from '../components/RateActions'
 import LockGate from '../components/LockGate'
-import EggMark from '../components/EggMark'
 import { EGG_RATES, PROCESSING_CHARGES } from '../data/rates'
-
-// Shell colors stay static (design tokens, not translatable) — merged by
-// index with the translated title/text arrays from i18n at render time.
-const EGG_SHELLS = ['#F0D5AC', '#4a4547', '#E2B489']
 
 const EGG_ICONS = [
   <svg key="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 19C5 9 12 4 20 4c0 8-5 15-15 15z" /><path d="M5 19c3-6 7-9 11-11" /></svg>,
@@ -44,9 +39,8 @@ export default function Eggs() {
             <h2>{t('eggs.categories.heading')}</h2>
           </Reveal>
           <div className="cards-3">
-            {categoryItems.map((c, i) => (
+            {categoryItems.map((c) => (
               <Reveal key={c.title} className="breed-card egg-card">
-                <div className="egg-badge"><EggMark shell={EGG_SHELLS[i]} /></div>
                 <h3>{c.title}</h3>
                 <p>{c.text}</p>
               </Reveal>

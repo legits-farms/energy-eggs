@@ -6,22 +6,26 @@ import { nameError, onlyDigits, phoneError } from '../lib/validation'
 // Canonical (English) values sent to the backend — stay stable regardless of
 // UI language so the admin dashboard's data is always consistent.
 const INTEREST_VALUES = [
-  'Whole Birds', 'Desi Eggs', 'Poultry Equipment', 'Farm Construction',
-  'Pasture Farm Planning', 'Contract Farming', 'Farmer Partnership', 'B2B Distribution',
+  'Whole Birds', 'Desi Eggs', 'Poultry Feed', 'Poultry Equipment', 'Farm Construction',
+  'Contract Farming', 'Farmer Partnership', 'B2B Distribution',
 ]
-const BREED_VALUES = ['Sonali', 'Aseel', 'Kadaknath', 'Fiyoumi', 'Quail', 'Other']
+const PRODUCT_VALUES = [
+  'Sonali Birds', 'Aseel Birds', 'Kadaknath Birds', 'Fiyoumi Birds', 'Quail',
+  'Sonali Eggs', 'Kadaknath Eggs', 'Aseel Eggs',
+  'Poultry Feed', 'Farm Equipment', 'Not Applicable', 'Other',
+]
 const QUANTITY_VALUES = ['Daily', 'Weekly', 'Monthly', 'Contract']
 
 export default function EnquiryForm() {
   const { t } = useTranslation()
   const interestLabels = t('contact.form.interests', { returnObjects: true }) as string[]
-  const breedLabels = t('contact.form.breeds', { returnObjects: true }) as string[]
+  const productLabels = t('contact.form.products', { returnObjects: true }) as string[]
   const quantityLabels = t('contact.form.quantities', { returnObjects: true }) as string[]
 
   const [interests, setInterests] = useState<string[]>([])
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
-  const [breed, setBreed] = useState('Sonali')
+  const [product, setProduct] = useState('Sonali Birds')
   const [quantity, setQuantity] = useState('Weekly')
   const [location, setLocation] = useState('')
   const [businessType, setBusinessType] = useState('')
@@ -44,7 +48,7 @@ export default function EnquiryForm() {
       phone,
       details: {
         'Interested in': interests.join(', '),
-        Breed: breed,
+        Product: product,
         Quantity: quantity,
         Location: location,
         'Business type': businessType,
@@ -113,9 +117,9 @@ export default function EnquiryForm() {
             {touched.phone && errors.phone && <span className="field-error">{errors.phone}</span>}
           </label>
           <label>
-            {t('contact.form.breed')}
-            <select value={breed} onChange={(e) => setBreed(e.target.value)}>
-              {BREED_VALUES.map((b, idx) => <option key={b} value={b}>{breedLabels[idx]}</option>)}
+            {t('contact.form.product')}
+            <select value={product} onChange={(e) => setProduct(e.target.value)}>
+              {PRODUCT_VALUES.map((p, idx) => <option key={p} value={p}>{productLabels[idx]}</option>)}
             </select>
           </label>
           <label>

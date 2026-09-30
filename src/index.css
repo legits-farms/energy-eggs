@@ -419,7 +419,7 @@ a.pill:hover{border-color:#f0c5a4}
 @media(max-width:560px){
   .cat-grid{grid-template-columns:1fr;gap:14px}
   .cat-head{flex-wrap:wrap}
-  .cat-count{flex-basis:100%;margin-left:54px;margin-top:-4px}
+  .cat-count{flex-basis:100%;margin-left:0;margin-top:6px}
   .item-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px}
   .item-card{padding:12px 6px}
 }
@@ -806,7 +806,7 @@ footer p{font-size:.92rem;max-width:34ch}
 /* ---- CTA call button ---- */
 .cta-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .mini-cta.center .cta-actions{justify-content:center}
-.call-btn{display:inline-flex;align-items:center;gap:8px}
+.call-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px}
 .call-btn svg{width:17px;height:17px;flex:none}
 .modal-call{margin-top:14px;font-size:.86rem;color:var(--brown-soft);text-align:center}
 .modal-call a{color:var(--orange);font-weight:600}
