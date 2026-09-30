@@ -107,16 +107,16 @@
       "headingPre": "Four desi breeds. ",
       "headingScript": "One supply partner.",
       "text": "Traditionally raised, naturally stronger — with transparent, published per-kg rates.",
-      "chips": ["Live bird rates by age — day-old to 20+ weeks", "Minimum order 10 birds", "Quail also available"]
+      "cta": "View Rate Card →"
     },
     "paths": {
       "eyebrow": "Where Do You Fit?",
       "heading": "Three ways into the ecosystem",
       "text": "Whether you buy poultry, farm it, or want to start — there's a structured path for you.",
       "items": [
-        { "tag": "For Buyers", "title": "I want to buy", "text": "Birds, eggs, feed and equipment for restaurants, retailers, distributors and food businesses — with published rate cards and structured supply programmes.", "cta": "Explore B2B Supply →" },
-        { "tag": "For Farmers", "title": "I want to farm", "text": "Partner with Energy Eggs through structured contract farming — fixed-price egg procurement, 15-day payments, flock buyback and full technical support.", "cta": "See Contract Farming →" },
-        { "tag": "For Landowners", "title": "I want to build a farm", "text": "Have land? We help with farm design, shed construction, pasture planning and equipment to develop a productive desi poultry farm.", "cta": "Start Farm Development →" }
+        { "tag": "For Wholesale Buyers", "title": "I want to buy eggs/birds in wholesale", "text": "Birds, eggs, feed and equipment for restaurants, retailers, distributors and food businesses — with published rate cards and structured supply programmes.", "cta": "Explore B2B Supply →" },
+        { "tag": "For Farmers", "title": "I want to do Desi Poultry", "text": "Partner with Energy Eggs through structured contract farming — fixed-price egg procurement, 15-day payments, flock buyback and full technical support.", "cta": "See Contract Farming →" },
+        { "tag": "For Landowners", "title": "I want to lease my farm", "text": "Have land? We help with farm design, shed construction, pasture planning and equipment to develop a productive desi poultry farm.", "cta": "Start Farm Development →" }
       ]
     },
     "why": {
@@ -134,7 +134,7 @@
     "brandPromise": {
       "script": "Nourishing lives. Naturally.",
       "text": "Farm raised, honest food — produced through ethical farming, natural feed and structured quality systems across our own and partner farms.",
-      "values": ["Healthy Birds", "Natural Feed", "Ethical Farming", "Better Taste & Nutrition", "Farm Raised", "Honest Food"],
+      "values": ["Healthy Birds", "Natural Feed", "Ethical Farming", "Better Taste & Nutrition", "Farm Raised"],
       "readStory": "Read our story →"
     },
     "closing": {

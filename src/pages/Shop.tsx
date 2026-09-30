@@ -6,7 +6,7 @@ import { MItem, MReveal, MStagger } from '../components/Motion'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import GetQuoteModal, { type QuoteKind } from '../components/GetQuoteModal'
-import { useLiveProducts, shortUnit } from '../lib/productsApi'
+import { useLiveProducts } from '../lib/productsApi'
 import sonaliImg from '../assets/sonali.jpg'
 import aseelImg from '../assets/aseel.png'
 import kadaknathImg from '../assets/kadaknath.png'
@@ -27,11 +27,11 @@ const EGG_SHELLS: Record<string, string> = {
 const DEFAULT_SHELL = '#F0D5AC'
 
 // Static fallbacks — shown instantly and used if the API is unreachable.
-const BIRD_PRODUCTS: [name: string, option: string, rate: string, note: string, img: string][] = [
-  ['Sonali', 'Sonali Birds', '₹500 /kg', 'Day-old chicks from ₹33 · grown birds priced by age.', sonaliImg],
-  ['Aseel', 'Aseel Birds', '₹700 /kg', 'Day-old chicks from ₹55 · grown birds priced by age.', aseelImg],
-  ['Kadaknath', 'Kadaknath Birds', '₹750 /kg', 'Day-old chicks from ₹55 · grown birds priced by age.', kadaknathImg],
-  ['Fiyoumi', 'Fiyoumi Birds', '₹1,500 /kg', 'Specialty desi breed for premium programmes.', fiyoumiImg],
+const BIRD_PRODUCTS: [name: string, option: string, note: string, img: string][] = [
+  ['Sonali', 'Sonali Birds', 'Day-old chicks to grown birds, priced by age.', sonaliImg],
+  ['Aseel', 'Aseel Birds', 'Day-old chicks to grown birds, priced by age.', aseelImg],
+  ['Kadaknath', 'Kadaknath Birds', 'Day-old chicks to grown birds, priced by age.', kadaknathImg],
+  ['Fiyoumi', 'Fiyoumi Birds', 'Specialty desi breed for premium programmes.', fiyoumiImg],
 ]
 
 const EGG_PRODUCTS: [name: string, option: string, shell: string, text: string, rate: string][] = [
@@ -92,7 +92,7 @@ export default function Shop() {
         const display = p.name.replace(/\s+Birds$/i, '')
         const img = BREED_IMAGES[display]
         return img
-          ? ([display, p.name, `${p.rate} ${shortUnit(p.unit)}`.trim(), p.notes, img] as (typeof BIRD_PRODUCTS)[number])
+          ? ([display, p.name, p.notes, img] as (typeof BIRD_PRODUCTS)[number])
           : null
       })
       .filter((c): c is (typeof BIRD_PRODUCTS)[number] => c !== null)
@@ -102,7 +102,7 @@ export default function Shop() {
   const quailPill = useMemo(() => {
     const quail = live?.find((p) => p.category === 'Birds' && p.active && /quail/i.test(p.name))
     if (live && !quail) return null
-    return quail ? `${quail.name}: ${quail.rate} ${quail.unit}`.trim() : 'Quail (male): ₹200 per piece'
+    return quail ? `${quail.name} also available` : 'Quail also available'
   }, [live])
 
   const eggProducts = useMemo(() => {
@@ -161,13 +161,12 @@ export default function Shop() {
             <p>{t('shop.birds.text')}</p>
           </MReveal>
           <MStagger className="shop-grid">
-            {birdProducts.map(([name, option, rate, note, img]) => (
+            {birdProducts.map(([name, option, note, img]) => (
               <MItem key={name} className="shop-card">
                 <div className="shop-img">
                   <img src={img} alt={`${name} bird`} loading="lazy" />
                 </div>
                 <h3>{name}</h3>
-                <div className="shop-price">{rate}</div>
                 <p>{note}</p>
                 <button type="button" className="btn" onClick={() => setModal({ kind: 'birds', interest: option, options: birdOptions })}>
                   {t('shop.birds.orderBtn')}

@@ -480,9 +480,15 @@ a.pill:hover{border-color:#f0c5a4}
 .value p{color:#e6cdb8;font-size:.9rem}
 
 /* ---------- About ---------- */
-.about-copy{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:20px;text-align:center}
+.about-copy{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:20px;text-align:center}
 .about-copy p{color:var(--brown-soft);font-size:1.05rem}
 .about-copy p:first-child{font-family:var(--font-head);font-weight:600;color:var(--brown);font-size:1.2rem}
+
+/* Home page brand-promise pills — keep on one line on desktop */
+@media(min-width:769px){
+  .brand-strip .chips{flex-wrap:nowrap}
+  .brand-strip .pill{white-space:nowrap;flex:none}
+}
 
 /* ---------- Contact page ---------- */
 .contact-channels{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:22px;margin-bottom:52px}
@@ -910,3 +916,14 @@ footer p{font-size:.92rem;max-width:34ch}
   a[href]::after{content:""}
   @page{margin:10mm}
 }
+
+/* Pre-launch countdown overlay (sits under the splash, over everything else) */
+.launch{position:fixed;inset:0;z-index:1900;display:grid;place-items:center;overflow:auto;background:radial-gradient(120% 120% at 50% 40%,#fff7ee 0%,var(--cream) 55%,var(--cream-2) 100%)}
+.launch-inner{display:flex;flex-direction:column;align-items:center;gap:18px;padding:32px 16px;text-align:center}
+.launch-logo{width:min(300px,68vw);height:auto;display:block}
+.launch-kicker{font-family:var(--font-head);font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:.85rem;color:var(--orange)}
+.launch-count{display:flex;gap:clamp(8px,3vw,18px);justify-content:center}
+.launch-unit{min-width:clamp(64px,19vw,96px);padding:14px 8px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center}
+.launch-unit span{font-family:var(--font-head);font-weight:700;font-size:clamp(1.7rem,7vw,2.6rem);line-height:1.1;color:var(--brown);font-variant-numeric:tabular-nums}
+.launch-unit small{font-size:.72rem;color:var(--brown-soft);text-transform:uppercase;letter-spacing:.08em}
+.launch-when{color:var(--brown-soft);font-size:.9rem}

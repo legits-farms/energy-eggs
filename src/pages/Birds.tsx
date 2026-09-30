@@ -11,13 +11,13 @@ import aseelImg from '../assets/aseel.png'
 import kadaknathImg from '../assets/kadaknath.png'
 import fiyoumiImg from '../assets/fiyoumi.png'
 
-// Name/rate/image are static (proper nouns, currency, assets) — merged by
-// index with the translated description text from i18n at render time.
+// Name/image are static (proper nouns, assets) — merged by index with the
+// translated description text from i18n at render time.
 const BREED_META = [
-  ['Sonali', '₹500 /kg', sonaliImg],
-  ['Aseel', '₹700 /kg', aseelImg],
-  ['Kadaknath', '₹750 /kg', kadaknathImg],
-  ['Fiyoumi', '₹1,500 /kg', fiyoumiImg],
+  ['Sonali', sonaliImg],
+  ['Aseel', aseelImg],
+  ['Kadaknath', kadaknathImg],
+  ['Fiyoumi', fiyoumiImg],
 ]
 
 type BreedItem = { text: string }
@@ -47,13 +47,13 @@ export default function Birds() {
             <p>{t('birds.breeds.text')}</p>
           </Reveal>
           <div className="cards-2">
-            {BREED_META.map(([name, rate, img], i) => (
+            {BREED_META.map(([name, img], i) => (
               <Reveal key={name} className="breed-card has-img">
                 <div className="breed-img">
                   <img src={img} alt={`${name} bird`} loading="lazy" />
                 </div>
                 <div>
-                  <h3>{name} <span className="breed-rate">{rate}</span></h3>
+                  <h3>{name}</h3>
                   <p>{breedItems[i].text}</p>
                 </div>
               </Reveal>

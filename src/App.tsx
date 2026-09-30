@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Splash from './components/Splash'
+import LaunchOverlay from './components/LaunchOverlay'
 import Layout from './components/Layout'
 import LangGate from './components/LangGate'
 import Home from './pages/Home'
@@ -35,6 +36,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Splash />
+      <LaunchOverlay />
       <Routes>
         {/* English — no prefix, keeps every existing indexed URL as-is */}
         <Route element={<LangGate lang="en" />}>

@@ -11,12 +11,12 @@ import aseelImg from '../assets/aseel.png'
 import kadaknathImg from '../assets/kadaknath.png'
 import fiyoumiImg from '../assets/fiyoumi.png'
 
-// Breed names/rates are proper nouns + currency figures — same in every language.
-const BREEDS: [name: string, rate: string, img: string][] = [
-  ['Sonali', '₹500 /kg', sonaliImg],
-  ['Aseel', '₹700 /kg', aseelImg],
-  ['Kadaknath', '₹750 /kg', kadaknathImg],
-  ['Fiyoumi', '₹1,500 /kg', fiyoumiImg],
+// Breed names are proper nouns — same in every language.
+const BREEDS: [name: string, img: string][] = [
+  ['Sonali', sonaliImg],
+  ['Aseel', aseelImg],
+  ['Kadaknath', kadaknathImg],
+  ['Fiyoumi', fiyoumiImg],
 ]
 
 // Static per-item metadata (route + icon aren't translatable) — merged by
@@ -85,7 +85,6 @@ export default function Home() {
   const whatWeDoItems = t('home.whatWeDo.items', { returnObjects: true }) as TextPair[]
   const stats = t('home.stats', { returnObjects: true }) as StatItem[]
   const ecosystemItems = t('home.ecosystem.items', { returnObjects: true }) as TextPair[]
-  const breedChips = t('home.breedsSection.chips', { returnObjects: true }) as string[]
   const pathItems = t('home.paths.items', { returnObjects: true }) as PathItem[]
   const whyItems = t('home.why.items', { returnObjects: true }) as WhyItem[]
   const brandValues = t('home.brandPromise.values', { returnObjects: true }) as string[]
@@ -214,20 +213,17 @@ export default function Home() {
             <p>{t('home.breedsSection.text')}</p>
           </MReveal>
           <MStagger className="breed-minis">
-            {BREEDS.map(([name, rate, img]) => (
+            {BREEDS.map(([name, img]) => (
               <MItem key={name} variants={pop}>
                 <LocaleLink to="/birds" className="breed-mini">
                   <div className="bm-img"><img src={img} alt={`${name} bird`} loading="lazy" /></div>
                   <h3>{name}</h3>
-                  <span className="bm-rate">{rate}</span>
                 </LocaleLink>
               </MItem>
             ))}
           </MStagger>
           <MReveal className="chip-row" delay={0.15}>
-            <div className="chips">
-              {breedChips.map((c) => <span key={c} className="pill">{c}</span>)}
-            </div>
+            <LocaleLink to="/rate-card" className="btn">{t('home.breedsSection.cta')}</LocaleLink>
           </MReveal>
         </div>
       </section>
