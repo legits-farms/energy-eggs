@@ -1,13 +1,219 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://energyeggs.vercel.app/</loc><lastmod>2026-09-22</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://energyeggs.vercel.app/birds</loc><lastmod>2026-09-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://energyeggs.vercel.app/eggs</loc><lastmod>2026-09-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://energyeggs.vercel.app/b2b-supply</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://energyeggs.vercel.app/contract-farming</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://energyeggs.vercel.app/equipment</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://energyeggs.vercel.app/feed</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://energyeggs.vercel.app/farm-development</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://energyeggs.vercel.app/about</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://energyeggs.vercel.app/contact</loc><lastmod>2026-09-22</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://energyeggs.in/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/birds</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/birds"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/birds"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/birds"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/eggs</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/eggs"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/eggs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/eggs"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/b2b-supply</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/b2b-supply"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/b2b-supply"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/b2b-supply"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/contract-farming</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/contract-farming"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/contract-farming"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/contract-farming"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/rate-card</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/rate-card"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/rate-card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/rate-card"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/shop</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/shop"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/shop"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/shop"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/equipment</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/equipment"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/equipment"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/equipment"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/feed</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/feed"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/feed"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/feed"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/farm-development</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/farm-development"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/farm-development"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/farm-development"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/about"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/about"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/contact"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/contact"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/birds</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/birds"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/birds"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/birds"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/eggs</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/eggs"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/eggs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/eggs"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/b2b-supply</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/b2b-supply"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/b2b-supply"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/b2b-supply"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/contract-farming</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/contract-farming"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/contract-farming"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/contract-farming"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/rate-card</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/rate-card"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/rate-card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/rate-card"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/shop</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/shop"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/shop"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/shop"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/equipment</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/equipment"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/equipment"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/equipment"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/feed</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/feed"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/feed"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/feed"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/farm-development</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/farm-development"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/farm-development"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/farm-development"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/about"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/about"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://energyeggs.in/hi/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://energyeggs.in/contact"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://energyeggs.in/hi/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://energyeggs.in/contact"/>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

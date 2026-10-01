@@ -15,7 +15,7 @@ const SERVICES: [to: string, key: string][] = [
   ['/farm-development', 'nav.farmDevelopment'],
 ]
 
-const SITE_URL = 'https://energyeggs.vercel.app'
+const SITE_URL = 'https://energyeggs.in'
 
 // Maps a canonical (un-prefixed) path to its seo.* translation key
 const SEO_KEYS: Record<string, string> = {
@@ -88,7 +88,10 @@ function ScrollToTop() {
       const el = document.querySelector(hash)
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' })
-        return
+        // Images/animations above the target can still shift the layout
+        // while the smooth scroll runs — land on the section once it settles.
+        const timer = window.setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 700)
+        return () => window.clearTimeout(timer)
       }
     }
     window.scrollTo(0, 0)

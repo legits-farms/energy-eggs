@@ -218,6 +218,7 @@ section.alt{background:linear-gradient(180deg,var(--cream-2),var(--cream))}
 
 /* ---------- Breed / model cards ---------- */
 .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .cards-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 .breed-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:36px 30px;transition:transform .25s,box-shadow .25s;border-top:5px solid var(--orange)}
 .breed-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
@@ -547,6 +548,46 @@ a.pill:hover{border-color:#f0c5a4}
 .modal-form{grid-template-columns:1fr 1fr}
 .modal-actions{display:flex;gap:12px;margin-top:6px}
 .modal-actions .btn{flex:1;text-align:center}
+/* wider modal for the farm lease questionnaire */
+.modal.modal-wide{max-width:680px}
+.lease-group{font-family:var(--font-head);font-weight:700;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);padding-top:14px;border-top:1px solid var(--line);margin-top:4px}
+.modal-form>.lease-group:first-child{border-top:0;padding-top:0;margin-top:0}
+.lease-equipment{border:0;padding:0;margin:0;min-width:0}
+.lease-equipment legend{padding:14px 0 0;width:100%}
+.lease-hint{font-size:.85rem;color:var(--brown-soft);margin:6px 0 12px}
+.modal .lease-equipment .check-grid{grid-template-columns:repeat(3,1fr);gap:10px}
+.modal-wide .field-grid .check{flex-direction:row;padding:10px 12px;font-size:.84rem;text-transform:none;letter-spacing:0;line-height:1.3}
+.modal-wide .field-grid .check input{width:16px;height:16px;min-width:0;padding:0;margin:0;flex:none;border:0;box-shadow:none}
+/* "don't worry, we'll provide it" note under the equipment checklist */
+.lease-reassure{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding:14px 16px;border-radius:14px;background:#eef8ee;border:1px solid #cfe8cf}
+.lease-reassure-ic{flex:none;width:26px;height:26px;border-radius:50%;background:#3a9a4a;color:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:700}
+.lease-reassure strong{display:block;font-size:.92rem;color:var(--brown);margin-bottom:2px}
+.lease-reassure p{font-size:.86rem;color:var(--brown-soft);margin:0}
+/* "need more details? call us" strip at the bottom of the lease form */
+.modal-call.lease-call{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;margin-top:18px;padding:14px 16px;border-radius:14px;background:var(--orange-soft);color:var(--brown);font-size:.9rem;font-weight:500}
+.modal-call.lease-call a{white-space:nowrap;font-weight:700;font-size:.95rem}
+/* multiple breed rows: breed + count + remove */
+.lease-flock{display:flex;flex-direction:column;gap:12px;min-width:0}
+.lease-flock .lease-hint{margin:2px 0 0}
+.flock-row{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;align-items:end;padding:14px;border:1px solid var(--line);border-radius:16px;background:#fffdfa}
+.flock-row.has-remove{grid-template-columns:1fr 1fr 44px}
+.flock-remove{width:44px;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--cream);color:var(--brown-soft);font-size:.95rem;cursor:pointer;transition:border-color .2s,color .2s}
+.flock-remove:hover{border-color:#c0392b;color:#c0392b}
+.flock-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.flock-foot .btn.sm{padding:9px 18px;font-size:.82rem}
+.flock-total{font-size:.88rem;color:var(--brown-soft)}
+.flock-total b{color:var(--brown)}
+@media(max-width:560px){
+  .flock-row{grid-template-columns:1fr;padding:12px}
+  .flock-row.has-remove{grid-template-columns:1fr 44px}
+  .flock-row>label{grid-column:1}
+  .flock-remove{grid-column:2;grid-row:1 / span 2;align-self:center}
+}
+/* wide letter-spacing splits Devanagari conjuncts apart */
+html[lang="hi"] .modal-wide .lease-group,html[lang="hi"] .modal-wide .field-grid label{letter-spacing:.02em}
+@media(max-width:700px){
+  .modal .lease-equipment .check-grid{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:560px){
   .modal{padding:26px 20px 22px;border-radius:20px}
   .modal-close{width:44px;height:44px}
@@ -652,6 +693,7 @@ footer p{font-size:.92rem;max-width:34ch}
   .spec-table th,.spec-table td{padding:12px 16px;font-size:.86rem}
   .features,.features-4,.features-3{grid-template-columns:repeat(2,1fr)}
   .cards-3{grid-template-columns:1fr}
+  .cards-4{grid-template-columns:repeat(2,1fr)}
   .cards-2{grid-template-columns:1fr}
   .steps{grid-template-columns:repeat(2,1fr)}
   .vgrid,.vgrid-3{grid-template-columns:repeat(2,1fr)}
@@ -667,6 +709,7 @@ footer p{font-size:.92rem;max-width:34ch}
 }
 @media(max-width:560px){
   .features,.features-3,.features-4,.vgrid,.vgrid-3,.steps,.steps-5,.check-grid,.field-grid{grid-template-columns:1fr}
+  .cards-4{grid-template-columns:1fr}
   .features-5{grid-template-columns:1fr;gap:14px}
   .features-5 .feature-link>a{padding:18px 16px}
   .features-5 .feature .ic{width:44px;height:44px;border-radius:12px;margin-bottom:14px}

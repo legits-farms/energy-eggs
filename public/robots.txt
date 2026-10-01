@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
-Sitemap: https://energyeggs.vercel.app/sitemap.xml
+Sitemap: https://energyeggs.in/sitemap.xml

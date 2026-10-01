@@ -17,7 +17,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 
 // path is relative to the language root ('' = index route)
-const ROUTES: [path: string, Component: React.ComponentType][] = [
+export const ROUTES: [path: string, Component: React.ComponentType][] = [
   ['', Home],
   ['birds', Birds],
   ['eggs', Eggs],
@@ -37,32 +37,40 @@ export default function App() {
     <BrowserRouter>
       <Splash />
       <LaunchOverlay />
-      <Routes>
-        {/* English — no prefix, keeps every existing indexed URL as-is */}
-        <Route element={<LangGate lang="en" />}>
-          <Route element={<Layout />}>
-            {ROUTES.map(([path, Component]) =>
-              path === '' ? (
-                <Route key="home" index element={<Component />} />
-              ) : (
-                <Route key={path} path={`/${path}`} element={<Component />} />
-              ),
-            )}
-          </Route>
-          <Route path="/farmer-partners" element={<Navigate to="/contract-farming" replace />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Route>
-
-        {/* Hindi — same page tree under /hi */}
-        <Route path="/hi" element={<LangGate lang="hi" />}>
-          <Route element={<Layout />}>
-            {ROUTES.map(([path, Component]) => (
-              <Route key={path || 'home'} index={path === ''} path={path || undefined} element={<Component />} />
-            ))}
-          </Route>
-          <Route path="*" element={<Navigate to="/hi" replace />} />
-        </Route>
-      </Routes>
+      <AppRoutes />
     </BrowserRouter>
+  )
+}
+
+// The route tree on its own, so the build-time prerender (entry-server.tsx)
+// can render it inside a StaticRouter without the splash/launch overlays.
+export function AppRoutes() {
+  return (
+    <Routes>
+      {/* English — no prefix, keeps every existing indexed URL as-is */}
+      <Route element={<LangGate lang="en" />}>
+        <Route element={<Layout />}>
+          {ROUTES.map(([path, Component]) =>
+            path === '' ? (
+              <Route key="home" index element={<Component />} />
+            ) : (
+              <Route key={path} path={`/${path}`} element={<Component />} />
+            ),
+          )}
+        </Route>
+        <Route path="/farmer-partners" element={<Navigate to="/contract-farming" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+
+      {/* Hindi — same page tree under /hi */}
+      <Route path="/hi" element={<LangGate lang="hi" />}>
+        <Route element={<Layout />}>
+          {ROUTES.map(([path, Component]) => (
+            <Route key={path || 'home'} index={path === ''} path={path || undefined} element={<Component />} />
+          ))}
+        </Route>
+        <Route path="*" element={<Navigate to="/hi" replace />} />
+      </Route>
+    </Routes>
   )
 }

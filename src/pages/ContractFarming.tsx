@@ -1,8 +1,11 @@
+import { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Reveal from '../components/Reveal'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import LockGate from '../components/LockGate'
+import FarmLeaseModal from '../components/FarmLeaseModal'
+import CallButton from '../components/CallButton'
 import pastureFarmImg from '../assets/pasture-farm.jpeg'
 import deepLitterImg from '../assets/deep-litter-farm.png'
 import contractHeroImg from '../assets/contract-hero.jpg'
@@ -28,6 +31,9 @@ export default function ContractFarming() {
   const journeyItems = t('contractFarming.journey.items', { returnObjects: true }) as TextPair[]
   const partnerFlow = t('contractFarming.farmerPartners.flow', { returnObjects: true }) as string[]
   const faqItems = t('contractFarming.faq.items', { returnObjects: true }) as FaqItem[]
+  const leasePoints = t('contractFarming.farmLease.points', { returnObjects: true }) as TextPair[]
+  const [leaseOpen, setLeaseOpen] = useState(false)
+  const closeLease = useCallback(() => setLeaseOpen(false), [])
 
   return (
     <>
@@ -201,6 +207,38 @@ export default function ContractFarming() {
           />
         </div>
       </section>
+
+      {/* LEASE YOUR FARM — for owners with a complete, ready farm */}
+      <section id="lease-your-farm">
+        <div className="wrap">
+          <Reveal className="sec-head">
+            <span className="eyebrow">{t('contractFarming.farmLease.eyebrow')}</span>
+            <h2>{t('contractFarming.farmLease.headingPre')}<span className="script">{t('contractFarming.farmLease.headingScript')}</span></h2>
+            <p>{t('contractFarming.farmLease.text')}</p>
+          </Reveal>
+          <div className="features features-4">
+            {leasePoints.map((p) => (
+              <Reveal key={p.title} className="feature">
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="mini-cta">
+            <div>
+              <h3>{t('contractFarming.farmLease.cta.title')}</h3>
+              <p>{t('contractFarming.farmLease.cta.text')}</p>
+            </div>
+            <div className="cta-actions">
+              <button type="button" className="btn" onClick={() => setLeaseOpen(true)}>
+                {t('contractFarming.farmLease.cta.cta')}
+              </button>
+              <CallButton />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+      <FarmLeaseModal isOpen={leaseOpen} onClose={closeLease} />
 
       {/* FAQ */}
       <section>

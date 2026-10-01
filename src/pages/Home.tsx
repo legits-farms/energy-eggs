@@ -21,7 +21,7 @@ const BREEDS: [name: string, img: string][] = [
 
 // Static per-item metadata (route + icon aren't translatable) — merged by
 // index with the translated title/text arrays from i18n at render time.
-const PATH_LINKS = ['/b2b-supply', '/contract-farming', '/farm-development']
+const PATH_LINKS = ['/b2b-supply', '/contract-farming', '/farm-development', '/contract-farming#lease-your-farm']
 
 const WHAT_WE_DO_META: { to: string; icon: ReactNode }[] = [
   {
@@ -236,7 +236,7 @@ export default function Home() {
             <h2>{t('home.paths.heading')}</h2>
             <p>{t('home.paths.text')}</p>
           </MReveal>
-          <MStagger className="cards-3" gap={0.12}>
+          <MStagger className="cards-4" gap={0.12}>
             {pathItems.map((p, i) => (
               <MItem key={p.title}>
                 <LocaleLink to={PATH_LINKS[i]} className="breed-card path-card">
