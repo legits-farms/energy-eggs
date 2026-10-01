@@ -33,24 +33,24 @@
     "rateCard": "रेट कार्ड",
     "getInTouch": "संपर्क में रहें",
     "b2bEnquiry": "बी2बी पूछताछ",
-    "copyright": "© 2026 एनर्जी एग्स® प्राइवेट लिमिटेड। बी2बी देसी पोल्ट्री इकोसिस्टम।",
+    "copyright": "© 2026 Energy Eggs® Pvt Ltd (एनर्जी एग्स प्राइवेट लिमिटेड)। बी2बी देसी पोल्ट्री इकोसिस्टम।",
     "breeds": "सोनाली · असील · कड़कनाथ · फ़ियोमी",
     "getRateCard": "रेट कार्ड प्राप्त करें",
     "backToTop": "ऊपर जाएं"
   },
   "seo": {
-    "home": { "title": "एनर्जी एग्स — बी2बी देसी पोल्ट्री इकोसिस्टम", "description": "सोनाली, असील, कड़कनाथ और फ़ियोमी पक्षी और अंडे, प्रकाशित रेट कार्ड, पोल्ट्री उपकरण, फ़ीड, फार्म विकास और कॉन्ट्रैक्ट फार्मिंग साझेदारियों के साथ।" },
-    "birds": { "title": "Desi Birds & Country Chicken Rate Card | Energy Eggs", "description": "Live bird rates by age for Sonali, Aseel and Kadaknath — day-old chicks to 20+ weeks, male and female. Sonali ₹500/kg, Aseel ₹700/kg, Kadaknath ₹750/kg, Fiyoumi ₹1,500/kg. Minimum order 10 birds." },
-    "eggs": { "title": "Desi Egg Rate Card — Ex-Farm Prices | Energy Eggs", "description": "Ex-farm egg prices from ₹10.75 to ₹12.00 per egg, tiered by monthly commitment. Washing, grading and packing add-ons, custom packing and private label for bulk B2B orders." },
-    "equipment": { "title": "Poultry Farm Equipment | Energy Eggs", "description": "Poultry equipment for desi poultry farms — nipple drinking systems, brooding, feeders, drinkers and husk supply for farm setup and expansion." },
-    "feed": { "title": "Poultry Feed | Energy Eggs", "description": "Poultry feed programmes for every growth stage — from pre-starter to grower and finisher — supporting consistent desi bird performance." },
-    "farmDevelopment": { "title": "Poultry Farm Development & Design | Energy Eggs", "description": "End-to-end desi poultry farm development — farm design, shed construction and pasture planning, from land to farm-ready." },
-    "contractFarming": { "title": "Contract Farming — Pasture-Raised & Deep Litter Models | Energy Eggs", "description": "Structured Sonali contract farming with fixed-price egg procurement, 15-day payments, flock buyback and full technical support. Pasture-raised and deep-litter models." },
-    "b2bSupply": { "title": "B2B Poultry Supply & Volume Commitment | Energy Eggs", "description": "Structured B2B procurement for restaurants, hotels, QSRs, retailers and distributors — spot orders, scheduled supply and volume commitment programmes with priority supply." },
-    "shop": { "title": "Shop — Order Desi Birds, Eggs & Equipment | Energy Eggs", "description": "Order Sonali, Aseel, Kadaknath and Fiyoumi birds, desi eggs and poultry farm equipment at published B2B rates. Pick your product, send an enquiry and get a structured quote." },
-    "rateCard": { "title": "Rate Card — Bird & Egg Prices | Energy Eggs", "description": "The complete published B2B rate card — live bird rates by age for Sonali, Aseel and Kadaknath, and ex-farm egg prices tiered by monthly commitment with processing add-ons." },
-    "about": { "title": "About Energy Eggs — The B2B Desi Poultry Ecosystem", "description": "Energy Eggs connects desi poultry farmers and food businesses through structured production models, published pricing and dependable B2B supply." },
-    "contact": { "title": "Contact — B2B Enquiry | Energy Eggs", "description": "Tell us your requirement — birds, eggs, equipment, farm development or contract farming — and our B2B team will respond with a structured commercial proposal." }
+    "home": { "title": "Energy Eggs Pvt Ltd (एनर्जी एग्स) — बी2बी देसी पोल्ट्री इकोसिस्टम", "description": "Energy Eggs Pvt Ltd एक बी2बी देसी पोल्ट्री कंपनी है — सोनाली, असील, कड़कनाथ और फ़ियोमी पक्षी और अंडे प्रकाशित दरों पर, साथ ही फ़ीड, उपकरण, फार्म विकास और कॉन्ट्रैक्ट फार्मिंग।" },
+    "birds": { "title": "देसी पक्षी और देसी मुर्गी रेट कार्ड | Energy Eggs", "description": "सोनाली, असील और कड़कनाथ के उम्र के अनुसार जीवित पक्षी रेट — एक दिन के चूज़ों से 20+ सप्ताह तक, नर और मादा। सोनाली ₹500/किलो, असील ₹700/किलो, कड़कनाथ ₹750/किलो, फ़ियोमी ₹1,500/किलो। न्यूनतम ऑर्डर 10 पक्षी।" },
+    "eggs": { "title": "देसी अंडा रेट कार्ड — फार्म से सीधे दाम | Energy Eggs", "description": "मासिक प्रतिबद्धता के अनुसार ₹10.75 से ₹12.00 प्रति अंडा फार्म-मूल्य। धुलाई, ग्रेडिंग और पैकिंग ऐड-ऑन, कस्टम पैकिंग और थोक बी2बी ऑर्डर के लिए प्राइवेट लेबल।" },
+    "equipment": { "title": "पोल्ट्री फार्म उपकरण | Energy Eggs", "description": "देसी पोल्ट्री फार्म के लिए उपकरण — निप्पल ड्रिंकिंग सिस्टम, ब्रूडिंग, फीडर, ड्रिंकर और भूसी आपूर्ति, फार्म सेटअप और विस्तार के लिए।" },
+    "feed": { "title": "पोल्ट्री फ़ीड (दाना) | Energy Eggs", "description": "हर विकास चरण के लिए पोल्ट्री फ़ीड कार्यक्रम — प्री-स्टार्टर से ग्रोअर और फ़िनिशर तक — देसी पक्षियों के लगातार अच्छे प्रदर्शन के लिए।" },
+    "farmDevelopment": { "title": "पोल्ट्री फार्म विकास और डिज़ाइन | Energy Eggs", "description": "देसी पोल्ट्री फार्म का संपूर्ण विकास — फार्म डिज़ाइन, शेड निर्माण और चरागाह योजना, ज़मीन से तैयार फार्म तक।" },
+    "contractFarming": { "title": "कॉन्ट्रैक्ट फार्मिंग — चरागाह और डीप लिटर मॉडल | Energy Eggs", "description": "संरचित सोनाली कॉन्ट्रैक्ट फार्मिंग — निश्चित मूल्य पर अंडा खरीद, 15-दिन भुगतान, फ्लॉक बायबैक और पूर्ण तकनीकी सहायता। चरागाह और डीप-लिटर मॉडल। अपना तैयार फार्म लीज़ पर भी दें।" },
+    "b2bSupply": { "title": "बी2बी पोल्ट्री सप्लाई और वॉल्यूम कमिटमेंट | Energy Eggs", "description": "रेस्टोरेंट, होटल, QSR, रिटेलर और डिस्ट्रीब्यूटर के लिए संरचित बी2बी खरीद — स्पॉट ऑर्डर, नियमित आपूर्ति और प्राथमिकता आपूर्ति वाले वॉल्यूम कमिटमेंट कार्यक्रम।" },
+    "shop": { "title": "शॉप — देसी पक्षी, अंडे और उपकरण ऑर्डर करें | Energy Eggs", "description": "सोनाली, असील, कड़कनाथ और फ़ियोमी पक्षी, देसी अंडे और पोल्ट्री फार्म उपकरण प्रकाशित बी2बी दरों पर ऑर्डर करें। उत्पाद चुनें, पूछताछ भेजें और संरचित कोटेशन पाएं।" },
+    "rateCard": { "title": "रेट कार्ड — पक्षी और अंडे के दाम | Energy Eggs", "description": "पूरा प्रकाशित बी2बी रेट कार्ड — सोनाली, असील और कड़कनाथ के उम्र के अनुसार जीवित पक्षी रेट, और मासिक प्रतिबद्धता के अनुसार फार्म-मूल्य अंडा दरें, प्रोसेसिंग ऐड-ऑन के साथ।" },
+    "about": { "title": "Energy Eggs Pvt Ltd के बारे में — बी2बी देसी पोल्ट्री कंपनी", "description": "Energy Eggs Pvt Ltd (एनर्जी एग्स) संरचित उत्पादन मॉडल, प्रकाशित मूल्य और भरोसेमंद बी2बी आपूर्ति के ज़रिए देसी पोल्ट्री किसानों और खाद्य व्यवसायों को जोड़ता है।" },
+    "contact": { "title": "Energy Eggs Pvt Ltd से संपर्क करें — बी2बी पूछताछ", "description": "पक्षी, अंडे, उपकरण, फार्म विकास या कॉन्ट्रैक्ट फार्मिंग के लिए Energy Eggs Pvt Ltd से संपर्क करें। +91 78787 87226 पर कॉल करें या अपनी ज़रूरत भेजें।" }
   },
   "home": {
     "badges": ["पक्षी", "अंडे", "फ़ीड", "उपकरण", "साझेदारियां"],
@@ -146,7 +146,7 @@
     }
   },
   "about": {
-    "hero": { "eyebrow": "एनर्जी एग्स के बारे में", "titlePre": "देसी पोल्ट्री आपूर्ति की अगली पीढ़ी ", "titleSpan": "बना रहे हैं।" },
+    "hero": { "eyebrow": "Energy Eggs Pvt Ltd (एनर्जी एग्स) के बारे में", "titlePre": "देसी पोल्ट्री आपूर्ति की अगली पीढ़ी ", "titleSpan": "बना रहे हैं।" },
     "story": {
       "eyebrow": "हमारी कहानी",
       "heading": "एक सरल अवसर",

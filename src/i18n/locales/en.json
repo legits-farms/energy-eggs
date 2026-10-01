@@ -39,18 +39,18 @@
     "backToTop": "Back to top"
   },
   "seo": {
-    "home": { "title": "Energy Eggs — The B2B Desi Poultry Ecosystem", "description": "Sonali, Aseel, Kadaknath and Fiyoumi birds and eggs with published rate cards, poultry equipment, feed, farm development and contract farming partnerships." },
+    "home": { "title": "Energy Eggs Pvt Ltd — The B2B Desi Poultry Ecosystem", "description": "Energy Eggs Pvt Ltd is a B2B desi poultry company — Sonali, Aseel, Kadaknath and Fiyoumi birds and eggs at published rates, plus feed, equipment, farm development and contract farming." },
     "birds": { "title": "Desi Birds & Country Chicken Rate Card | Energy Eggs", "description": "Live bird rates by age for Sonali, Aseel and Kadaknath — day-old chicks to 20+ weeks, male and female. Sonali ₹500/kg, Aseel ₹700/kg, Kadaknath ₹750/kg, Fiyoumi ₹1,500/kg. Minimum order 10 birds." },
     "eggs": { "title": "Desi Egg Rate Card — Ex-Farm Prices | Energy Eggs", "description": "Ex-farm egg prices from ₹10.75 to ₹12.00 per egg, tiered by monthly commitment. Washing, grading and packing add-ons, custom packing and private label for bulk B2B orders." },
     "equipment": { "title": "Poultry Farm Equipment | Energy Eggs", "description": "Poultry equipment for desi poultry farms — nipple drinking systems, brooding, feeders, drinkers and husk supply for farm setup and expansion." },
     "feed": { "title": "Poultry Feed | Energy Eggs", "description": "Poultry feed programmes for every growth stage — from pre-starter to grower and finisher — supporting consistent desi bird performance." },
     "farmDevelopment": { "title": "Poultry Farm Development & Design | Energy Eggs", "description": "End-to-end desi poultry farm development — farm design, shed construction and pasture planning, from land to farm-ready." },
-    "contractFarming": { "title": "Contract Farming — Pasture-Raised & Deep Litter Models | Energy Eggs", "description": "Structured Sonali contract farming with fixed-price egg procurement, 15-day payments, flock buyback and full technical support. Pasture-raised and deep-litter models." },
+    "contractFarming": { "title": "Contract Farming — Pasture-Raised & Deep Litter Models | Energy Eggs", "description": "Structured Sonali contract farming with fixed-price egg procurement, 15-day payments, flock buyback and full technical support. Pasture-raised and deep-litter models, or lease your ready farm to us." },
     "b2bSupply": { "title": "B2B Poultry Supply & Volume Commitment | Energy Eggs", "description": "Structured B2B procurement for restaurants, hotels, QSRs, retailers and distributors — spot orders, scheduled supply and volume commitment programmes with priority supply." },
     "shop": { "title": "Shop — Order Desi Birds, Eggs & Equipment | Energy Eggs", "description": "Order Sonali, Aseel, Kadaknath and Fiyoumi birds, desi eggs and poultry farm equipment at published B2B rates. Pick your product, send an enquiry and get a structured quote." },
     "rateCard": { "title": "Rate Card — Bird & Egg Prices | Energy Eggs", "description": "The complete published B2B rate card — live bird rates by age for Sonali, Aseel and Kadaknath, and ex-farm egg prices tiered by monthly commitment with processing add-ons." },
-    "about": { "title": "About Energy Eggs — The B2B Desi Poultry Ecosystem", "description": "Energy Eggs connects desi poultry farmers and food businesses through structured production models, published pricing and dependable B2B supply." },
-    "contact": { "title": "Contact — B2B Enquiry | Energy Eggs", "description": "Tell us your requirement — birds, eggs, equipment, farm development or contract farming — and our B2B team will respond with a structured commercial proposal." }
+    "about": { "title": "About Energy Eggs Pvt Ltd — The B2B Desi Poultry Company", "description": "Energy Eggs Pvt Ltd connects desi poultry farmers and food businesses through structured production models, published pricing and dependable B2B supply." },
+    "contact": { "title": "Contact Energy Eggs Pvt Ltd — B2B Enquiry", "description": "Contact Energy Eggs Pvt Ltd for birds, eggs, equipment, farm development or contract farming. Call +91 78787 87226 or send your requirement for a structured commercial proposal." }
   },
   "home": {
     "badges": ["Birds", "Eggs", "Feed", "Equipment", "Partnerships"],
@@ -146,7 +146,7 @@
     }
   },
   "about": {
-    "hero": { "eyebrow": "About Energy Eggs", "titlePre": "Building the next generation of desi poultry ", "titleSpan": "supply." },
+    "hero": { "eyebrow": "About Energy Eggs Pvt Ltd", "titlePre": "Building the next generation of desi poultry ", "titleSpan": "supply." },
     "story": {
       "eyebrow": "Our Story",
       "heading": "A simple opportunity",
