@@ -4,9 +4,12 @@
 // previews then see real content without running JavaScript; in the browser
 // main.tsx boots as usual and replaces the markup.
 //
-// Output naming (/birds -> birds.html, /hi/birds -> hi/birds.html) matches
-// clean-URL hosting on both Cloudflare Pages and Vercel (cleanUrls: true).
-import { readFile, writeFile, mkdir, rm } from 'node:fs/promises'
+// Output naming is directory-style (/birds -> birds/index.html). energyeggs.in
+// runs `serve -s dist` on Render: with -s, serve rewrites every path that isn't
+// an exact file to index.html *before* trying birds.html, so flat files would
+// never be served — but a directory with an index.html is. Vercel and other
+// static hosts serve directory indexes too.
+import { readFile, readdir, writeFile, mkdir, rm } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { build } from 'vite'
@@ -26,8 +29,8 @@ const SEO_KEYS = {
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 const urlFor = (path, lang) => (lang === 'en' ? `/${path}` : path ? `/hi/${path}` : '/hi')
 const fileFor = (path, lang) => {
-  if (lang === 'en') return path ? `${path}.html` : 'index.html'
-  return path ? `hi/${path}.html` : 'hi.html'
+  if (lang === 'en') return path ? `${path}/index.html` : 'index.html'
+  return path ? `hi/${path}/index.html` : 'hi/index.html'
 }
 
 // Swap the content attribute/href of a single tag in the template; fail loudly
@@ -101,5 +104,31 @@ for (const lang of ['en', 'hi']) {
   }
 }
 
+// Production runs `serve dist` (see "start" in package.json). serve's -s flag
+// can't be used: it rewrites every non-exact path to index.html before looking
+// for the page file, so prerendered pages and verification files would never
+// be served. Instead map each page explicitly. There is deliberately no "**"
+// catch-all: serve re-applies the remaining rules to an already-rewritten path,
+// so "**" would turn /birds/index.html back into /index.html. Unknown paths get
+// 404.html instead (the SPA shell, noindex), and the client router redirects.
+const rewrites = []
+for (const lang of ['en', 'hi']) {
+  for (const [path] of ROUTES) {
+    const url = urlFor(path, lang)
+    if (url === '/') continue
+    rewrites.push({ source: url, destination: `/${fileFor(path, lang)}` })
+  }
+}
+// Google Search Console HTML-file verification: serve strips ".html" with a
+// 301, so the extensionless path must resolve to the file too.
+for (const f of await readdir(dist)) {
+  if (/^google[0-9a-f]+\.html$/.test(f)) rewrites.push({ source: `/${f.replace(/\.html$/, '')}`, destination: `/${f}` })
+}
+await writeFile(resolve(dist, 'serve.json'), JSON.stringify({ cleanUrls: true, rewrites }, null, 2))
+await writeFile(
+  resolve(dist, '404.html'),
+  setTag(template, /(<meta name="robots" content=")[^"]*(")/, '$1noindex, follow$2'),
+)
+
 await rm(ssrOut, { recursive: true, force: true })
-console.log(`prerender: wrote ${count} pages`)
+console.log(`prerender: wrote ${count} pages + serve.json (${rewrites.length} rewrites)`)
