@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { motion, useScroll, useSpring } from 'framer-motion'
 import Logo from './Logo'
 import { EnquiryProvider } from './EnquiryModal'
 import { CALL_DISPLAY, CALL_NUMBER } from './CallButton'
@@ -154,8 +153,7 @@ export default function Layout() {
   const navRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
   const { t } = useTranslation()
-  const { scrollYProgress } = useScroll()
-  const progress = useSpring(scrollYProgress, { stiffness: 35, damping: 14, mass: 0.4, restDelta: 0.001 })
+  const progressRef = useRef<HTMLDivElement>(null)
   const basePath = stripLangPrefix(pathname)
   const onServicePage = SERVICES.some(([to]) => to === basePath)
 
@@ -179,10 +177,24 @@ export default function Layout() {
   }, [])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    // scroll progress bar: written straight to the DOM (no re-render), at most once per frame;
+    // the CSS transition on .scroll-progress smooths it
+    let frame = 0
+    const paintProgress = () => {
+      frame = 0
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`
+    }
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8)
+      if (!frame) frame = requestAnimationFrame(paintProgress)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(frame)
+    }
   }, [])
 
   useEffect(() => {
@@ -205,7 +217,7 @@ export default function Layout() {
 
       {/* NAV */}
       <header className={scrolled ? 'scrolled' : ''}>
-        <motion.div className="scroll-progress" style={{ scaleX: progress }} />
+        <div className="scroll-progress" ref={progressRef} style={{ transform: 'scaleX(0)' }} />
         <div className="wrap">
           <nav aria-label="Main navigation" ref={navRef}>
             <Logo />
@@ -284,7 +296,7 @@ export default function Layout() {
               <p>{t('footer.about')}</p>
             </div>
             <div>
-              <h4>{t('footer.servicesHeading')}</h4>
+              <h3>{t('footer.servicesHeading')}</h3>
               <LocaleLink to="/shop">{t('footer.shop')}</LocaleLink>
               <LocaleLink to="/birds">{t('footer.wholeBirds')}</LocaleLink>
               <LocaleLink to="/eggs">{t('footer.desiEggs')}</LocaleLink>
@@ -293,7 +305,7 @@ export default function Layout() {
               <LocaleLink to="/farm-development">{t('footer.farmDevelopment')}</LocaleLink>
             </div>
             <div>
-              <h4>{t('footer.partnershipsHeading')}</h4>
+              <h3>{t('footer.partnershipsHeading')}</h3>
               <LocaleLink to="/contract-farming">{t('footer.contractFarming')}</LocaleLink>
               <LocaleLink to="/b2b-supply">{t('footer.partnership')}</LocaleLink>
               <LocaleLink to="/about">{t('footer.aboutUs')}</LocaleLink>
@@ -301,7 +313,7 @@ export default function Layout() {
               <LocaleLink to="/rate-card">{t('footer.rateCard')}</LocaleLink>
             </div>
             <div>
-              <h4>{t('footer.getInTouch')}</h4>
+              <h3>{t('footer.getInTouch')}</h3>
               <a href="tel:+917878787226">+91 78 78 78 7226</a>
               <a href="mailto:hello@energyeggs.in">hello@energyeggs.in</a>
               <LocaleLink to="/contact">{t('footer.b2bEnquiry')}</LocaleLink>

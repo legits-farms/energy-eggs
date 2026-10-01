@@ -34,7 +34,7 @@ section[id]{scroll-margin-top:90px}
 /* ---------- Nav ---------- */
 header{position:sticky;top:0;z-index:50;background:rgba(253,247,238,.72);backdrop-filter:blur(14px) saturate(1.5);border-bottom:1px solid transparent;transition:background .3s,border-color .3s,box-shadow .3s}
 header::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),#F7A32B 50%,var(--orange));opacity:.18}
-.scroll-progress{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),#F7A32B 50%,var(--orange));transform-origin:0 50%;box-shadow:0 0 8px rgba(238,102,32,.5)}
+.scroll-progress{position:absolute;top:0;left:0;right:0;height:2px;will-change:transform;transition:transform .25s cubic-bezier(.22,1,.36,1);background:linear-gradient(90deg,var(--orange),#F7A32B 50%,var(--orange));transform-origin:0 50%;box-shadow:0 0 8px rgba(238,102,32,.5)}
 header.scrolled{background:rgba(253,247,238,.92);border-bottom-color:var(--line);box-shadow:0 14px 34px -22px rgba(65,64,66,.35)}
 nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
 .logo{display:inline-flex;align-items:center}
@@ -629,8 +629,8 @@ footer .wrap{position:relative;z-index:1}
 .foot-tagline{font-size:1.7rem;color:var(--orange-light)}
 .foot-tagsub{font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:#b9a08d;margin-top:6px}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:40px;padding:42px 0 40px;border-bottom:1px solid rgba(255,255,255,.12)}
-footer h4{color:#fff;font-family:var(--font-head);margin-bottom:18px;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;position:relative;padding-bottom:10px}
-footer h4::after{content:"";position:absolute;left:0;bottom:0;width:26px;height:3px;border-radius:3px;background:var(--orange)}
+footer h3{color:#fff;line-height:normal;text-wrap:wrap;font-family:var(--font-head);margin-bottom:18px;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;position:relative;padding-bottom:10px}
+footer h3::after{content:"";position:absolute;left:0;bottom:0;width:26px;height:3px;border-radius:3px;background:var(--orange)}
 footer .logo{color:#fff;margin-bottom:16px}
 footer a{color:#e6cdb8;display:block;margin-bottom:10px;font-size:.92rem;transition:color .2s,transform .2s;width:fit-content}
 footer a:hover{color:var(--orange-light);transform:translateX(4px)}
@@ -762,9 +762,9 @@ footer p{font-size:.92rem;max-width:34ch}
   .foot-grid{grid-template-columns:1fr 1fr;gap:30px 18px;padding:30px 0 28px}
   .foot-grid>div:first-child,.foot-grid>div:last-child{grid-column:1/-1;text-align:center}
   .foot-grid>div:first-child p{margin:0 auto}
-  .foot-grid>div:first-child h4::after,.foot-grid>div:last-child h4::after{left:50%;transform:translateX(-50%)}
+  .foot-grid>div:first-child h3::after,.foot-grid>div:last-child h3::after{left:50%;transform:translateX(-50%)}
   .foot-grid>div:last-child a{margin-left:auto;margin-right:auto}
-  footer h4{margin-bottom:14px}
+  footer h3{margin-bottom:14px}
   footer a{font-size:.88rem;margin-bottom:2px;padding:6px 0}
   .foot-bottom{flex-direction:column;justify-content:center;text-align:center;gap:10px;padding-top:20px}
   .foot-breeds{white-space:nowrap;font-size:.78rem;letter-spacing:.01em}
@@ -960,3 +960,24 @@ footer p{font-size:.92rem;max-width:34ch}
   @page{margin:10mm}
 }
 
+
+/* ---------- Motion (CSS replacements for framer-motion) ---------- */
+/* Scroll reveals — components/Motion.tsx adds .in when scrolled into view */
+.m-reveal,.m-item.m-fade-up{opacity:0;transform:translateY(26px);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)}
+.m-item.m-pop{opacity:0;transform:scale(.88);transition:opacity .4s ease,transform .5s cubic-bezier(.34,1.45,.64,1)}
+.m-reveal.in,.m-item.in{opacity:1;transform:none}
+/* Home hero entrance: pure CSS so the headline paints with the page (good LCP) */
+.hero-in>*{animation:hero-up .55s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(.05s + var(--i,0) * .09s)}
+.hero-art-in{animation:hero-art-in .7s cubic-bezier(.22,1,.36,1) .3s both}
+@keyframes hero-up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes hero-art-in{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:none}}
+/* Modals (components/ModalShell.tsx toggles .is-open) */
+.modal-backdrop{opacity:0;transition:opacity .2s ease}
+.modal-backdrop.is-open{opacity:1}
+.modal-backdrop>.modal{opacity:0;transform:translateY(34px) scale(.95);transition:opacity .22s ease,transform .35s cubic-bezier(.22,1.25,.36,1)}
+.modal-backdrop>.modal.is-open{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .m-reveal,.m-item,.hero-in>*,.hero-art-in{opacity:1;transform:none;transition:none;animation:none}
+  .modal-backdrop,.modal-backdrop>.modal,.scroll-progress{transition:none}
+}
+@media print{.m-reveal,.m-item,.hero-in>*,.hero-art-in{opacity:1 !important;transform:none !important;animation:none !important}}

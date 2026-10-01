@@ -54,8 +54,8 @@ for (const lang of ['en', 'hi']) {
   for (const [path] of ROUTES) {
     const url = urlFor(path, lang)
     const key = SEO_KEYS[path] ?? 'home'
-    const title = t(`seo.${key}.title`, lang)
-    const description = t(`seo.${key}.description`, lang)
+    const title = await t(`seo.${key}.title`, lang)
+    const description = await t(`seo.${key}.description`, lang)
     const canonical = `${SITE}${url}`
     const enUrl = `${SITE}${urlFor(path, 'en')}`
     const hiUrl = `${SITE}${urlFor(path, 'hi')}`
@@ -124,7 +124,14 @@ for (const lang of ['en', 'hi']) {
 for (const f of await readdir(dist)) {
   if (/^google[0-9a-f]+\.html$/.test(f)) rewrites.push({ source: `/${f.replace(/\.html$/, '')}`, destination: `/${f}` })
 }
-await writeFile(resolve(dist, 'serve.json'), JSON.stringify({ cleanUrls: true, rewrites }, null, 2))
+// Caching: /assets/* filenames carry a content hash, so they can be cached
+// for a year; HTML must be revalidated so new deploys show up immediately.
+const headers = [
+  { source: 'assets/**', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] },
+  { source: '**/*.@(png|svg|ico|webp|jpg|jpeg|txt|xml)', headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }] },
+  { source: '**/*.html', headers: [{ key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' }] },
+]
+await writeFile(resolve(dist, 'serve.json'), JSON.stringify({ cleanUrls: true, rewrites, headers }, null, 2))
 await writeFile(
   resolve(dist, '404.html'),
   setTag(template, /(<meta name="robots" content=")[^"]*(")/, '$1noindex, follow$2'),
