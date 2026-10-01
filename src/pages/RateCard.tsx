@@ -1,16 +1,15 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
-import { MotionConfig } from 'framer-motion'
 import { MItem, MReveal, MStagger } from '../components/Motion'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import GetQuoteModal, { type QuoteKind } from '../components/GetQuoteModal'
 import { useEnquiry } from '../components/EnquiryModal'
 import { useLiveRates } from '../lib/ratesApi'
-import logo from '../assets/logo.png'
-import sonaliImg from '../assets/sonali.jpg'
-import aseelImg from '../assets/aseel.png'
-import kadaknathImg from '../assets/kadaknath.png'
+import logo from '../assets/logo.webp'
+import sonaliImg from '../assets/sonali.webp'
+import aseelImg from '../assets/aseel.webp'
+import kadaknathImg from '../assets/kadaknath.webp'
 
 const BREED_IMAGES: Record<string, string> = {
   Sonali: sonaliImg,
@@ -106,7 +105,7 @@ export default function RateCard() {
   }, [])
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <PageHero eyebrow={t('rateCardPage.hero.eyebrow')} title={<>{t('rateCardPage.hero.titlePre')}<span>{t('rateCardPage.hero.titleSpan')}</span></>}>
         <p>{t('rateCardPage.hero.text')}</p>
         <div className="chips" style={{ justifyContent: 'center', marginTop: 22 }}>
@@ -319,6 +318,6 @@ export default function RateCard() {
       </section>
 
       <GetQuoteModal kind={modal} onClose={() => setModal(null)} />
-    </MotionConfig>
+    </>
   )
 }

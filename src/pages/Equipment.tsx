@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { LocaleLink as Link } from '../components/LocaleLink'
-import { MotionConfig } from 'framer-motion'
 import { CountUp, MItem, MReveal, MStagger, pop } from '../components/Motion'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
@@ -102,7 +101,7 @@ export default function Equipment() {
   const faqItems = t('equipment.faq.items', { returnObjects: true }) as FaqItem[]
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <PageHero eyebrow={t('equipment.hero.eyebrow')} title={<>{t('equipment.hero.titlePre')}<span>{t('equipment.hero.titleSpan')}</span></>}>
         <p>{t('equipment.hero.text')}</p>
         <div className="chips" style={{ justifyContent: 'center', marginTop: 22 }}>
@@ -268,6 +267,6 @@ export default function Equipment() {
           />
         </div>
       </section>
-    </MotionConfig>
+    </>
   )
 }

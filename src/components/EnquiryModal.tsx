@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import ModalShell from './ModalShell'
 import { submitEnquiry } from '../lib/enquiryApi'
 import { emailError, nameError, onlyDigits, phoneError } from '../lib/validation'
 import { CALL_DISPLAY, CALL_NUMBER } from './CallButton'
@@ -84,117 +84,99 @@ function EnquiryDialog({ opts, onClose }: { opts: OpenOpts | null; onClose: () =
   }
 
   return (
-    <AnimatePresence>
+    <ModalShell open={isOpen} onClose={onClose} label={opts?.title || 'Enquiry'}>
       {isOpen && (
-        <motion.div
-          className="modal-backdrop"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-        >
-          <motion.div
-            className="modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label={opts?.title || 'Enquiry'}
-            initial={{ opacity: 0, y: 34, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 24, scale: 0.95 }}
-            transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button type="button" className="modal-close" aria-label="Close" onClick={onClose}>✕</button>
+        <>
+          <button type="button" className="modal-close" aria-label="Close" onClick={onClose}>✕</button>
 
-            {status === 'sent' ? (
-              <div className="modal-form modal-sent">
-                <h4>Enquiry received ✓</h4>
-                <p>{opts?.sentText || `Thanks${name ? `, ${name}` : ''}! Our B2B team will get back to you shortly.`}</p>
-                <div className="modal-actions">
-                  <button type="button" className="btn" onClick={onClose}>Done</button>
-                </div>
+          {status === 'sent' ? (
+            <div className="modal-form modal-sent">
+              <h4>Enquiry received ✓</h4>
+              <p>{opts?.sentText || `Thanks${name ? `, ${name}` : ''}! Our B2B team will get back to you shortly.`}</p>
+              <div className="modal-actions">
+                <button type="button" className="btn" onClick={onClose}>Done</button>
               </div>
-            ) : (
-              <>
-                <span className="eyebrow">{opts?.source || 'Get in touch'}</span>
-                <h3>{opts?.title || 'Send an enquiry'}</h3>
-                <p className="modal-sub">
-                  {opts?.subtitle || 'Share your details and our B2B team will get back with the next steps.'}
-                </p>
-                <form className="field-grid modal-form" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
-                  <label>
-                    Your Name
-                    <input
-                      type="text"
-                      value={name}
-                      placeholder="Full name"
-                      required
-                      className={touched.name && errors.name ? 'field-invalid' : ''}
-                      onChange={(e) => setName(e.target.value)}
-                      onBlur={() => setTouched((t) => ({ ...t, name: true }))}
-                    />
-                    {touched.name && errors.name && <span className="field-error">{errors.name}</span>}
-                  </label>
-                  <label>
-                    Phone
-                    <input
-                      type="tel"
-                      inputMode="numeric"
-                      value={phone}
-                      placeholder="+91 …"
-                      required
-                      maxLength={13}
-                      className={touched.phone && errors.phone ? 'field-invalid' : ''}
-                      onChange={(e) => setPhone(onlyDigits(e.target.value))}
-                      onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
-                    />
-                    {touched.phone && errors.phone && <span className="field-error">{errors.phone}</span>}
-                  </label>
+            </div>
+          ) : (
+            <>
+              <span className="eyebrow">{opts?.source || 'Get in touch'}</span>
+              <h3>{opts?.title || 'Send an enquiry'}</h3>
+              <p className="modal-sub">
+                {opts?.subtitle || 'Share your details and our B2B team will get back with the next steps.'}
+              </p>
+              <form className="field-grid modal-form" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
+                <label>
+                  Your Name
+                  <input
+                    type="text"
+                    value={name}
+                    placeholder="Full name"
+                    required
+                    className={touched.name && errors.name ? 'field-invalid' : ''}
+                    onChange={(e) => setName(e.target.value)}
+                    onBlur={() => setTouched((t) => ({ ...t, name: true }))}
+                  />
+                  {touched.name && errors.name && <span className="field-error">{errors.name}</span>}
+                </label>
+                <label>
+                  Phone
+                  <input
+                    type="tel"
+                    inputMode="numeric"
+                    value={phone}
+                    placeholder="+91 …"
+                    required
+                    maxLength={13}
+                    className={touched.phone && errors.phone ? 'field-invalid' : ''}
+                    onChange={(e) => setPhone(onlyDigits(e.target.value))}
+                    onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
+                  />
+                  {touched.phone && errors.phone && <span className="field-error">{errors.phone}</span>}
+                </label>
+                <label className="full">
+                  Business Email
+                  <input
+                    type="email"
+                    value={email}
+                    placeholder="you@business.com"
+                    className={touched.email && errors.email ? 'field-invalid' : ''}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onBlur={() => setTouched((t) => ({ ...t, email: true }))}
+                  />
+                  {touched.email && errors.email && <span className="field-error">{errors.email}</span>}
+                </label>
+                {opts?.interest && (
                   <label className="full">
-                    Business Email
-                    <input
-                      type="email"
-                      value={email}
-                      placeholder="you@business.com"
-                      className={touched.email && errors.email ? 'field-invalid' : ''}
-                      onChange={(e) => setEmail(e.target.value)}
-                      onBlur={() => setTouched((t) => ({ ...t, email: true }))}
-                    />
-                    {touched.email && errors.email && <span className="field-error">{errors.email}</span>}
+                    Interested In
+                    <input type="text" value={opts.interest} readOnly />
                   </label>
-                  {opts?.interest && (
-                    <label className="full">
-                      Interested In
-                      <input type="text" value={opts.interest} readOnly />
-                    </label>
-                  )}
-                  <label className="full">
-                    Your Requirement
-                    <textarea
-                      rows={3}
-                      value={message}
-                      placeholder="Tell us about your land, volumes, timelines or requirement…"
-                      onChange={(e) => setMessage(e.target.value)}
-                    />
-                  </label>
-                  <div className="full modal-actions">
-                    <button type="submit" className="btn" disabled={status === 'sending' || (Object.values(touched).some(Boolean) && !isValid)}>
-                      {status === 'sending' ? 'Sending…' : (opts?.submitLabel || 'Send Enquiry')}
-                    </button>
-                    <button type="button" className="btn ghost" onClick={onClose}>Cancel</button>
-                  </div>
-                  {status === 'error' && (
-                    <p className="full enq-error">Something went wrong sending your enquiry. Please try again, or call us directly.</p>
-                  )}
-                </form>
-                <p className="modal-call">
-                  Prefer to talk? Call us at <a href={`tel:${CALL_NUMBER}`}>{CALL_DISPLAY}</a>
-                </p>
-              </>
-            )}
-          </motion.div>
-        </motion.div>
+                )}
+                <label className="full">
+                  Your Requirement
+                  <textarea
+                    rows={3}
+                    value={message}
+                    placeholder="Tell us about your land, volumes, timelines or requirement…"
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
+                </label>
+                <div className="full modal-actions">
+                  <button type="submit" className="btn" disabled={status === 'sending' || (Object.values(touched).some(Boolean) && !isValid)}>
+                    {status === 'sending' ? 'Sending…' : (opts?.submitLabel || 'Send Enquiry')}
+                  </button>
+                  <button type="button" className="btn ghost" onClick={onClose}>Cancel</button>
+                </div>
+                {status === 'error' && (
+                  <p className="full enq-error">Something went wrong sending your enquiry. Please try again, or call us directly.</p>
+                )}
+              </form>
+              <p className="modal-call">
+                Prefer to talk? Call us at <a href={`tel:${CALL_NUMBER}`}>{CALL_DISPLAY}</a>
+              </p>
+            </>
+          )}
+        </>
       )}
-    </AnimatePresence>
+    </ModalShell>
   )
 }

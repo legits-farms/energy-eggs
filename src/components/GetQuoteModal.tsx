@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import ModalShell from './ModalShell'
 import { submitEnquiry } from '../lib/enquiryApi'
 import { emailError, nameError, onlyDigits, phoneError } from '../lib/validation'
 
@@ -198,37 +198,18 @@ export default function GetQuoteModal({ kind, interest, options, onClose }: { ki
   }, [kind, onClose])
 
   return (
-    <AnimatePresence>
+    <ModalShell open={!!kind} onClose={onClose} label={kind ? `${COPY[kind][1]} enquiry` : 'Enquiry'}>
       {kind && (
-        <motion.div
-          className="modal-backdrop"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-        >
-          <motion.div
-            key={kind}
-            className="modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${COPY[kind][1]} enquiry`}
-            initial={{ opacity: 0, y: 34, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 24, scale: 0.95 }}
-            transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button type="button" className="modal-close" aria-label="Close" onClick={onClose}>✕</button>
-            <span className="eyebrow">{COPY[kind][0]}</span>
-            <h3>{COPY[kind][1]}</h3>
-            <p className="modal-sub">
-              Share your details — our B2B team will get back with availability and a structured quote.
-            </p>
-            <QuoteForm kind={kind} initialInterest={interest} options={options} onClose={onClose} />
-          </motion.div>
-        </motion.div>
+        <>
+          <button type="button" className="modal-close" aria-label="Close" onClick={onClose}>✕</button>
+          <span className="eyebrow">{COPY[kind][0]}</span>
+          <h3>{COPY[kind][1]}</h3>
+          <p className="modal-sub">
+            Share your details — our B2B team will get back with availability and a structured quote.
+          </p>
+          <QuoteForm key={kind} kind={kind} initialInterest={interest} options={options} onClose={onClose} />
+        </>
       )}
-    </AnimatePresence>
+    </ModalShell>
   )
 }

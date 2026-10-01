@@ -1,16 +1,15 @@
 import { useMemo, useState, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { LocaleLink as Link } from '../components/LocaleLink'
-import { MotionConfig } from 'framer-motion'
 import { MItem, MReveal, MStagger } from '../components/Motion'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import GetQuoteModal, { type QuoteKind } from '../components/GetQuoteModal'
 import { useLiveProducts } from '../lib/productsApi'
-import sonaliImg from '../assets/sonali.jpg'
-import aseelImg from '../assets/aseel.png'
-import kadaknathImg from '../assets/kadaknath.png'
-import fiyoumiImg from '../assets/fiyoumi.png'
+import sonaliImg from '../assets/sonali.webp'
+import aseelImg from '../assets/aseel.webp'
+import kadaknathImg from '../assets/kadaknath.webp'
+import fiyoumiImg from '../assets/fiyoumi.webp'
 
 const BREED_IMAGES: Record<string, string> = {
   Sonali: sonaliImg,
@@ -144,7 +143,7 @@ export default function Shop() {
   }, [live])
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <PageHero eyebrow={t('shop.hero.eyebrow')} title={<>{t('shop.hero.titlePre')}<span>{t('shop.hero.titleSpan')}</span></>}>
         <p>{t('shop.hero.text')}</p>
         <div className="chips" style={{ justifyContent: 'center', marginTop: 22 }}>
@@ -285,6 +284,6 @@ export default function Shop() {
       </section>
 
       <GetQuoteModal kind={modal?.kind ?? null} interest={modal?.interest} options={modal?.options} onClose={() => setModal(null)} />
-    </MotionConfig>
+    </>
   )
 }

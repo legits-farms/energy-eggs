@@ -1,15 +1,14 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
-import { motion, MotionConfig } from 'framer-motion'
-import { CountUp, EASE, fadeUp, MItem, MReveal, MStagger, pop } from '../components/Motion'
+import { CountUp, MItem, MReveal, MStagger, pop } from '../components/Motion'
 import SprintingHen from '../components/SprintingHen'
 import EnquiryButton from '../components/EnquiryButton'
 import CallButton from '../components/CallButton'
 import { LocaleLink } from '../components/LocaleLink'
-import sonaliImg from '../assets/sonali.jpg'
-import aseelImg from '../assets/aseel.png'
-import kadaknathImg from '../assets/kadaknath.png'
-import fiyoumiImg from '../assets/fiyoumi.png'
+import sonaliImg from '../assets/sonali.webp'
+import aseelImg from '../assets/aseel.webp'
+import kadaknathImg from '../assets/kadaknath.webp'
+import fiyoumiImg from '../assets/fiyoumi.webp'
 
 // Breed names are proper nouns — same in every language.
 const BREEDS: [name: string, img: string][] = [
@@ -68,11 +67,6 @@ const WHAT_WE_DO_META: { to: string; icon: ReactNode }[] = [
   },
 ]
 
-const heroStagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
-}
-
 type TextPair = { title: string; text: string }
 type PathItem = { tag: string; title: string; text: string; cta: string }
 type StatItem = { n: string; label: string }
@@ -90,50 +84,45 @@ export default function Home() {
   const brandValues = t('home.brandPromise.values', { returnObjects: true }) as string[]
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       {/* HERO */}
       <section className="hero">
         <div className="wrap">
           <div className="hero-grid">
-            <motion.div initial="hidden" animate="show" variants={heroStagger}>
-              <motion.div className="badges" variants={fadeUp}>
+            {/* CSS entrance — runs on first paint, no JS needed, so it never delays LCP */}
+            <div className="hero-in">
+              <div className="badges" style={{ '--i': 0 } as CSSProperties}>
                 {badges.map((b) => <span key={b} className="pill">{b}</span>)}
-              </motion.div>
-              <motion.span
+              </div>
+              <span
                 className="script"
-                style={{ fontSize: '1.3rem', display: 'inline-block' }}
-                variants={fadeUp}
+                style={{ fontSize: '1.3rem', display: 'inline-block', '--i': 1 } as CSSProperties}
               >
                 {t('home.scriptLine')}
-              </motion.span>
-              <motion.h1 variants={fadeUp}>
+              </span>
+              <h1 style={{ '--i': 2 } as CSSProperties}>
                 {t('home.heroTitleLine1')}
                 <br />
                 {t('home.heroTitleBusinessPre')}<span>{t('home.heroTitleBusinessSpan')}</span>
-              </motion.h1>
-              <motion.p className="tag" variants={fadeUp}>
+              </h1>
+              <p className="tag" style={{ '--i': 3 } as CSSProperties}>
                 {t('home.heroTag')}
-              </motion.p>
-              <motion.div className="hero-cta" variants={fadeUp}>
+              </p>
+              <div className="hero-cta" style={{ '--i': 4 } as CSSProperties}>
                 <LocaleLink to="/rate-card" className="btn">{t('home.ctaPricing')}</LocaleLink>
                 <LocaleLink to="/contract-farming" className="btn ghost">{t('home.ctaFarmerPartner')}</LocaleLink>
-              </motion.div>
-              <motion.div className="hero-stats" variants={fadeUp}>
+              </div>
+              <div className="hero-stats" style={{ '--i': 5 } as CSSProperties}>
                 <div><span className="n">{t('home.statBreedsN')}</span><small>{t('home.statBreedsSub')}</small></div>
                 <div><span className="n">{t('home.statModelsN')}</span><small>{t('home.statModelsSub')}</small></div>
                 <div><span className="n">{t('home.statEndToEndN')}</span><small>{t('home.statEndToEndSub')}</small></div>
-              </motion.div>
-            </motion.div>
-            <motion.div
-              className="hero-art"
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
-            >
+              </div>
+            </div>
+            <div className="hero-art hero-art-in">
               <SprintingHen />
               <div className="float-badge fb-1"><span className="dot">⚡</span> {t('home.floatBadge1')}</div>
               <div className="float-badge fb-2"><span className="dot">🤝</span> {t('home.floatBadge2')}</div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -301,6 +290,6 @@ export default function Home() {
           </MReveal>
         </div>
       </section>
-    </MotionConfig>
+    </>
   )
 }
