@@ -1,6 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Splash from './components/Splash'
-import LaunchOverlay from './components/LaunchOverlay'
 import Layout from './components/Layout'
 import LangGate from './components/LangGate'
 import Home from './pages/Home'
@@ -36,14 +35,13 @@ export default function App() {
   return (
     <BrowserRouter>
       <Splash />
-      <LaunchOverlay />
       <AppRoutes />
     </BrowserRouter>
   )
 }
 
 // The route tree on its own, so the build-time prerender (entry-server.tsx)
-// can render it inside a StaticRouter without the splash/launch overlays.
+// can render it inside a StaticRouter without the splash overlay.
 export function AppRoutes() {
   return (
     <Routes>
