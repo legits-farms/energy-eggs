@@ -732,7 +732,7 @@ footer p{font-size:.92rem;max-width:34ch}
   section[id]{scroll-margin-top:76px}
   .hero h1{font-size:clamp(2.1rem,9.5vw,2.6rem)}
   .hero .tag{font-size:.98rem}
-  .hero-art{display:none}
+  .hen-scene{max-width:280px}
   .hero-grid{grid-template-columns:1fr;padding:36px 0 56px}
   .page-hero h1{font-size:clamp(1.8rem,8vw,2.1rem)}
   .float-badge{font-size:.72rem;padding:8px 12px}
