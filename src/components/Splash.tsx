@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.webp'
 
 // Full-page brand splash shown on first load of a session, then fades to reveal the site.
 export default function Splash() {

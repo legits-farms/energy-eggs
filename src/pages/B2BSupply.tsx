@@ -4,11 +4,11 @@ import Reveal from '../components/Reveal'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import VolumeCommitment from '../components/VolumeCommitment'
-import slideEggs from '../assets/slide-eggs.jpg'
-import slideBirds from '../assets/slide-birds.jpg'
-import slideFeed from '../assets/slide-feed.jpg'
-import slideEquipment from '../assets/slide-equipment.jpg'
-import slideFarm from '../assets/slide-farm.jpg'
+import slideEggs from '../assets/slide-eggs.webp'
+import slideBirds from '../assets/slide-birds.webp'
+import slideFeed from '../assets/slide-feed.webp'
+import slideEquipment from '../assets/slide-equipment.webp'
+import slideFarm from '../assets/slide-farm.webp'
 
 const HERO_SLIDES = [
   { src: slideEggs, pos: 'center 58%' },

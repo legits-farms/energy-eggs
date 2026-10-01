@@ -6,9 +6,9 @@ import MiniCta from '../components/MiniCta'
 import LockGate from '../components/LockGate'
 import FarmLeaseModal from '../components/FarmLeaseModal'
 import CallButton from '../components/CallButton'
-import pastureFarmImg from '../assets/pasture-farm.jpeg'
-import deepLitterImg from '../assets/deep-litter-farm.png'
-import contractHeroImg from '../assets/contract-hero.jpg'
+import pastureFarmImg from '../assets/pasture-farm.webp'
+import deepLitterImg from '../assets/deep-litter-farm.webp'
+import contractHeroImg from '../assets/contract-hero.webp'
 
 // Static per-model ids/images (not translatable) — merged by index with the
 // translated model content from i18n at render time.

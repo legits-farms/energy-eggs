@@ -1,4 +1,4 @@
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.webp'
 import { useEnquiry } from './EnquiryModal'
 
 // Download (print-to-PDF) + Share actions for a rate page, plus a print-only letterhead.

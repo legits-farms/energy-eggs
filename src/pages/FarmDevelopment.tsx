@@ -4,8 +4,8 @@ import Reveal from '../components/Reveal'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import EnquiryButton from '../components/EnquiryButton'
-import pastureFarmImg from '../assets/pasture-farm.jpeg'
-import deepLitterImg from '../assets/deep-litter-farm.png'
+import pastureFarmImg from '../assets/pasture-farm.webp'
+import deepLitterImg from '../assets/deep-litter-farm.webp'
 
 // Images are static (not translatable) — merged by index with the
 // translated title/points/alt arrays from i18n at render time.

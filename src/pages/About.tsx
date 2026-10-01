@@ -4,7 +4,7 @@ import Reveal from '../components/Reveal'
 import PageHero from '../components/PageHero'
 import MiniCta from '../components/MiniCta'
 import VolumeCommitment from '../components/VolumeCommitment'
-import aboutHeroImg from '../assets/about-hero.jpg'
+import aboutHeroImg from '../assets/about-hero.webp'
 
 // Static per-item routes (not translatable) — merged by index with the
 // translated title/text arrays from i18n at render time.

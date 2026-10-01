@@ -6,10 +6,10 @@ import MiniCta from '../components/MiniCta'
 import RateActions from '../components/RateActions'
 import LockGate from '../components/LockGate'
 import { BIRD_RATE_CARDS as RATE_CARDS } from '../data/rates'
-import sonaliImg from '../assets/sonali.jpg'
-import aseelImg from '../assets/aseel.png'
-import kadaknathImg from '../assets/kadaknath.png'
-import fiyoumiImg from '../assets/fiyoumi.png'
+import sonaliImg from '../assets/sonali.webp'
+import aseelImg from '../assets/aseel.webp'
+import kadaknathImg from '../assets/kadaknath.webp'
+import fiyoumiImg from '../assets/fiyoumi.webp'
 
 // Name/image are static (proper nouns, assets) — merged by index with the
 // translated description text from i18n at render time.
