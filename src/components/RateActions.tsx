@@ -1,9 +1,11 @@
 import logo from '../assets/logo.webp'
 import { useEnquiry } from './EnquiryModal'
+import { phoneDisplay, useSiteSettings, websiteDisplay } from '../lib/siteSettings'
 
 // Download (print-to-PDF) + Share actions for a rate page, plus a print-only letterhead.
 // Place directly after the PageHero. Screen bar hides in print; letterhead shows in print.
 export default function RateActions({ title = 'B2B Rate Card' }: { title?: string }) {
+  const settings = useSiteSettings()
   const { open } = useEnquiry()
 
   const gate = (after: () => void, submitLabel: string) => open({
@@ -46,7 +48,7 @@ export default function RateActions({ title = 'B2B Rate Card' }: { title?: strin
         <img src={logo} alt="Energy Eggs" />
         <div className="print-head-meta">
           <strong>{title}</strong>
-          <span>www.energyeggs.in · +91 78787 87226 · hello@energyeggs.in</span>
+          <span>{websiteDisplay(settings)} · {phoneDisplay(settings)} · {settings.email}</span>
         </div>
       </div>
 

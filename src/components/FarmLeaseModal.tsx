@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import ModalShell from './ModalShell'
 import { submitEnquiry } from '../lib/enquiryApi'
 import { nameError, onlyDigits, phoneError } from '../lib/validation'
-import { CALL_DISPLAY, CALL_NUMBER } from './CallButton'
+import { phoneDisplay, telHref, useSiteSettings } from '../lib/siteSettings'
 
 // Canonical (English) values sent to the backend — stay stable regardless of
 // UI language so the admin dashboard's data is always consistent. Labels come
@@ -24,6 +24,7 @@ const DURATION_VALUES = ['1 year', '2–3 years', '5 years or more', 'Open to di
 
 export default function FarmLeaseModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const { t } = useTranslation()
+  const settings = useSiteSettings()
   const f = (k: string) => t(`contractFarming.farmLease.form.${k}`)
   const list = (k: string) => t(`contractFarming.farmLease.form.${k}`, { returnObjects: true }) as string[]
 
@@ -283,7 +284,7 @@ export default function FarmLeaseModal({ isOpen, onClose }: { isOpen: boolean; o
               </form>
               <p className="modal-call lease-call">
                 <span>{f('preferCall')}</span>
-                <a href={`tel:${CALL_NUMBER}`}>📞 {CALL_DISPLAY}</a>
+                <a href={telHref(settings)}>📞 {phoneDisplay(settings)}</a>
               </p>
             </>
           )}

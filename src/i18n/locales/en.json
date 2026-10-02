@@ -15,7 +15,7 @@
     "shop": "Shop"
   },
   "footer": {
-    "tagline": "Nourishing lives. Naturally.",
+    "tagline": "{{tagline}}",
     "tagSub": "The B2B Desi Poultry Ecosystem",
     "about": "The B2B desi poultry ecosystem — birds, eggs, farms, equipment and partnerships, from farm development to reliable B2B supply.",
     "servicesHeading": "Services",
@@ -40,7 +40,7 @@
   },
   "seo": {
     "home": { "title": "Energy Eggs Pvt Ltd — The B2B Desi Poultry Ecosystem", "description": "Energy Eggs Pvt Ltd is a B2B desi poultry company — Sonali, Aseel, Kadaknath and Fiyoumi birds and eggs at published rates, plus feed, equipment, farm development and contract farming." },
-    "birds": { "title": "Desi Birds & Country Chicken Rate Card | Energy Eggs", "description": "Live bird rates by age for Sonali, Aseel and Kadaknath — day-old chicks to 20+ weeks, male and female. Sonali ₹500/kg, Aseel ₹700/kg, Kadaknath ₹750/kg, Fiyoumi ₹1,500/kg. Minimum order 10 birds." },
+    "birds": { "title": "Desi Birds & Country Chicken Rate Card | Energy Eggs", "description": "Live bird rates by age for Sonali, Aseel and Kadaknath — day-old chicks to 20+ weeks, male and female. Sonali ₹500/kg, Aseel ₹700/kg, Kadaknath ₹750/kg, Fiyoumi ₹1,500/kg. Minimum order {{minOrder}} birds." },
     "eggs": { "title": "Desi Egg Rate Card — Ex-Farm Prices | Energy Eggs", "description": "Ex-farm egg prices from ₹10.75 to ₹12.00 per egg, tiered by monthly commitment. Washing, grading and packing add-ons, custom packing and private label for bulk B2B orders." },
     "equipment": { "title": "Poultry Farm Equipment | Energy Eggs", "description": "Poultry equipment for desi poultry farms — nipple drinking systems, brooding, feeders, drinkers and husk supply for farm setup and expansion." },
     "feed": { "title": "Poultry Feed | Energy Eggs", "description": "Poultry feed programmes for every growth stage — from pre-starter to grower and finisher — supporting consistent desi bird performance." },
@@ -50,7 +50,7 @@
     "shop": { "title": "Shop — Order Desi Birds, Eggs & Equipment | Energy Eggs", "description": "Order Sonali, Aseel, Kadaknath and Fiyoumi birds, desi eggs and poultry farm equipment at published B2B rates. Pick your product, send an enquiry and get a structured quote." },
     "rateCard": { "title": "Rate Card — Bird & Egg Prices | Energy Eggs", "description": "The complete published B2B rate card — live bird rates by age for Sonali, Aseel and Kadaknath, and ex-farm egg prices tiered by monthly commitment with processing add-ons." },
     "about": { "title": "About Energy Eggs Pvt Ltd — The B2B Desi Poultry Company", "description": "Energy Eggs Pvt Ltd connects desi poultry farmers and food businesses through structured production models, published pricing and dependable B2B supply." },
-    "contact": { "title": "Contact Energy Eggs Pvt Ltd — B2B Enquiry", "description": "Contact Energy Eggs Pvt Ltd for birds, eggs, equipment, farm development or contract farming. Call +91 78787 87226 or send your requirement for a structured commercial proposal." }
+    "contact": { "title": "Contact Energy Eggs Pvt Ltd — B2B Enquiry", "description": "Contact Energy Eggs Pvt Ltd for birds, eggs, equipment, farm development or contract farming. Call {{phone}} or send your requirement for a structured commercial proposal." }
   },
   "home": {
     "badges": ["Birds", "Eggs", "Feed", "Equipment", "Partnerships"],
@@ -133,7 +133,7 @@
       ]
     },
     "brandPromise": {
-      "script": "Nourishing lives. Naturally.",
+      "script": "{{tagline}}",
       "text": "Farm raised, honest food — produced through ethical farming, natural feed and structured quality systems across our own and partner farms.",
       "values": ["Healthy Birds", "Natural Feed", "Ethical Farming", "Better Taste & Nutrition", "Farm Raised"],
       "readStory": "Read our story →"
@@ -211,7 +211,7 @@
       ]
     },
     "brandPromise": {
-      "script": "Nourishing lives. Naturally.",
+      "script": "{{tagline}}",
       "text": "Behind the name is a simple promise — healthy birds, natural feed, ethical farming, and better taste and nutrition, from our farms and our partners' farms to your business.",
       "taglines": ["Farm Fresh for a Healthier Tomorrow", "Stronger Farms, Healthier Tomorrows", "Good Eggs, Greater Possibilities", "Farm Raised · Honest Food"]
     },
@@ -267,8 +267,8 @@
     }
   },
   "shop": {
-    "hero": { "eyebrow": "Shop", "titlePre": "Order direct. ", "titleSpan": "Farm to business.", "text": "Pick your birds, eggs and farm equipment, send an enquiry, and our B2B team confirms availability with a structured quote.", "chips": ["Published rates", "Minimum order: 10 birds", "Egg tiers by commitment"] },
-    "birds": { "eyebrow": "Live Birds", "heading": "Desi birds, ready to order", "text": "Desi breeds from day-old chicks to fully grown birds, male and female.", "orderBtn": "Order Birds", "underTen": "Orders under 10 birds billed per kg", "fullRateCard": "Full rate card by age →" },
+    "hero": { "eyebrow": "Shop", "titlePre": "Order direct. ", "titleSpan": "Farm to business.", "text": "Pick your birds, eggs and farm equipment, send an enquiry, and our B2B team confirms availability with a structured quote.", "chips": ["Published rates", "Minimum order: {{minOrder}} birds", "Egg tiers by commitment"] },
+    "birds": { "eyebrow": "Live Birds", "heading": "Desi birds, ready to order", "text": "Desi breeds from day-old chicks to fully grown birds, male and female.", "orderBtn": "Order Birds", "underTen": "Orders under {{minOrder}} birds billed per kg", "fullRateCard": "Full rate card by age →" },
     "eggs": { "eyebrow": "Desi Eggs", "heading": "Specialty eggs, ex-farm", "text": "Ex-farm rates tiered by your monthly commitment.", "orderBtn": "Order Eggs", "washed": "Washed: +₹0.50/egg", "graded": "Graded: +₹0.50/egg", "packing": "Packing: +₹0.05/egg", "packingMaterial": "Packing material: at cost", "fullTiers": "Full egg tiers →" },
     "equipment": { "eyebrow": "Farm Equipment", "heading": "Equip your farm, category by category", "textTemplate": "{{count}} products across {{groups}} categories — priced on your requirement and farm design.", "productsCount": "{{count}} products", "orderBtn": "Order Equipment", "completeSetups": "Complete farm setups available", "recurringHusk": "Recurring husk supply", "setupGuidance": "Setup guidance included", "fullCatalogue": "Full catalogue & setups →", "allRange": "All {{name}} (full range)" },
     "also": {
@@ -351,12 +351,12 @@
       "eyebrow": "Country Chicken Rate Card",
       "heading": "Live bird rates by age",
       "text": "Per-bird rates from day-old chicks to fully grown birds, for male and female.",
-      "ratePerBird": "Rate (₹) per bird · For orders less than 10 birds: {{perKg}}",
+      "ratePerBird": "Rate (₹) per bird · For orders less than {{minOrder}} birds: {{perKg}}",
       "tableWeek": "Week",
       "tableAge": "Age (Days)",
       "tableMale": "Male (₹)",
       "tableFemale": "Female (₹)",
-      "chips": ["Minimum order: 10 birds", "Orders under 10 birds billed per kg", "Fiyoumi: ₹1,500 per kg", "Quail (male): ₹200 per piece"]
+      "chips": ["Minimum order: {{minOrder}} birds", "Orders under {{minOrder}} birds billed per kg", "Fiyoumi: ₹1,500 per kg", "Quail (male): ₹200 per piece"]
     },
     "cta": { "title": "Need regular supply?", "text": "Tell us your requirement and our B2B team can develop a supply programme around your volume and specifications.", "cta": "Request B2B Pricing" }
   },
@@ -371,7 +371,7 @@
       "share": "Share",
       "shareTitle": "Share the bird rate card",
       "getBirds": "Get the Birds",
-      "ratePerBird": "Rate (₹) per bird · For orders less than 10 birds: {{perKg}}"
+      "ratePerBird": "Rate (₹) per bird · For orders less than {{minOrder}} birds: {{perKg}}"
     },
     "table": { "week": "Week", "age": "Age (Days)", "male": "Male (₹)", "female": "Female (₹)" },
     "egg": {
@@ -858,7 +858,7 @@
       "heading": "Transparent, published pricing",
       "text": "Headline numbers from our current rate cards — full details on the product pages.",
       "birdsTitle": "Desi Birds",
-      "birdsItems": ["Sonali ₹500/kg · Aseel ₹700/kg · Kadaknath ₹750/kg · Fiyoumi ₹1,500/kg", "Per-bird rates published by age — day-old chicks to 20+ weeks, male and female.", "Minimum order 10 birds; smaller orders billed per kg."],
+      "birdsItems": ["Sonali ₹500/kg · Aseel ₹700/kg · Kadaknath ₹750/kg · Fiyoumi ₹1,500/kg", "Per-bird rates published by age — day-old chicks to 20+ weeks, male and female.", "Minimum order {{minOrder}} birds; smaller orders billed per kg."],
       "birdsLink": "View full bird rate card →",
       "eggsTitle": "Desi Eggs",
       "eggsItems": ["Ex-farm prices from ₹10.75 to ₹12.00 per egg, tiered by monthly commitment.", "Processing add-ons from ₹0.00 (unwashed) to ₹1.05 (washed, graded & packed) — plus packing material at cost.", "Custom pricing at 100,000+ eggs per month; private label available."],
@@ -890,7 +890,7 @@
       "eyebrow": "Common Questions",
       "heading": "B2B procurement, answered",
       "items": [
-        { "q": "What are the minimum order quantities?", "a": "For country chicken, the minimum order is 10 birds — orders below 10 birds are billed per kg at the applicable breed rate. Egg programmes start from a monthly commitment of 5,000 eggs." },
+        { "q": "What are the minimum order quantities?", "a": "For country chicken, the minimum order is {{minOrder}} birds — orders below {{minOrder}} birds are billed per kg at the applicable breed rate. Egg programmes start from a monthly commitment of 5,000 eggs." },
         { "q": "How does egg pricing work?", "a": "Egg prices are ex-farm, per egg, and tiered by your monthly commitment — from 5,000 eggs per month up to 100,000+, where pricing is fully custom. Processing add-ons (washing, grading, packing) are charged per egg on top." },
         { "q": "Which breeds do you supply?", "a": "We focus on four desi categories: Sonali, Aseel, Kadaknath and Fiyoumi, plus quail. Live bird rates are published by age from day-old chicks to fully grown birds, for both male and female." },
         { "q": "Can you do custom packing or private label?", "a": "Yes. Custom packing, branding and private label options are available for bulk orders. Washed, graded and packed eggs are supplied retail-ready." },

@@ -4,19 +4,21 @@ import Reveal from '../components/Reveal'
 import PageHero from '../components/PageHero'
 import EnquiryForm from '../components/EnquiryForm'
 import { LocaleLink as Link } from '../components/LocaleLink'
+import { phoneDisplay, telHref, whatsappHref, useSiteSettings, type SiteSettings } from '../lib/siteSettings'
 
-const CHANNEL_META: { href: string; key: string; value: string; badgeKey?: string; icon: ReactNode }[] = [
+// Contact details come from the dashboard → Settings (see lib/siteSettings)
+const channelsFor = (s: SiteSettings): { href: string; key: string; value: string; badgeKey?: string; icon: ReactNode }[] => [
   {
-    href: 'tel:+9178 78 78 7226',
+    href: telHref(s),
     key: 'callLabel',
-    value: '+91 78 78 78 7226',
+    value: phoneDisplay(s),
     badgeKey: 'callBadge',
     icon: <path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />,
   },
   {
-    href: 'https://wa.me/917878787226',
+    href: whatsappHref(s),
     key: 'whatsappLabel',
-    value: '+91 78 78 78 7226',
+    value: phoneDisplay(s),
     icon: (
       <>
         <path d="M12 3a9 9 0 0 0-7.6 13.8L3 21l4.4-1.3A9 9 0 1 0 12 3z" />
@@ -25,9 +27,9 @@ const CHANNEL_META: { href: string; key: string; value: string; badgeKey?: strin
     ),
   },
   {
-    href: 'mailto:hello@energyeggs.in',
+    href: `mailto:${s.email}`,
     key: 'emailLabel',
-    value: 'hello@energyeggs.in',
+    value: s.email,
     icon: (
       <>
         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -43,6 +45,7 @@ type TextPair = { title: string; text: string }
 
 export default function Contact() {
   const { t } = useTranslation()
+  const settings = useSiteSettings()
   const tips = t('contact.side.tips', { returnObjects: true }) as string[]
   const chips = t('contact.side.chips', { returnObjects: true }) as string[]
   const nextSteps = t('contact.nextSteps.items', { returnObjects: true }) as TextPair[]
@@ -56,7 +59,7 @@ export default function Contact() {
       <section>
         <div className="wrap">
           <div className="contact-channels">
-            {CHANNEL_META.map((c) => (
+            {channelsFor(settings).map((c) => (
               <Reveal key={c.key} className="in">
                 <a
                   className={`channel${c.badgeKey ? ' featured' : ''}`}

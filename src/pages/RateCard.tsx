@@ -6,6 +6,7 @@ import MiniCta from '../components/MiniCta'
 import GetQuoteModal, { type QuoteKind } from '../components/GetQuoteModal'
 import { useEnquiry } from '../components/EnquiryModal'
 import { useLiveRates } from '../lib/ratesApi'
+import { phoneDisplay, useSiteSettings, websiteDisplay, withMinOrder } from '../lib/siteSettings'
 import logo from '../assets/logo.webp'
 import sonaliImg from '../assets/sonali.webp'
 import aseelImg from '../assets/aseel.webp'
@@ -58,6 +59,7 @@ function Locked({ unlocked, onUnlock, children }: { unlocked: boolean; onUnlock:
 
 export default function RateCard() {
   const { t } = useTranslation()
+  const settings = useSiteSettings()
   const heroChips = t('rateCardPage.hero.chips', { returnObjects: true }) as string[]
   const eggChips = t('rateCardPage.egg.chips', { returnObjects: true }) as string[]
   const { birdCards, birdNotes, eggRates, processing } = useLiveRates()
@@ -118,14 +120,14 @@ export default function RateCard() {
         <img src={logo} alt="Energy Eggs" />
         <div className="print-head-meta">
           <strong>{t('rateCardPage.bird.eyebrow')}</strong>
-          <span>www.energyeggs.in · +91 78787 87226 · hello@energyeggs.in</span>
+          <span>{websiteDisplay(settings)} · {phoneDisplay(settings)} · {settings.email}</span>
         </div>
       </div>
       <div className="print-head print-head-eggs" aria-hidden="true">
         <img src={logo} alt="Energy Eggs" />
         <div className="print-head-meta">
           <strong>{t('rateCardPage.egg.eyebrow')}</strong>
-          <span>www.energyeggs.in · +91 78787 87226 · hello@energyeggs.in</span>
+          <span>{websiteDisplay(settings)} · {phoneDisplay(settings)} · {settings.email}</span>
         </div>
       </div>
 
@@ -187,7 +189,7 @@ export default function RateCard() {
               </div>
             ))}
             <div className="chips print-notes">
-              {birdNotes.map((n) => <span key={n} className="pill">{n}</span>)}
+              {birdNotes.map((n) => <span key={n} className="pill">{withMinOrder(n, settings)}</span>)}
             </div>
           </div>
 
@@ -231,7 +233,7 @@ export default function RateCard() {
 
           <MReveal className="chip-row">
             <div className="chips">
-              {birdNotes.map((n) => <span key={n} className="pill">{n}</span>)}
+              {birdNotes.map((n) => <span key={n} className="pill">{withMinOrder(n, settings)}</span>)}
             </div>
           </MReveal>
         </div>

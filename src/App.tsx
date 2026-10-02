@@ -14,6 +14,11 @@ import RateCard from './pages/RateCard'
 import Shop from './pages/Shop'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import { SiteSettingsProvider, initialSettings } from './lib/siteSettings'
+
+// Settings baked into this page at build time; the provider refreshes them
+// from the dashboard API after load.
+const INITIAL_SETTINGS = initialSettings()
 
 // path is relative to the language root ('' = index route)
 export const ROUTES: [path: string, Component: React.ComponentType][] = [
@@ -33,10 +38,12 @@ export const ROUTES: [path: string, Component: React.ComponentType][] = [
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Splash />
-      <AppRoutes />
-    </BrowserRouter>
+    <SiteSettingsProvider initial={INITIAL_SETTINGS}>
+      <BrowserRouter>
+        <Splash />
+        <AppRoutes />
+      </BrowserRouter>
+    </SiteSettingsProvider>
   )
 }
 

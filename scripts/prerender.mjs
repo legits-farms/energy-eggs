@@ -46,20 +46,53 @@ await build({
   build: { ssr: 'src/entry-server.tsx', outDir: ssrOut, emptyOutDir: true, copyPublicDir: false },
 })
 
-const { render, t, ROUTES } = await import(pathToFileURL(resolve(ssrOut, 'entry-server.js')).href)
-const template = await readFile(resolve(dist, 'index.html'), 'utf8')
+const { render, t, ROUTES, DEFAULT_SETTINGS, mergeSettings, fetchPublicSettings, phoneE164 } =
+  await import(pathToFileURL(resolve(ssrOut, 'entry-server.js')).href)
+
+// Business details from the dashboard (Settings page). A failed fetch must not
+// break the deploy — fall back to the defaults in src/lib/siteSettings.tsx.
+let settings = DEFAULT_SETTINGS
+try {
+  const ctrl = new AbortController()
+  const timer = setTimeout(() => ctrl.abort(), 10000)
+  settings = mergeSettings(DEFAULT_SETTINGS, await fetchPublicSettings(ctrl.signal))
+  clearTimeout(timer)
+  console.log('prerender: using dashboard settings')
+} catch (err) {
+  console.warn(`prerender: settings API unavailable (${err.message}) — using built-in defaults`)
+}
+
+// Organization structured data: keep phone/email in sync with settings
+function withOrgData(html) {
+  const re = /(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/
+  const m = html.match(re)
+  if (!m) throw new Error('prerender: JSON-LD block not found')
+  const ld = JSON.parse(m[2])
+  const org = ld['@graph'].find((n) => n['@type'] === 'Organization')
+  org.telephone = phoneE164(settings)
+  org.email = settings.email
+  org.slogan = settings.tagline
+  for (const cp of org.contactPoint || []) { cp.telephone = phoneE164(settings); cp.email = settings.email }
+  const json = JSON.stringify(ld, null, 2).replace(/^/gm, '    ')
+  return html.replace(re, (_m, open, _body, close) => `${open}\n${json}\n    ${close}`)
+}
+
+const template = withOrgData(await readFile(resolve(dist, 'index.html'), 'utf8'))
+// Baked into every page so the browser starts with the same values (no flash).
+// "<" is escaped so a value can never close the <script> tag.
+const settingsScript = `    <script>window.__EE_SETTINGS__=${JSON.stringify(settings).replace(/</g, '\\u003c')}</script>\n`
 
 let count = 0
 for (const lang of ['en', 'hi']) {
   for (const [path] of ROUTES) {
     const url = urlFor(path, lang)
     const key = SEO_KEYS[path] ?? 'home'
-    const title = await t(`seo.${key}.title`, lang)
-    const description = await t(`seo.${key}.description`, lang)
+    const title = await t(`seo.${key}.title`, lang, settings)
+    const description = await t(`seo.${key}.description`, lang, settings)
     const canonical = `${SITE}${url}`
     const enUrl = `${SITE}${urlFor(path, 'en')}`
     const hiUrl = `${SITE}${urlFor(path, 'hi')}`
-    const appHtml = await render(url, lang)
+    const appHtml = await render(url, lang, settings)
 
     // Home > Page breadcrumb (home itself gets none)
     const crumbName = title.split(/ [|—] /)[0]
@@ -93,6 +126,7 @@ for (const lang of ['en', 'hi']) {
         `    <link rel="alternate" hreflang="hi" href="${hiUrl}" />\n` +
         `    <link rel="alternate" hreflang="x-default" href="${enUrl}" />\n` +
         (breadcrumb ? `    ${breadcrumb}` : '') +
+        settingsScript +
         `  </head>`,
     )
     html = setTag(html, /<div id="root"><\/div>/, `<div id="root">${appHtml}</div>`)

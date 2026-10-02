@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useState, type React
 import ModalShell from './ModalShell'
 import { submitEnquiry } from '../lib/enquiryApi'
 import { emailError, nameError, onlyDigits, phoneError } from '../lib/validation'
-import { CALL_DISPLAY, CALL_NUMBER } from './CallButton'
+import { phoneDisplay, telHref, useSiteSettings } from '../lib/siteSettings'
 
 type OpenOpts = {
   source?: string   // where the enquiry came from (button/section)
@@ -39,6 +39,7 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
 
 function EnquiryDialog({ opts, onClose }: { opts: OpenOpts | null; onClose: () => void }) {
   const isOpen = opts !== null
+  const settings = useSiteSettings()
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
@@ -171,7 +172,7 @@ function EnquiryDialog({ opts, onClose }: { opts: OpenOpts | null; onClose: () =
                 )}
               </form>
               <p className="modal-call">
-                Prefer to talk? Call us at <a href={`tel:${CALL_NUMBER}`}>{CALL_DISPLAY}</a>
+                Prefer to talk? Call us at <a href={telHref(settings)}>{phoneDisplay(settings)}</a>
               </p>
             </>
           )}

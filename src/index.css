@@ -981,3 +981,4 @@ footer p{font-size:.92rem;max-width:34ch}
   .modal-backdrop,.modal-backdrop>.modal,.scroll-progress{transition:none}
 }
 @media print{.m-reveal,.m-item,.hero-in>*,.hero-art-in{opacity:1 !important;transform:none !important;animation:none !important}}
+
