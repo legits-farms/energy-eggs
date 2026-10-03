@@ -73,7 +73,7 @@ export default function Eggs() {
             text={t('rateCardPage.locked.text')}
           >
           <div className="tier-list">
-            {EGG_RATES.map(([commitment, a, ab, b]) => {
+            {EGG_RATES.map(([commitment, a, ab, b, c]) => {
               const custom = commitment.includes('+')
               return (
                 <Reveal key={commitment} className={`tier${custom ? ' custom' : ''}`}>
@@ -86,6 +86,7 @@ export default function Eggs() {
                     <div className="tp"><small>{t('eggs.rateCard.aGrade')}</small><b>{a}</b></div>
                     <div className="tp"><small>{t('eggs.rateCard.abGrade')}</small><b>{ab}</b></div>
                     <div className="tp"><small>{t('eggs.rateCard.bGrade')}</small><b>{b}</b></div>
+                    <div className="tp"><small>{t('eggs.rateCard.cGrade')}</small><b>{c}</b></div>
                   </div>
                 </Reveal>
               )

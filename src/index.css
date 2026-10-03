@@ -288,7 +288,7 @@ a.pill:hover{border-color:#f0c5a4}
 .tier-range small{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--clay)}
 .tier-range strong{font-family:var(--font-head);font-size:1.35rem;font-weight:800;color:var(--brown);letter-spacing:-.01em}
 .tier-range span{font-size:.74rem;color:var(--brown-soft)}
-.tier-prices{flex:1;display:grid;grid-template-columns:repeat(3,1fr)}
+.tier-prices{flex:1;display:grid;grid-template-columns:repeat(4,1fr)}
 .tp{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:18px 10px}
 .tp+.tp{border-left:1px dashed var(--line)}
 .tp small{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--brown-soft)}
@@ -750,9 +750,9 @@ footer p{font-size:.92rem;max-width:34ch}
   .chain-item>span:first-child{width:100%;text-align:center}
   .chain .ar{transform:rotate(90deg)}
   .tier-range strong{font-size:1.15rem}
-  .tp{padding:14px 6px}
-  .tp b{font-size:1.05rem}
-  .tp small{font-size:.54rem;letter-spacing:.1em}
+  .tp{padding:14px 4px}
+  .tp b{font-size:.95rem}
+  .tp small{font-size:.54rem;letter-spacing:.06em;text-align:center}
   .addon{padding:26px 20px 22px}
   .faq summary{padding:15px 18px;font-size:.92rem}
   .faq details p{padding:0 18px 16px}

@@ -93,12 +93,12 @@ export const BIRD_RATE_NOTES = [
   'Quail (male): ₹200 per piece',
 ]
 
-export const EGG_RATES: [commitment: string, aGrade: string, abGrade: string, bGrade: string][] = [
-  ['5,000 – 9,999', '₹12.00', '₹11.75', '₹11.00'],
-  ['10,000 – 19,999', '₹11.75', '₹11.50', '₹11.25'],
-  ['20,000 – 49,999', '₹11.50', '₹11.25', '₹11.00'],
-  ['50,000 – 99,999', '₹11.25', '₹11.00', '₹10.75'],
-  ['100,000+', 'Custom', 'Custom', 'Custom'],
+export const EGG_RATES: [commitment: string, aGrade: string, abGrade: string, bGrade: string, cGrade: string][] = [
+  ['5,000 – 9,999', '₹12.00', '₹11.75', '₹11.00', '₹9.00'],
+  ['10,000 – 19,999', '₹11.75', '₹11.50', '₹11.25', '₹8.75'],
+  ['20,000 – 49,999', '₹11.50', '₹11.25', '₹11.00', '₹8.50'],
+  ['50,000 – 99,999', '₹11.25', '₹11.00', '₹10.75', '₹8.00'],
+  ['100,000+', 'Custom', 'Custom', 'Custom', 'Custom'],
 ]
 
 export const PROCESSING_CHARGES: [service: string, charge: string, note: string][] = [

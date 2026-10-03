@@ -264,7 +264,7 @@ export default function RateCard() {
 
           <Locked unlocked={unlocked} onUnlock={() => requestUnlock()}>
           <MStagger className="tier-list" gap={0.08} amount={0.1}>
-            {eggRates.map(([commitment, a, ab, b]) => {
+            {eggRates.map(([commitment, a, ab, b, c]) => {
               const custom = commitment.includes('+')
               return (
                 <MItem key={commitment} className={`tier${custom ? ' custom' : ''}`}>
@@ -277,6 +277,7 @@ export default function RateCard() {
                     <div className="tp"><small>{t('rateCardPage.egg.aGrade')}</small><b>{a}</b></div>
                     <div className="tp"><small>{t('rateCardPage.egg.abGrade')}</small><b>{ab}</b></div>
                     <div className="tp"><small>{t('rateCardPage.egg.bGrade')}</small><b>{b}</b></div>
+                    <div className="tp"><small>{t('rateCardPage.egg.cGrade')}</small><b>{c ?? '—'}</b></div>
                   </div>
                 </MItem>
               )

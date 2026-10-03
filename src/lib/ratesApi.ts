@@ -24,7 +24,7 @@ type ApiRateCard = {
 export type LiveRates = {
   birdCards: { name: string; perKg: string; rows: BirdRateRow[] }[]
   birdNotes: string[]
-  eggRates: [string, string, string, string][]
+  eggRates: [string, string, string, string, string?][]
   processing: [string, string, string][]
 }
 
